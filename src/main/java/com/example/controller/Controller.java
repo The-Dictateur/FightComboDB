@@ -5,6 +5,7 @@ import javax.print.DocFlavor.URL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.example.model.Juego;
 import com.example.model.Personaje;
 import com.example.service.CharService;
 import com.example.service.GameService;
@@ -19,6 +20,7 @@ import javafx.scene.layout.BackgroundPosition;
 import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Rectangle;
 
 @Component
 public class Controller {
@@ -45,14 +47,24 @@ public class Controller {
         System.out.println("Controller initialized");
         cargarJuegos();
         combo_game.setOnAction(event -> {
+            stackPaneGame.getChildren().clear(); // Limpiar logo del juego
+            String selectedGame = combo_game.getSelectionModel().getSelectedItem();
+            Juego juego = gameService.obtenerTodosLosJuegos().stream()
+                .filter(j -> j.getNombre().equals(selectedGame))
+                .findFirst()
+                .orElse(null);
+            mostrarLogoJuego(juego);
+            combo_char.getItems().clear(); // Limpiar personajes al cambiar juego
+            stackPaneChar.getChildren().clear(); // Limpiar logo del personaje
             cargarPersonajes();
+            combo_char.getSelectionModel().clearSelection(); // Limpiar selección de personaje
         });
 
         combo_char.setOnAction(event -> {
             String selectedChar = combo_char.getSelectionModel().getSelectedItem();
             String selectedGame = combo_game.getSelectionModel().getSelectedItem();
             Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
-            mostratLogoPersonaje(personaje);
+            mostrarLogoPersonaje(personaje);
         });
     }
 
@@ -67,8 +79,38 @@ public class Controller {
         charService.obtenerPersonajePorJuego(selectedGame).forEach(personaje -> combo_char.getItems().add(personaje.getNombre()));
     }
 
+    public void mostrarLogoJuego(Juego juego) {
+        if (combo_game.getSelectionModel().isEmpty()) return;
 
-    public void mostratLogoPersonaje(Personaje personaje) {
+        try {
+            String ruta = "/logos/" + combo_game.getSelectionModel().getSelectedItem() + "/" + juego.getIcon();
+            java.net.URL url = getClass().getResource(ruta);
+            if (url == null) {
+                System.err.println("No se encontró la imagen: " + ruta);
+                return;
+            }
+            Image image = new Image(url.toExternalForm());
+
+            // Crear un ImageView
+            ImageView imageView = new ImageView(image);
+            imageView.setPreserveRatio(true); // Mantener proporciones
+            imageView.setSmooth(true);
+
+            // Enlazar tamaño al StackPane
+            imageView.fitWidthProperty().bind(stackPaneGame.widthProperty());
+            imageView.fitHeightProperty().bind(stackPaneGame.heightProperty());
+
+            // Limpiar cualquier imagen anterior
+            stackPaneGame.getChildren().clear();
+            stackPaneGame.getChildren().add(imageView);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public void mostrarLogoPersonaje(Personaje personaje) {
         System.out.println("Mostrando logo del personaje: " + personaje.getNombre());
         if (personaje == null || personaje.getIcon() == null) return;
 
@@ -83,12 +125,19 @@ public class Controller {
 
         // Crear un ImageView
         ImageView imageView = new ImageView(image);
-        imageView.setPreserveRatio(true); // Mantener proporciones
+        imageView.setPreserveRatio(false); // Mantener proporciones
         imageView.setSmooth(true);
 
         // Enlazar tamaño al StackPane
         imageView.fitWidthProperty().bind(stackPaneChar.widthProperty());
         imageView.fitHeightProperty().bind(stackPaneChar.heightProperty());
+
+        Rectangle clip = new Rectangle();
+        clip.arcWidthProperty().set(20);  // ancho del redondeo
+        clip.arcHeightProperty().set(20); // alto del redondeo
+        clip.widthProperty().bind(imageView.fitWidthProperty());
+        clip.heightProperty().bind(imageView.fitHeightProperty());
+        imageView.setClip(clip);
 
         // Limpiar cualquier imagen anterior
         stackPaneChar.getChildren().clear();
