@@ -32,7 +32,6 @@ public class FightComboDbApplication extends Application {
 		stage.setTitle("Ventana JavaFX con Spring Boot");
         stage.setScene(new Scene(root));
         stage.show();
-
 	}
 
 	@Override

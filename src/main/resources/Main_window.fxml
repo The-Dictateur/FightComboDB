@@ -54,10 +54,11 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
-            <StackPane id="game_logo" layoutX="431.0" layoutY="11.0" prefHeight="109.0" prefWidth="163.0" />
-            <StackPane id="char_logo" layoutX="14.0" layoutY="14.0" prefHeight="109.0" prefWidth="163.0" />
-            <ComboBox fx:id="combo_game" layoutX="609.0" layoutY="56.0" prefWidth="150.0" />
-            <ComboBox fx:id="combo_char" layoutX="192.0" layoutY="56.0" prefWidth="150.0" />
+            <StackPane id="game_logo" fx:id="stackPaneGame" layoutX="431.0" layoutY="11.0" prefHeight="109.0" prefWidth="163.0" />
+            <StackPane id="char_logo" fx:id="stackPaneChar" layoutX="14.0" layoutY="14.0" prefHeight="109.0" prefWidth="163.0">
+            </StackPane>
+            <ComboBox fx:id="combo_game" layoutX="609.0" layoutY="56.0" prefWidth="150.0" promptText="Select a game..." />
+            <ComboBox fx:id="combo_char" layoutX="192.0" layoutY="56.0" prefWidth="150.0" promptText="Select a character..." />
       </children>
     </AnchorPane>
   </children>

@@ -14,6 +14,7 @@ public class Personaje {
 
     private String nombre;
     private String juego;
+    private String icon;
 
     // Getters y setters
     public Long getId() {
@@ -38,5 +39,13 @@ public class Personaje {
 
     public void setJuego(String juego) {
         this.juego = juego;
+    }
+
+    public String getIcon() {
+        return icon;
+    }
+
+    public void setIcon(String icon) {
+        this.icon = icon;
     }
 }
