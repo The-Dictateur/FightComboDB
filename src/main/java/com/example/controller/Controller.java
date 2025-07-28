@@ -1,5 +1,7 @@
 package com.example.controller;
 
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -9,11 +11,16 @@ import com.example.service.CharService;
 import com.example.service.GameService;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 @Component
 public class Controller {
@@ -29,6 +36,9 @@ public class Controller {
 
     @FXML
     private StackPane stackPaneChar;
+
+    @FXML
+    private Button buttonNewEntry;
 
     @Autowired
     private GameService gameService;
@@ -58,6 +68,22 @@ public class Controller {
             String selectedGame = combo_game.getSelectionModel().getSelectedItem();
             Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
             mostrarLogoPersonaje(personaje);
+        });
+
+        buttonNewEntry.setOnAction(event -> {
+            System.out.println("Botón Nueva Entrada presionado");
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Note.fxml"));
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setTitle("FightComboDB");
+            stage.setScene(new Scene(root));
+            stage.show();
         });
     }
 

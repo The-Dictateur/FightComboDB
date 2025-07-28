@@ -25,11 +25,10 @@ public class FightComboDbApplication extends Application {
 
 	@Override
 	public void start(Stage stage) throws Exception {
-
 		FXMLLoader fxmlLoader = new FXMLLoader(FightComboDbApplication.class.getResource("/Main_window.fxml"));
 		fxmlLoader.setControllerFactory(springContext::getBean);
 		Parent root = fxmlLoader.load();
-		stage.setTitle("Ventana JavaFX con Spring Boot");
+		stage.setTitle("FightComboDB");
         stage.setScene(new Scene(root));
         stage.show();
 	}
