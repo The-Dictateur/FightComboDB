@@ -20,6 +20,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 @Component
@@ -83,7 +84,8 @@ public class Controller {
             Stage stage = new Stage();
             stage.setTitle("FightComboDB");
             stage.setScene(new Scene(root));
-            stage.show();
+            stage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
+            stage.showAndWait(); // Espera hasta que se cierre
         });
     }
 
