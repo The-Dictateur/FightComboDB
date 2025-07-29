@@ -49,10 +49,15 @@ public class ControllerNote {
         String content = textNote.getText();
 
         if (title.isEmpty() || content.isEmpty()) {
+            String error = "Title and content cannot be empty.";
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/NoteError.fxml"));
             Parent root = loader.load();
 
+            ControllerError controllerError = loader.getController();
             Stage errorStage = new Stage();
+            controllerError.setStage(errorStage);
+            controllerError.setError(error);
+            
             errorStage.setTitle("Error");
             errorStage.setScene(new Scene(root));
             errorStage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
