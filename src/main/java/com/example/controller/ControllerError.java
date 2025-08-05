@@ -2,6 +2,7 @@ package com.example.controller;
 
 import org.springframework.stereotype.Component;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,10 +36,19 @@ public class ControllerError {
     public void setError(String message) {
         errorLabel.setText(message);
 
-        // Ajuste automático del tamaño de la ventana según el texto
-        errorLabel.applyCss();
-        errorLabel.layout();
-        double height = errorLabel.getHeight() + 130;
-        stage.setHeight(height);
+        Platform.runLater(() -> {
+            errorLabel.applyCss();
+            errorLabel.layout();
+
+            // Medimos el VBox completo, no solo el label
+            Stage currentStage = this.stage;
+            if (currentStage != null && currentStage.getScene() != null) {
+                double prefHeight = currentStage.getScene().getRoot().prefHeight(-1);
+                double prefWidth = currentStage.getScene().getRoot().prefWidth(-1);
+
+                currentStage.setHeight(prefHeight + 40); // margen adicional
+                currentStage.setWidth(prefWidth);   // margen adicional
+            }
+        });
     }
 }

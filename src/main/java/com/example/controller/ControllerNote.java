@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.example.model.Personaje;
 import com.example.service.NoteService;
 
 import javafx.fxml.FXML;
@@ -31,6 +32,8 @@ public class ControllerNote {
 
     @Autowired
     private NoteService noteService;
+
+    private Personaje personaje;
 
     public void initialize() {
         System.out.println("Note Controller initialized");
@@ -62,6 +65,21 @@ public class ControllerNote {
             errorStage.setScene(new Scene(root));
             errorStage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
             errorStage.showAndWait(); // Espera hasta que se cierre
+        } else if (personaje == null) {
+        // Por seguridad, si no se ha seteado el personaje
+        String error = "No character associated.";
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/NoteError.fxml"));
+        Parent root = loader.load();
+
+        ControllerError controllerError = loader.getController();
+        Stage errorStage = new Stage();
+        controllerError.setStage(errorStage);
+        controllerError.setError(error);
+
+        errorStage.setTitle("Error");
+        errorStage.setScene(new Scene(root));
+        errorStage.initModality(Modality.APPLICATION_MODAL);
+        errorStage.showAndWait();
         }
     }
 }

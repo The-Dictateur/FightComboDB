@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -17,9 +18,9 @@ public class Nota {
     private String contenido;
 
     @ManyToOne
+    @JoinColumn(name = "personaje_id", nullable = false)
     private Personaje personaje;
 
-    // Getters y setters
     public String getTitulo() {
         return titulo;
     }
@@ -43,4 +44,7 @@ public class Nota {
     public void setContenido(String contenido) {
         this.contenido = contenido;
     }
+
+    public Personaje getPersonaje() { return personaje; }
+    public void setPersonaje(Personaje personaje) { this.personaje = personaje; }
 }
