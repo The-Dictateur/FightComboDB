@@ -35,6 +35,8 @@ public class ControllerNote {
 
     private Personaje personaje;
 
+    private Long personajeId;
+
     public void initialize() {
         System.out.println("Note Controller initialized");
 
@@ -81,5 +83,10 @@ public class ControllerNote {
         errorStage.initModality(Modality.APPLICATION_MODAL);
         errorStage.showAndWait();
         }
+    }
+
+    public void setPersonajeId(Long personajeId) {
+        this.personajeId = personajeId;
+        System.out.println("ID del personaje recibido: " + personajeId);
     }
 }

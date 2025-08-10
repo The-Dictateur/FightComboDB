@@ -58,10 +58,10 @@ public class Controller {
                 .findFirst()
                 .orElse(null);
             mostrarLogoJuego(juego);
+            combo_char.getSelectionModel().clearSelection(); // Limpiar selección de personaje
             combo_char.getItems().clear(); // Limpiar personajes al cambiar juego
             stackPaneChar.getChildren().clear(); // Limpiar logo del personaje
             cargarPersonajes();
-            combo_char.getSelectionModel().clearSelection(); // Limpiar selección de personaje
         });
 
         combo_char.setOnAction(event -> {
@@ -69,14 +69,43 @@ public class Controller {
             String selectedGame = combo_game.getSelectionModel().getSelectedItem();
             Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
             mostrarLogoPersonaje(personaje);
+            System.out.println("Personaje seleccionado: " + (personaje != null ? personaje.getId() : "Ninguno"));
         });
 
         buttonNewEntry.setOnAction(event -> {
+            String selectedChar = combo_char.getSelectionModel().getSelectedItem();
+            String selectedGame = combo_game.getSelectionModel().getSelectedItem();
+            Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
+
+            if (personaje == null) {
+                try {
+                String error = "No character associated.";
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/NoteError.fxml"));
+                Parent root;
+                root = loader.load();
+
+                ControllerError controllerError = loader.getController();
+                Stage errorStage = new Stage();
+                controllerError.setStage(errorStage);
+                controllerError.setError(error);
+                
+                errorStage.setTitle("Error");
+                errorStage.setScene(new Scene(root));
+                errorStage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
+                errorStage.showAndWait(); // Espera hasta que se cierre
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                return;
+            }
+
             System.out.println("Botón Nueva Entrada presionado");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Note.fxml"));
             Parent root = null;
             try {
                 root = fxmlLoader.load();
+                ControllerNote controllerNote = fxmlLoader.getController();
+                controllerNote.setPersonajeId(personaje.getId());
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -98,6 +127,7 @@ public class Controller {
         combo_char.getItems().clear();
         String selectedGame = combo_game.getSelectionModel().getSelectedItem();
         charService.obtenerPersonajePorJuego(selectedGame).forEach(personaje -> combo_char.getItems().add(personaje.getNombre()));
+        charService.obtenerTodosLosPersonajes().forEach(personaje -> combo_char.getItems().add(personaje.getId().toString()));
     }
 
     public void mostrarLogoJuego(Juego juego) {
