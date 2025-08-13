@@ -24,4 +24,8 @@ public class CharService {
     public Personaje obtenerPersonajePorNombreYJuego(String nombre, String juego) {
         return charRepository.findByNombreAndJuego(nombre, juego).orElse(null);
     }
+
+    public Personaje obtenerPersonajePorId(Long id) {
+        return charRepository.findById(id).orElse(null);
+    }
 }

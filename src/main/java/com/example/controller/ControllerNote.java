@@ -5,7 +5,6 @@ import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.example.model.Personaje;
 import com.example.service.NoteService;
 
 import javafx.fxml.FXML;
@@ -33,7 +32,6 @@ public class ControllerNote {
     @Autowired
     private NoteService noteService;
 
-    private Personaje personaje;
 
     private Long personajeId;
 
@@ -54,7 +52,23 @@ public class ControllerNote {
         String content = textNote.getText();
 
         if (title.isEmpty() || content.isEmpty()) {
-            String error = "Title and content cannot be empty.";
+            showError("Title and content cannot be empty.");
+            return;
+        } else if (personajeId == null) {
+            showError("No character associated.");
+            return;
+        }
+
+        noteService.saveNote(title, content, personajeId);
+    }
+
+    public void setPersonajeId(Long personajeId) {
+        this.personajeId = personajeId;
+        System.out.println("ID del personaje recibido: " + personajeId);
+    }
+
+    public void showError(String error) {
+        try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/NoteError.fxml"));
             Parent root = loader.load();
 
@@ -62,31 +76,13 @@ public class ControllerNote {
             Stage errorStage = new Stage();
             controllerError.setStage(errorStage);
             controllerError.setError(error);
-            
+
             errorStage.setTitle("Error");
             errorStage.setScene(new Scene(root));
-            errorStage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
-            errorStage.showAndWait(); // Espera hasta que se cierre
-        } else if (personaje == null) {
-        // Por seguridad, si no se ha seteado el personaje
-        String error = "No character associated.";
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/NoteError.fxml"));
-        Parent root = loader.load();
-
-        ControllerError controllerError = loader.getController();
-        Stage errorStage = new Stage();
-        controllerError.setStage(errorStage);
-        controllerError.setError(error);
-
-        errorStage.setTitle("Error");
-        errorStage.setScene(new Scene(root));
-        errorStage.initModality(Modality.APPLICATION_MODAL);
-        errorStage.showAndWait();
+            errorStage.initModality(Modality.APPLICATION_MODAL);
+            errorStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-    }
-
-    public void setPersonajeId(Long personajeId) {
-        this.personajeId = personajeId;
-        System.out.println("ID del personaje recibido: " + personajeId);
     }
 }

@@ -3,6 +3,7 @@ package com.example.controller;
 import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.example.model.Juego;
@@ -46,6 +47,9 @@ public class Controller {
 
     @Autowired
     private CharService charService;
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     public void initialize() {
         System.out.println("Controller initialized");
@@ -101,6 +105,7 @@ public class Controller {
 
             System.out.println("Botón Nueva Entrada presionado");
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Note.fxml"));
+            fxmlLoader.setControllerFactory(applicationContext::getBean);
             Parent root = null;
             try {
                 root = fxmlLoader.load();
