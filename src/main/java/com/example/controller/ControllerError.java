@@ -1,11 +1,17 @@
 package com.example.controller;
 
+import java.io.IOException;
+
 import org.springframework.stereotype.Component;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 @Component
@@ -50,5 +56,24 @@ public class ControllerError {
                 currentStage.setWidth(prefWidth);   // margen adicional
             }
         });
+    }
+
+    public static void showError(String error) {
+        try {
+            FXMLLoader loader = new FXMLLoader(ControllerError.class.getResource("/NoteError.fxml"));
+            Parent root = loader.load();
+
+            ControllerError controllerError = loader.getController();
+            Stage errorStage = new Stage();
+            controllerError.setStage(errorStage);
+            controllerError.setError(error);
+
+            errorStage.setTitle("Error");
+            errorStage.setScene(new Scene(root));
+            errorStage.initModality(Modality.APPLICATION_MODAL);
+            errorStage.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

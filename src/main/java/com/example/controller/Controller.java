@@ -17,6 +17,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.StackPane;
@@ -51,10 +52,16 @@ public class Controller {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @FXML
+    private ScrollPane scrollNotas;
+
     public void initialize() {
         System.out.println("Controller initialized");
+        scrollNotas.setContent(null); // Limpiar Notas
         cargarJuegos();
+        
         combo_game.setOnAction(event -> {
+            scrollNotas.setContent(null); // Limpiar Notas
             stackPaneGame.getChildren().clear(); // Limpiar logo del juego
             String selectedGame = combo_game.getSelectionModel().getSelectedItem();
             Juego juego = gameService.obtenerTodosLosJuegos().stream()
@@ -69,11 +76,13 @@ public class Controller {
         });
 
         combo_char.setOnAction(event -> {
+            scrollNotas.setContent(null); // Limpiar Notas
             String selectedChar = combo_char.getSelectionModel().getSelectedItem();
             String selectedGame = combo_game.getSelectionModel().getSelectedItem();
             Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
             mostrarLogoPersonaje(personaje);
             System.out.println("Personaje seleccionado: " + (personaje != null ? personaje.getId() : "Ninguno"));
+            mostrarNotas(personaje);
         });
 
         buttonNewEntry.setOnAction(event -> {
@@ -82,24 +91,7 @@ public class Controller {
             Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
 
             if (personaje == null) {
-                try {
-                String error = "No character associated.";
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/NoteError.fxml"));
-                Parent root;
-                root = loader.load();
-
-                ControllerError controllerError = loader.getController();
-                Stage errorStage = new Stage();
-                controllerError.setStage(errorStage);
-                controllerError.setError(error);
-                
-                errorStage.setTitle("Error");
-                errorStage.setScene(new Scene(root));
-                errorStage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
-                errorStage.showAndWait(); // Espera hasta que se cierre
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                ControllerError.showError("No character selected or character does not exist.");
                 return;
             }
 
@@ -110,7 +102,7 @@ public class Controller {
             try {
                 root = fxmlLoader.load();
                 ControllerNote controllerNote = fxmlLoader.getController();
-                controllerNote.setPersonajeId(personaje.getId());
+                controllerNote.setPersonajeId(personaje.getId()); // Cogemos ID del personaje
             } catch (IOException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
@@ -201,5 +193,14 @@ public class Controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void mostrarNotas(Personaje personaje) {
+        if (combo_char.getSelectionModel().isEmpty() || combo_game.getSelectionModel().isEmpty()) {
+            return;
+        }
+
+        // Aquí puedes implementar la lógica para mostrar las notas del personaje
+        System.out.println("Mostrando notas para el personaje: " + personaje.getNombre());
     }
 }
