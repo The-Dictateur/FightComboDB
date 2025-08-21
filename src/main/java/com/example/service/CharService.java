@@ -28,4 +28,6 @@ public class CharService {
     public Personaje obtenerPersonajePorId(Long id) {
         return charRepository.findById(id).orElse(null);
     }
+
+    
 }

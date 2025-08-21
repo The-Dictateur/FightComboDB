@@ -1,29 +1,37 @@
 package com.example.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.example.fight_combo_db.NoteRepository;
 import com.example.model.Juego;
+import com.example.model.Nota;
 import com.example.model.Personaje;
 import com.example.service.CharService;
 import com.example.service.GameService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
 
 @Component
 public class Controller {
@@ -52,16 +60,22 @@ public class Controller {
     @Autowired
     private ApplicationContext applicationContext;
 
+    @Autowired
+    private NoteRepository noteRepository;
+
     @FXML
     private ScrollPane scrollNotas;
 
+    @FXML
+    private VBox noteContainer;
+
     public void initialize() {
         System.out.println("Controller initialized");
-        scrollNotas.setContent(null); // Limpiar Notas
+        noteContainer.getChildren().clear();
         cargarJuegos();
         
         combo_game.setOnAction(event -> {
-            scrollNotas.setContent(null); // Limpiar Notas
+            noteContainer.getChildren().clear();
             stackPaneGame.getChildren().clear(); // Limpiar logo del juego
             String selectedGame = combo_game.getSelectionModel().getSelectedItem();
             Juego juego = gameService.obtenerTodosLosJuegos().stream()
@@ -76,7 +90,7 @@ public class Controller {
         });
 
         combo_char.setOnAction(event -> {
-            scrollNotas.setContent(null); // Limpiar Notas
+            noteContainer.getChildren().clear();
             String selectedChar = combo_char.getSelectionModel().getSelectedItem();
             String selectedGame = combo_game.getSelectionModel().getSelectedItem();
             Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
@@ -196,11 +210,45 @@ public class Controller {
     }
 
     public void mostrarNotas(Personaje personaje) {
+        noteContainer.getChildren().clear();
+        long idChar = personaje.getId();
         if (combo_char.getSelectionModel().isEmpty() || combo_game.getSelectionModel().isEmpty()) {
             return;
         }
 
+        try {
+            List<Nota> notas = noteRepository.findByPersonaje(personaje);
+
+            for (Nota nota : notas) {
+                // Aquí creas un HBox para UNA nota
+                HBox notaBox = new HBox(10);
+                notaBox.setPadding(new Insets(10, 10, 10, 30));
+                notaBox.setStyle("-fx-background-color: #f0f0f0;");
+
+                Label titulo = new Label(nota.getTitulo());
+                titulo.setStyle("-fx-font-weight: bold; -fx-font-size: 14;");
+                titulo.setPrefWidth(100);
+
+                Label contenido = new Label(nota.getContenido());
+                contenido.setWrapText(true);
+                contenido.setPrefWidth(570);
+
+                Button btnExpand = new Button("Expand");
+                btnExpand.setOnAction(e -> {
+                    // Aquí defines qué pasa al pulsar expand, por ejemplo mostrar todo el contenido si estaba cortado
+                    System.out.println("Expandiendo nota: " + nota.getTitulo());
+                });
+
+                notaBox.getChildren().addAll(titulo, contenido, btnExpand);
+
+                // Añadir al VBox principal
+                noteContainer.getChildren().add(notaBox);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         // Aquí puedes implementar la lógica para mostrar las notas del personaje
-        System.out.println("Mostrando notas para el personaje: " + personaje.getNombre());
+        System.out.println("Mostrando notas para el personaje: " + personaje.getNombre() + " Id: " + idChar);
     }
 }
