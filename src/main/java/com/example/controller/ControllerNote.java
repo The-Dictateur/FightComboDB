@@ -61,4 +61,9 @@ public class ControllerNote {
         this.personajeId = personajeId;
         System.out.println("ID del personaje recibido: " + personajeId);
     }
+
+    public void setNote(String title, String content, Long idNote) throws IOException {
+        noteTitle.setText(title);
+        textNote.setText(content);
+    }
 }

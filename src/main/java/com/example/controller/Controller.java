@@ -236,7 +236,22 @@ public class Controller {
                 Button btnExpand = new Button("Expand");
                 btnExpand.setOnAction(e -> {
                     // Aquí defines qué pasa al pulsar expand, por ejemplo mostrar todo el contenido si estaba cortado
-                    System.out.println("Expandiendo nota: " + nota.getTitulo());
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/Note.fxml"));
+                    fxmlLoader.setControllerFactory(applicationContext::getBean);
+                    Parent root = null;
+                    try {
+                        root = fxmlLoader.load();
+                        ControllerNote controller = fxmlLoader.getController();
+                        controller.setNote(nota.getTitulo(), nota.getContenido(), nota.getId());
+                    } catch (IOException e1) {
+                        // TODO Auto-generated catch block
+                        e1.printStackTrace();
+                    }
+                    Stage stage = new Stage();
+                    stage.setScene(new Scene(root));
+                    stage.setTitle("Nota");
+                    stage.show();
+                    System.out.println("Expandiendo nota: " + nota.getId());
                 });
 
                 notaBox.getChildren().addAll(titulo, contenido, btnExpand);
