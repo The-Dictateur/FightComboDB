@@ -250,7 +250,8 @@ public class Controller {
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
                     stage.setTitle("Nota");
-                    stage.show();
+                    stage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
+                    stage.showAndWait();
                     System.out.println("Expandiendo nota: " + nota.getId());
                 });
 
