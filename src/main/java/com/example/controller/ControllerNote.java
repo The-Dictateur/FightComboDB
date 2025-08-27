@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 @Component
 public class ControllerNote {
@@ -65,5 +66,18 @@ public class ControllerNote {
     public void setNote(String title, String content, Long idNote) throws IOException {
         noteTitle.setText(title);
         textNote.setText(content);
+        System.out.println("Nota cargada: " + title + " - " + content + " - ID: " + idNote);
+        buttonSave.setOnAction(event -> {
+            String title2 = noteTitle.getText();
+            String content2 = textNote.getText();
+            noteService.updateNote(idNote, title2, content2);
+            try {
+                // Cerrar la ventana después de guardar
+                Stage stage = (Stage) buttonSave.getScene().getWindow();
+                stage.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

@@ -39,4 +39,13 @@ public class NoteService {
 
         noteRepository.save(nota);
     }
+
+    public void updateNote(Long id, String titulo, String contenido) {
+        Nota nota = noteRepository.findById(id).orElse(null);
+        if (nota != null) {
+            nota.setTitulo(titulo);
+            nota.setContenido(contenido);
+            noteRepository.save(nota);
+        }
+    }
 }

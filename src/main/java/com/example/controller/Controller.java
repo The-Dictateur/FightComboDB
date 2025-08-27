@@ -253,7 +253,9 @@ public class Controller {
                     stage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
                     stage.showAndWait();
                     System.out.println("Expandiendo nota: " + nota.getId());
+                    mostrarNotas(personaje);
                 });
+                
 
                 notaBox.getChildren().addAll(titulo, contenido, btnExpand);
 
@@ -263,6 +265,7 @@ public class Controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
 
         // Aquí puedes implementar la lógica para mostrar las notas del personaje
         System.out.println("Mostrando notas para el personaje: " + personaje.getNombre() + " Id: " + idChar);
