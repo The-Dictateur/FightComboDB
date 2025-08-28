@@ -48,4 +48,8 @@ public class NoteService {
             noteRepository.save(nota);
         }
     }
+
+    public void deleteNote(Long id) {
+        noteRepository.deleteById(id);
+    }
 }

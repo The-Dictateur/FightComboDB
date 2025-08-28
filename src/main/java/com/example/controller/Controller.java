@@ -13,6 +13,7 @@ import com.example.model.Nota;
 import com.example.model.Personaje;
 import com.example.service.CharService;
 import com.example.service.GameService;
+import com.example.service.NoteService;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -231,7 +232,7 @@ public class Controller {
 
                 Label contenido = new Label(nota.getContenido());
                 contenido.setWrapText(true);
-                contenido.setPrefWidth(570);
+                contenido.setPrefWidth(520);
 
                 Button btnExpand = new Button("Expand");
                 btnExpand.setOnAction(e -> {
@@ -255,9 +256,15 @@ public class Controller {
                     System.out.println("Expandiendo nota: " + nota.getId());
                     mostrarNotas(personaje);
                 });
-                
+                Button btnDelete = new Button("Delete");
+                btnDelete.setOnAction(e -> {
+                    // Aquí defines qué pasa al pulsar delete, por ejemplo eliminar la nota
+                    NoteService noteService = applicationContext.getBean(NoteService.class);
+                    noteService.deleteNote(nota.getId());
+                    mostrarNotas(personaje);
+                });
 
-                notaBox.getChildren().addAll(titulo, contenido, btnExpand);
+                notaBox.getChildren().addAll(titulo, contenido, btnExpand, btnDelete);
 
                 // Añadir al VBox principal
                 noteContainer.getChildren().add(notaBox);
