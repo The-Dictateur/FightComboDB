@@ -56,6 +56,13 @@ public class ControllerNote {
         }
 
         noteService.saveNote(title, content, personajeId);
+        try {
+            // Cerrar la ventana después de guardar
+            Stage stage = (Stage) buttonSave.getScene().getWindow();
+            stage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setPersonajeId(Long personajeId) {

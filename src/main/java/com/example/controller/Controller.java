@@ -127,6 +127,7 @@ public class Controller {
             stage.setScene(new Scene(root));
             stage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
             stage.showAndWait(); // Espera hasta que se cierre
+            mostrarNotas(personaje);
         });
     }
 
