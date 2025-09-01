@@ -1,7 +1,10 @@
 package com.example.controller;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -10,10 +13,12 @@ import org.springframework.stereotype.Component;
 import com.example.fight_combo_db.NoteRepository;
 import com.example.model.Juego;
 import com.example.model.Nota;
+import com.example.model.NotaDTO;
 import com.example.model.Personaje;
 import com.example.service.CharService;
 import com.example.service.GameService;
 import com.example.service.NoteService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,6 +28,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -69,6 +76,12 @@ public class Controller {
 
     @FXML
     private VBox noteContainer;
+
+    @FXML
+    private MenuItem ItemImport;
+
+    @FXML
+    private MenuItem ItemExport;
 
     public void initialize() {
         System.out.println("Controller initialized");
@@ -129,6 +142,30 @@ public class Controller {
             stage.showAndWait(); // Espera hasta que se cierre
             mostrarNotas(personaje);
         });
+
+        ItemExport.setOnAction(event -> {
+            List<Nota> notas = noteRepository.findAll();
+
+            List<NotaDTO> notasDTO = notas.stream()
+            .map(n -> new NotaDTO(n.getTitulo(), n.getContenido(), n.getPersonaje().getId()))
+            .collect(Collectors.toList());
+
+            String userHome = System.getProperty("user.home");
+            Path downloadPath = Paths.get(userHome, "Downloads", "notas.json");
+            ObjectMapper mapper = new ObjectMapper();
+
+            try {
+                mapper.writeValue(downloadPath.toFile(), notasDTO);
+                System.out.println("Notas exportadas correctamente a " + downloadPath);
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.err.println("Error al exportar notas: " + e.getMessage());
+            }
+        });
+
+        ItemImport.setOnAction(event -> {
+            System.out.println("Importar notas");
+        });
     }
 
     public void cargarJuegos() {
@@ -140,7 +177,6 @@ public class Controller {
         combo_char.getItems().clear();
         String selectedGame = combo_game.getSelectionModel().getSelectedItem();
         charService.obtenerPersonajePorJuego(selectedGame).forEach(personaje -> combo_char.getItems().add(personaje.getNombre()));
-        charService.obtenerTodosLosPersonajes().forEach(personaje -> combo_char.getItems().add(personaje.getId().toString()));
     }
 
     public void mostrarLogoJuego(Juego juego) {
