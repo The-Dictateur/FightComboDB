@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,7 +29,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.Menu;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
@@ -37,6 +37,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.FileChooser;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -164,7 +165,19 @@ public class Controller {
         });
 
         ItemImport.setOnAction(event -> {
-            System.out.println("Importar notas");
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Seleccionar archivo JSON de notas");
+            fileChooser.getExtensionFilters().add(
+                    new FileChooser.ExtensionFilter("Archivos JSON", "*.json")
+            );
+
+            Stage stage = (Stage) noteContainer.getScene().getWindow();
+
+            File selectedFile = fileChooser.showOpenDialog(stage);
+
+            if (selectedFile != null) {
+                System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
+            }
         });
     }
 
