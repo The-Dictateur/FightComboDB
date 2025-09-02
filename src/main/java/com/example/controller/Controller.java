@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -11,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
+import com.example.fight_combo_db.CharRepository;
 import com.example.fight_combo_db.NoteRepository;
 import com.example.model.Juego;
 import com.example.model.Nota;
@@ -71,6 +73,9 @@ public class Controller {
 
     @Autowired
     private NoteRepository noteRepository;
+
+    @Autowired
+    private CharRepository charRepository;
 
     @FXML
     private ScrollPane scrollNotas;
@@ -176,7 +181,32 @@ public class Controller {
             File selectedFile = fileChooser.showOpenDialog(stage);
 
             if (selectedFile != null) {
-                System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
+
+                ObjectMapper mapper = new ObjectMapper();
+
+                try {
+
+                    List<NotaDTO> notasDTO = Arrays.asList(
+                    mapper.readValue(selectedFile, NotaDTO[].class)
+                    );
+
+                    for (NotaDTO dto : notasDTO) {
+                        Nota nota = new Nota();
+                        nota.setTitulo(dto.getTitulo());
+                        nota.setContenido(dto.getContenido());
+
+                        // Buscar personaje por ID
+                        Personaje personaje = charRepository.findById(dto.getIdPersonaje())
+                                .orElse(null); // si no existe, se deja null o manejar error
+                        nota.setPersonaje(personaje);
+
+                        noteRepository.save(nota); // se genera automáticamente el id
+                    }
+                    System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                
             }
         });
     }
