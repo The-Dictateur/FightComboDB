@@ -89,6 +89,9 @@ public class Controller {
     @FXML
     private MenuItem ItemExport;
 
+    @FXML
+    private Button buttonRefresh;
+
     public void initialize() {
         System.out.println("Controller initialized");
         noteContainer.getChildren().clear();
@@ -210,6 +213,13 @@ public class Controller {
                 }
                 
             }
+        });
+
+        buttonRefresh.setOnAction(event -> {
+            String selectedChar = combo_char.getSelectionModel().getSelectedItem();
+            String selectedGame = combo_game.getSelectionModel().getSelectedItem();
+            Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
+            mostrarNotas(personaje);
         });
     }
 
