@@ -57,18 +57,18 @@
     </MenuBar>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" stylesheets="@style.css" VBox.vgrow="ALWAYS">
       <children>
-            <StackPane id="game_logo" fx:id="stackPaneGame" layoutX="431.0" layoutY="11.0" prefHeight="109.0" prefWidth="163.0" stylesheets="@style.css" />
+            <StackPane id="game_logo" fx:id="stackPaneGame" layoutX="431.0" layoutY="11.0" prefHeight="109.0" prefWidth="163.0" stylesheets="@style.css" AnchorPane.rightAnchor="196.0" />
             <StackPane id="char_logo" fx:id="stackPaneChar" layoutX="14.0" layoutY="14.0" prefHeight="84.0" prefWidth="85.0" stylesheets="@style.css">
                <effect>
                   <Blend />
                </effect></StackPane>
-            <ComboBox fx:id="combo_game" layoutX="609.0" layoutY="56.0" prefWidth="150.0" promptText="Select a game..." stylesheets="@style.css" />
+            <ComboBox fx:id="combo_game" layoutX="609.0" layoutY="56.0" prefWidth="150.0" promptText="Select a game..." stylesheets="@style.css" AnchorPane.rightAnchor="31.0" />
             <ComboBox fx:id="combo_char" layoutX="112.0" layoutY="44.0" prefWidth="150.0" promptText="Select a character..." stylesheets="@style.css" />
-            <ScrollPane fx:id="scrollNotas" fitToWidth="true" layoutX="-14.0" layoutY="146.0" prefHeight="372.0" prefWidth="807.0" stylesheets="@style.css">
+            <ScrollPane fx:id="scrollNotas" fitToHeight="true" fitToWidth="true" layoutX="-14.0" layoutY="146.0" prefHeight="372.0" prefWidth="807.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="146.0">
                <content>
                   <VBox fx:id="noteContainer" prefHeight="200.0" prefWidth="100.0" />
                </content></ScrollPane>
-            <Button fx:id="buttonNewEntry" layoutX="21.0" layoutY="108.0" mnemonicParsing="false" stylesheets="@style.css" text="New Entry" />
+            <Button fx:id="buttonNewEntry" layoutX="14.0" layoutY="108.0" mnemonicParsing="false" stylesheets="@style.css" text="New Entry" />
             <Button fx:id="buttonRefresh" layoutX="99.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Refresh" />
       </children>
     </AnchorPane>

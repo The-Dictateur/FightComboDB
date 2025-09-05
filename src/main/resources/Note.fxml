@@ -45,18 +45,18 @@
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
-            <ScrollPane layoutY="112.0" prefHeight="292.0" prefWidth="640.0">
+            <ScrollPane fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="110.0">
                <content>
-                  <TextArea fx:id="textNote" prefHeight="290.0" prefWidth="638.0" wrapText="true" />
+                  <TextArea fx:id="textNote" wrapText="true" />
                </content>
             </ScrollPane>
-            <TextField fx:id="noteTitle" layoutX="56.0" layoutY="32.0" />
+            <TextField fx:id="noteTitle" layoutX="56.0" layoutY="32.0" prefHeight="25.0" prefWidth="278.0" />
             <Label layoutX="14.0" layoutY="35.0" text="Title:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Button fx:id="buttonSave" layoutX="545.0" layoutY="32.0" mnemonicParsing="false" text="Save Note" />
+            <Button fx:id="buttonSave" layoutY="32.0" mnemonicParsing="false" text="Save Note" AnchorPane.rightAnchor="20.0" />
             <Label layoutX="14.0" layoutY="83.0" text="Description:">
                <font>
                   <Font size="14.0" />

@@ -351,10 +351,12 @@ public class Controller {
                 });
                 Button btnDelete = new Button("Delete");
                 btnDelete.setOnAction(e -> {
-                    // Aquí defines qué pasa al pulsar delete, por ejemplo eliminar la nota
-                    NoteService noteService = applicationContext.getBean(NoteService.class);
-                    noteService.deleteNote(nota.getId());
-                    mostrarNotas(personaje);
+                    ControllerWarning.showWarning("Are you sure you want to delete this note?\n" + nota.getTitulo());
+                    if (ControllerWarning.response) {
+                        NoteService noteService = applicationContext.getBean(NoteService.class);
+                        noteService.deleteNote(nota.getId());
+                        mostrarNotas(personaje);
+                    }
                 });
 
                 notaBox.getChildren().addAll(titulo, contenido, btnExpand, btnDelete);
