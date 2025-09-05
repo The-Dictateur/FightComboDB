@@ -15,7 +15,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 @Component
-public class ControllerError {
+public class ControllerInfo {
 
     @FXML
     private Button buttonOK;
@@ -39,12 +39,13 @@ public class ControllerError {
         this.stage = stage;
     }
 
-    public void setError(String message) {
+    public void setInfo(String message) {
         errorLabel.setText(message);
 
         Platform.runLater(() -> {
             errorLabel.applyCss();
             errorLabel.layout();
+            errorLabel.setWrapText(true);
 
             // Medimos el VBox completo, no solo el label
             Stage currentStage = this.stage;
@@ -53,25 +54,26 @@ public class ControllerError {
                 double prefWidth = currentStage.getScene().getRoot().prefWidth(-1);
 
                 currentStage.setHeight(prefHeight + 40); // margen adicional
-                currentStage.setWidth(prefWidth);   // margen adicional
+                currentStage.setWidth(prefWidth + 15);   // margen adicional
+                currentStage.setResizable(false);
             }
         });
     }
 
-    public static void showError(String error) {
+    public static void showInfo(String info) {
         try {
-            FXMLLoader loader = new FXMLLoader(ControllerError.class.getResource("/NoteError.fxml"));
+            FXMLLoader loader = new FXMLLoader(ControllerInfo.class.getResource("/Info.fxml"));
             Parent root = loader.load();
 
-            ControllerError controllerError = loader.getController();
-            Stage errorStage = new Stage();
-            controllerError.setStage(errorStage);
-            controllerError.setError(error);
+            ControllerInfo controllerInfo = loader.getController();
+            Stage infoStage = new Stage();
+            controllerInfo.setStage(infoStage);
+            controllerInfo.setInfo(info);
 
-            errorStage.setTitle("Error");
-            errorStage.setScene(new Scene(root));
-            errorStage.initModality(Modality.APPLICATION_MODAL);
-            errorStage.showAndWait();
+            infoStage.setTitle("Info");
+            infoStage.setScene(new Scene(root));
+            infoStage.initModality(Modality.APPLICATION_MODAL);
+            infoStage.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         }

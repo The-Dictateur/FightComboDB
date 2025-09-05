@@ -48,10 +48,10 @@ public class ControllerNote {
         String content = textNote.getText();
 
         if (title.isEmpty() || content.isEmpty()) {
-            ControllerError.showError("Title and content cannot be empty.");
+            ControllerInfo.showInfo("Title and content cannot be empty.");
             return;
         } else if (personajeId == null) {
-            ControllerError.showError("No character associated.");
+            ControllerInfo.showInfo("No character associated.");
             return;
         }
 

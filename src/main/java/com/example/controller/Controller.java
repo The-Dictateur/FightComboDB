@@ -125,7 +125,7 @@ public class Controller {
             Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
 
             if (personaje == null) {
-                ControllerError.showError("No character selected or character does not exist.");
+                ControllerInfo.showInfo("No character selected or character does not exist.");
                 return;
             }
 
@@ -163,6 +163,7 @@ public class Controller {
             try {
                 mapper.writeValue(downloadPath.toFile(), notasDTO);
                 System.out.println("Notas exportadas correctamente a " + downloadPath);
+                ControllerInfo.showInfo("Notes exported successfully to " + downloadPath);
             } catch (IOException e) {
                 e.printStackTrace();
                 System.err.println("Error al exportar notas: " + e.getMessage());
@@ -202,6 +203,7 @@ public class Controller {
 
                         noteRepository.save(nota); // se genera automáticamente el id
                     }
+                    ControllerInfo.showInfo("Notes imported successfully.");
                     System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -307,12 +309,13 @@ public class Controller {
                 notaBox.setStyle("-fx-background-color: #f0f0f0;");
 
                 Label titulo = new Label(nota.getTitulo());
+                titulo.setWrapText(true);
                 titulo.setStyle("-fx-font-weight: bold; -fx-font-size: 14;");
-                titulo.setPrefWidth(100);
+                titulo.setPrefWidth(200);
 
                 Label contenido = new Label(nota.getContenido());
-                contenido.setWrapText(true);
-                contenido.setPrefWidth(520);
+                contenido.setWrapText(false);
+                contenido.setPrefWidth(400);
 
                 Button btnExpand = new Button("Expand");
                 btnExpand.setOnAction(e -> {
