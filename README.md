@@ -31,3 +31,8 @@ Its main purpose is to serve as a note manager for fighting games, allowing you 
 - **Spring Boot**  
 - **JavaFX (FXML)**  
 - **SQLite (embedded)** 
+
+## 📥 Download
+
+- [Download `.exe` (Windows)](https://github.com/The-Dictateur/FightComboDB/releases/download/1.0/FightComboDB.exe)
+- [Download `.jar` (Java)](https://github.com/The-Dictateur/FightComboDB/releases/download/1.0/FightComboDB.jar)
