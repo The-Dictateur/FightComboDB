@@ -51,6 +51,7 @@
           <items>
             <MenuItem fx:id="ItemImport" mnemonicParsing="false" text="Import..." />
             <MenuItem fx:id="ItemExport" mnemonicParsing="false" text="Export..." />
+                  <MenuItem fx:id="ItemUpdate" mnemonicParsing="false" text="Update Database" />
           </items>
         </Menu>
       </menus>

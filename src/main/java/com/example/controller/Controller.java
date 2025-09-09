@@ -90,6 +90,9 @@ public class Controller {
     private MenuItem ItemExport;
 
     @FXML
+    private MenuItem ItemUpdate;
+
+    @FXML
     private Button buttonRefresh;
 
     public void initialize() {
@@ -213,6 +216,10 @@ public class Controller {
                 }
                 
             }
+        });
+
+        ItemUpdate.setOnAction(event -> {
+            ControllerInfo.showInfo("Update feature is not implemented yet.");
         });
 
         buttonRefresh.setOnAction(event -> {
