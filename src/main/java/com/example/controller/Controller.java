@@ -13,6 +13,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.example.fight_combo_db.CharRepository;
+import com.example.fight_combo_db.Database;
 import com.example.fight_combo_db.NoteRepository;
 import com.example.model.Juego;
 import com.example.model.Nota;
@@ -159,20 +160,34 @@ public class Controller {
             List<Nota> notas = noteRepository.findAll();
 
             List<NotaDTO> notasDTO = notas.stream()
-            .map(n -> new NotaDTO(n.getTitulo(), n.getContenido(), n.getPersonaje().getId()))
-            .collect(Collectors.toList());
+                    .map(n -> new NotaDTO(n.getTitulo(), n.getContenido(), n.getPersonaje().getId()))
+                    .collect(Collectors.toList());
 
-            String userHome = System.getProperty("user.home");
-            Path downloadPath = Paths.get(userHome, "Downloads", "notas.json");
             ObjectMapper mapper = new ObjectMapper();
 
-            try {
-                mapper.writeValue(downloadPath.toFile(), notasDTO);
-                System.out.println("Notas exportadas correctamente a " + downloadPath);
-                ControllerInfo.showInfo("Notes exported successfully to " + downloadPath);
-            } catch (IOException e) {
-                e.printStackTrace();
-                System.err.println("Error al exportar notas: " + e.getMessage());
+            // Crear un FileChooser
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Guardar notas como...");
+            
+            // Filtro para archivos JSON
+            FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("Archivos JSON (*.json)", "*.json");
+            fileChooser.getExtensionFilters().add(extFilter);
+            
+            // Establecer un nombre por defecto
+            fileChooser.setInitialFileName("notas.json");
+
+            // Abrir ventana de Guardar
+            File file = fileChooser.showSaveDialog(null); // null usa la ventana principal por defecto
+
+            if (file != null) {
+                try {
+                    mapper.writeValue(file, notasDTO);
+                    System.out.println("Notas exportadas correctamente a " + file.getAbsolutePath());
+                    ControllerInfo.showInfo("Notes exported successfully to " + file.getAbsolutePath());
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    System.err.println("Error al exportar notas: " + e.getMessage());
+                }
             }
         });
 
@@ -219,7 +234,8 @@ public class Controller {
         });
 
         ItemUpdate.setOnAction(event -> {
-            ControllerInfo.showInfo("Update feature is not implemented yet.");
+            Database.updateDatabase();
+            ControllerInfo.showInfo("Database Updated successfully,\n Please restart the application.");
         });
 
         buttonRefresh.setOnAction(event -> {
