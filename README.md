@@ -20,6 +20,7 @@ Its main purpose is to serve as a note manager for fighting games, allowing you 
 
 - **Garou: Mark of the Wolves**
 - **Street Fighter 6**
+- **Guilty Gear Xrd REV 2**
 
 > 🚧 More fighting games will be added in future updates.
 
