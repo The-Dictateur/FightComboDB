@@ -43,7 +43,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="542.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.Controller">
+<VBox prefHeight="716.0" prefWidth="790.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.Controller">
   <children>
     <MenuBar nodeOrientation="LEFT_TO_RIGHT" stylesheets="@style.css" VBox.vgrow="NEVER">
       <menus>

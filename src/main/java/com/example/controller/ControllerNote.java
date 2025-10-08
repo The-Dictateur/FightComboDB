@@ -65,6 +65,7 @@ public class ControllerNote {
             } else {
                 toggleNote.setText("Note"); // Texto cuando se desactiva
                 labelDesc.setText("Description:");
+                hideWebView();
             }
         });
         // Texto inicial del ToggleButton
@@ -83,7 +84,7 @@ public class ControllerNote {
 
         if (webView == null) {
             webView = new WebView();
-            webView.setPrefHeight(300);
+            webView.setPrefHeight(630);
         }
 
         // Si es un enlace de YouTube, se puede embeber directamente
@@ -97,6 +98,12 @@ public class ControllerNote {
             containerNote.getChildren().add(webView);
         }
     }
+
+    private void hideWebView() {
+    if (webView != null && containerNote.getChildren().contains(webView)) {
+        containerNote.getChildren().remove(webView);
+    }
+}
 
     public void saveNote() throws IOException {
         String title = noteTitle.getText();
