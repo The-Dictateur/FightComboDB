@@ -37,6 +37,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
@@ -47,7 +48,11 @@
          <children>
             <ScrollPane fitToHeight="true" fitToWidth="true" AnchorPane.bottomAnchor="0" AnchorPane.leftAnchor="0" AnchorPane.rightAnchor="0" AnchorPane.topAnchor="110.0">
                <content>
-                  <TextArea fx:id="textNote" wrapText="true" />
+                  <VBox fx:id="containerNote" prefHeight="200.0" prefWidth="100.0">
+                     <children>
+                        <TextArea fx:id="textNote" wrapText="true" />
+                     </children>
+                  </VBox>
                </content>
             </ScrollPane>
             <TextField fx:id="noteTitle" layoutX="56.0" layoutY="32.0" prefHeight="25.0" prefWidth="278.0" />
@@ -57,11 +62,12 @@
                </font>
             </Label>
             <Button fx:id="buttonSave" layoutY="32.0" mnemonicParsing="false" text="Save Note" AnchorPane.rightAnchor="20.0" />
-            <Label layoutX="14.0" layoutY="83.0" text="Description:">
+            <Label fx:id="labelDesc" layoutX="14.0" layoutY="83.0" text="Description:">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
+            <ToggleButton fx:id="toggleNote" layoutX="461.0" layoutY="32.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Note" AnchorPane.rightAnchor="105.0" />
          </children>
     </AnchorPane>
   </children>

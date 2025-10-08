@@ -9,13 +9,19 @@ import com.example.service.NoteService;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToggleButton;
+import javafx.scene.layout.VBox;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 @Component
 public class ControllerNote {
-        
+
+    private WebView webView;
+
     @FXML
     private Button buttonSave;
 
@@ -28,6 +34,14 @@ public class ControllerNote {
     @Autowired
     private NoteService noteService;
 
+    @FXML
+    private ToggleButton toggleNote;
+
+    @FXML
+    private Label labelDesc;
+
+    @FXML
+    private VBox containerNote;
 
     private Long personajeId;
 
@@ -41,6 +55,47 @@ public class ControllerNote {
                 e.printStackTrace();
             }
         });
+
+        // Acción para el ToggleButton: cambia el texto al pulsar
+        toggleNote.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                toggleNote.setText("Link");  // Texto cuando está presionado
+                labelDesc.setText("Link:");
+                showWebView();
+            } else {
+                toggleNote.setText("Note"); // Texto cuando se desactiva
+                labelDesc.setText("Description:");
+            }
+        });
+        // Texto inicial del ToggleButton
+        toggleNote.setText("Note");
+    }
+
+    private boolean isValidUrl(String text) {
+        if (text == null || text.isEmpty()) return false;
+        return text.startsWith("http://") || text.startsWith("https://");
+    }
+
+    private void showWebView() {
+        String url = textNote.getText().trim();
+
+        if (!isValidUrl(url)) return;
+
+        if (webView == null) {
+            webView = new WebView();
+            webView.setPrefHeight(300);
+        }
+
+        // Si es un enlace de YouTube, se puede embeber directamente
+        if (url.contains("youtube.com/watch")) {
+            url = url.replace("watch?v=", "embed/");
+        }
+
+        webView.getEngine().load(url);
+
+        if (!containerNote.getChildren().contains(webView)) {
+            containerNote.getChildren().add(webView);
+        }
     }
 
     public void saveNote() throws IOException {
