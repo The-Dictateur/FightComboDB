@@ -53,6 +53,9 @@ public class ControllerNote {
     @FXML
     private VBox containerNote;
 
+    @FXML
+    private Label loadLabel;
+
     private Long personajeId;
 
     public void initialize() {
@@ -95,20 +98,17 @@ public class ControllerNote {
 
     private File downloadMP4(String youtubeUrl) {
         try {
-            // Solo generamos una ruta temporal, no creamos el archivo
             File outputFile = new File(System.getProperty("java.io.tmpdir"),
-                                    "youtube_video_" + System.currentTimeMillis() + ".mp4");
+                    "youtube_video_" + System.currentTimeMillis() + ".mp4");
 
             ProcessBuilder pb = new ProcessBuilder(
-                "lib/yt-dlp.exe",
-                "-f", "bestvideo[height<=720][vcodec^=avc1]+bestaudio[ext=m4a]/best[height<=720][vcodec^=avc1]",
-                "--merge-output-format", "mp4",
-                "--ffmpeg-location", "lib/ffmpeg/bin",
-                "-o", outputFile.getAbsolutePath(),
-                youtubeUrl
+                    "lib/yt-dlp.exe",
+                    "-f", "bestvideo[height<=720][vcodec^=avc1]+bestaudio[ext=m4a]/best[height<=720][vcodec^=avc1]",
+                    "--merge-output-format", "mp4",
+                    "--ffmpeg-location", "lib/ffmpeg/bin",
+                    "-o", outputFile.getAbsolutePath(),
+                    youtubeUrl
             );
-
-            System.out.println("Executing command: " + String.join(" ", pb.command()));
 
             pb.redirectErrorStream(true);
             Process process = pb.start();
@@ -116,7 +116,13 @@ public class ControllerNote {
             try (BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()))) {
                 String line;
                 while ((line = reader.readLine()) != null) {
-                    System.out.println(line);
+                    final String message = line;
+                    System.out.println(message);
+                    
+                    Platform.runLater(() -> {
+                        String currentText = loadLabel.getText();
+                        loadLabel.setText(currentText + message + "\n");
+                    });
                 }
             }
 
@@ -136,20 +142,22 @@ public class ControllerNote {
     }
 
     private void showVideo() {
-
         String youtubeUrl = textNote.getText().trim();
         if (!isValidUrl(youtubeUrl)) {
             System.out.println("URL inválida");
             return;
         }
 
-        // Eliminamos cualquier MediaView existente
+        // Vaciar el label antes de empezar
+        Platform.runLater(() -> loadLabel.setText("Descargando video...\n"));
+
         containerNote.getChildren().removeIf(node -> node instanceof MediaView);
 
         new Thread(() -> {
             File videoFile = downloadMP4(youtubeUrl); // siempre nuevo
             if (videoFile == null) {
                 System.out.println("No se pudo descargar el video.");
+                Platform.runLater(() -> loadLabel.setText("Error descargando el video."));
                 return;
             }
             downloadedVideoFile = videoFile;
@@ -178,7 +186,6 @@ public class ControllerNote {
                             mediaPlayer.play();
                         }
                     });
-
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -192,9 +199,11 @@ public class ControllerNote {
             mediaPlayer.dispose();
             mediaPlayer = null;
         }
-        containerNote.getChildren().setAll(originalNodes); // restauramos layout inicial
+        containerNote.getChildren().setAll(originalNodes);
 
-        // Eliminamos el archivo de video si existe
+        // Limpiamos el Label cuando se quita el link
+        loadLabel.setText("");
+
         if (downloadedVideoFile != null && downloadedVideoFile.exists()) {
             boolean deleted = downloadedVideoFile.delete();
             System.out.println("Archivo de video eliminado: " + deleted);
