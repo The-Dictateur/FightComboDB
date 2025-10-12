@@ -2,7 +2,9 @@ package com.example.controller;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,18 +98,66 @@ public class ControllerNote {
         return text.startsWith("http://") || text.startsWith("https://");
     }
 
+    private File extractResourceToTemp(String resourcePath) throws IOException {
+        // resourcePath ejemplo: "/lib/yt-dlp.exe"
+        try (InputStream in = getClass().getResourceAsStream(resourcePath)) {
+            if (in == null) throw new IOException("No se encontró el recurso: " + resourcePath);
+
+            File tempFile = File.createTempFile(resourcePath.replaceAll("/", "_"), null);
+            tempFile.deleteOnExit();
+
+            try (FileOutputStream out = new FileOutputStream(tempFile)) {
+                byte[] buffer = new byte[4096];
+                int bytesRead;
+                while ((bytesRead = in.read(buffer)) != -1) {
+                    out.write(buffer, 0, bytesRead);
+                }
+            }
+
+            // Hacer ejecutable en sistemas tipo Unix/Mac
+            tempFile.setExecutable(true);
+
+            return tempFile;
+        }
+    }
+
+    private File extractFolderToTemp(String resourceFolder) throws IOException {
+        File tempDir = new File(System.getProperty("java.io.tmpdir"), "ffmpeg_" + System.currentTimeMillis());
+        tempDir.mkdirs();
+
+        String[] resources = {"ffmpeg.exe", "ffprobe.exe"};
+        for (String res : resources) {
+            try (InputStream in = getClass().getResourceAsStream(resourceFolder + "/" + res)) {
+                if (in == null) throw new IOException("No se encontró el recurso: " + res);
+                File tempFile = new File(tempDir, res);
+                try (FileOutputStream out = new FileOutputStream(tempFile)) {
+                    byte[] buffer = new byte[4096];
+                    int read;
+                    while ((read = in.read(buffer)) != -1) {
+                        out.write(buffer, 0, read);
+                    }
+                }
+                tempFile.setExecutable(true);
+            }
+        }
+        return tempDir;
+    }
+
     private File downloadMP4(String youtubeUrl) {
         try {
+            File ytDlpExe = extractResourceToTemp("/lib/yt-dlp.exe");
+            File ffmpegDir = extractFolderToTemp("/lib/ffmpeg/bin");
+
             File outputFile = new File(System.getProperty("java.io.tmpdir"),
                     "youtube_video_" + System.currentTimeMillis() + ".mp4");
 
             ProcessBuilder pb = new ProcessBuilder(
-                    "lib/yt-dlp.exe",
-                    "-f", "bestvideo[height<=720][vcodec^=avc1]+bestaudio[ext=m4a]/best[height<=720][vcodec^=avc1]",
-                    "--merge-output-format", "mp4",
-                    "--ffmpeg-location", "lib/ffmpeg/bin",
-                    "-o", outputFile.getAbsolutePath(),
-                    youtubeUrl
+                ytDlpExe.getAbsolutePath(),
+                "-f", "bestvideo[height<=720][vcodec^=avc1]+bestaudio[ext=m4a]/best[height<=720][vcodec^=avc1]",
+                "--merge-output-format", "mp4",
+                "--ffmpeg-location", ffmpegDir.getAbsolutePath(),
+                "-o", outputFile.getAbsolutePath(),
+                youtubeUrl
             );
 
             pb.redirectErrorStream(true);
@@ -170,15 +220,47 @@ public class ControllerNote {
                         mediaPlayer.dispose();
                     }
 
+                    //Crear nuevo MediaPlayer
                     mediaPlayer = new MediaPlayer(media);
                     MediaView mediaView = new MediaView(mediaPlayer);
-                    mediaView.setFitWidth(800);
-                    mediaView.setFitHeight(450);
+                    mediaView.fitWidthProperty().bind(containerNote.widthProperty());
+                    mediaView.fitHeightProperty().bind(containerNote.heightProperty().multiply(0.8)); // 80% del alto del VBox
                     mediaView.setPreserveRatio(true);
 
-                    containerNote.getChildren().add(mediaView);
+                    //Crear Slider MediaPlayer
+                    javafx.scene.control.Slider videoSlider = new javafx.scene.control.Slider();
+                    videoSlider.prefWidthProperty().bind(containerNote.widthProperty());
+                    videoSlider.setMin(0);
+                    videoSlider.setValue(0);
+                    videoSlider.getStylesheets().add(getClass().getResource("/style.css").toExternalForm());
+                    videoSlider.getStyleClass().add("video-slider");
 
-                    mediaPlayer.setOnReady(() -> mediaPlayer.play());
+                    containerNote.getChildren().add(mediaView);
+                    containerNote.getChildren().add(videoSlider);
+
+                    mediaPlayer.setOnReady(() -> {
+                        mediaPlayer.play();
+                        videoSlider.setMax(mediaPlayer.getMedia().getDuration().toSeconds());
+                    });
+
+                    mediaPlayer.currentTimeProperty().addListener((obs, oldTime, newTime) -> {
+                        if (!videoSlider.isValueChanging()) {
+                            videoSlider.setValue(newTime.toSeconds());
+                        }
+                    });
+
+                    // Permite arrastrar o hacer clic en el slider para adelantar o retroceder
+                    videoSlider.valueChangingProperty().addListener((obs, wasChanging, isChanging) -> {
+                        if (!isChanging) {
+                            mediaPlayer.seek(javafx.util.Duration.seconds(videoSlider.getValue()));
+                        }
+                    });
+                    videoSlider.setOnMousePressed(event -> mediaPlayer.pause());
+                    videoSlider.setOnMouseReleased(event -> {
+                        mediaPlayer.seek(javafx.util.Duration.seconds(videoSlider.getValue()));
+                        mediaPlayer.play();
+                    });
+
                     mediaView.setOnMouseClicked(e -> {
                         if (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
                             mediaPlayer.pause();
@@ -189,6 +271,7 @@ public class ControllerNote {
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
+                
             });
         }).start();
     }
