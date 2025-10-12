@@ -143,22 +143,47 @@ public class ControllerNote {
         return tempDir;
     }
 
-    private File downloadMP4(String youtubeUrl) {
+    private File downloadMP4(String videoUrl) {
         try {
             File ytDlpExe = extractResourceToTemp("/lib/yt-dlp.exe");
             File ffmpegDir = extractFolderToTemp("/lib/ffmpeg/bin");
 
             File outputFile = new File(System.getProperty("java.io.tmpdir"),
-                    "youtube_video_" + System.currentTimeMillis() + ".mp4");
+                    "video_" + System.currentTimeMillis() + ".mp4");
 
-            ProcessBuilder pb = new ProcessBuilder(
-                ytDlpExe.getAbsolutePath(),
-                "-f", "bestvideo[height<=720][vcodec^=avc1]+bestaudio[ext=m4a]/best[height<=720][vcodec^=avc1]",
-                "--merge-output-format", "mp4",
-                "--ffmpeg-location", ffmpegDir.getAbsolutePath(),
-                "-o", outputFile.getAbsolutePath(),
-                youtubeUrl
-            );
+            String platform = detectPlatform(videoUrl); // Detecta X o YouTube
+
+            ProcessBuilder pb;
+
+            switch (platform) {
+                case "youtube":
+                    // Descarga para YouTube: video + audio con codecs compatibles
+                    pb = new ProcessBuilder(
+                        ytDlpExe.getAbsolutePath(),
+                        "-f", "bestvideo[height<=720][vcodec^=avc1]+bestaudio[ext=m4a]/best[height<=720][vcodec^=avc1]",
+                        "--merge-output-format", "mp4",
+                        "--ffmpeg-location", ffmpegDir.getAbsolutePath(),
+                        "-o", outputFile.getAbsolutePath(),
+                        videoUrl
+                    );
+                    break;
+
+                case "x": // Twitter / X
+                    // Descarga para X: video HLS + audio, luego ffmpeg unifica codecs
+                    pb = new ProcessBuilder(
+                        ytDlpExe.getAbsolutePath(),
+                        "-f", "hls-2456+bestaudio",
+                        "--merge-output-format", "mp4",
+                        "--ffmpeg-location", ffmpegDir.getAbsolutePath(),
+                        "-o", outputFile.getAbsolutePath(),
+                        videoUrl
+                    );
+                    break;
+
+                default:
+                    System.out.println("URL no soportada: " + videoUrl);
+                    return null;
+            }
 
             pb.redirectErrorStream(true);
             Process process = pb.start();
@@ -168,7 +193,6 @@ public class ControllerNote {
                 while ((line = reader.readLine()) != null) {
                     final String message = line;
                     System.out.println(message);
-                    
                     Platform.runLater(() -> {
                         String currentText = loadLabel.getText();
                         loadLabel.setText(currentText + message + "\n");
@@ -191,9 +215,21 @@ public class ControllerNote {
         }
     }
 
+    // Función para detectar plataforma
+    private String detectPlatform(String url) {
+        if (url.contains("youtube.com") || url.contains("youtu.be")) {
+            return "youtube";
+        } else if (url.contains("twitter.com") || url.contains("x.com")) {
+            return "x";
+        } else {
+            return "unknown";
+        }
+    }
+
+    // Funcion para mostrar video en el VBox
     private void showVideo() {
-        String youtubeUrl = textNote.getText().trim();
-        if (!isValidUrl(youtubeUrl)) {
+        String videoUrl = textNote.getText().trim();
+        if (!isValidUrl(videoUrl)) {
             System.out.println("URL inválida");
             return;
         }
@@ -203,8 +239,9 @@ public class ControllerNote {
 
         containerNote.getChildren().removeIf(node -> node instanceof MediaView);
 
+        //H ilo para no bloquear la UI
         new Thread(() -> {
-            File videoFile = downloadMP4(youtubeUrl); // siempre nuevo
+            File videoFile = downloadMP4(videoUrl); // siempre nuevo
             if (videoFile == null) {
                 System.out.println("No se pudo descargar el video.");
                 Platform.runLater(() -> loadLabel.setText("Error descargando el video."));
@@ -212,6 +249,7 @@ public class ControllerNote {
             }
             downloadedVideoFile = videoFile;
 
+            // Actualizar UI en el hilo de JavaFX
             Platform.runLater(() -> {
                 try {
                     Media media = new Media(videoFile.toURI().toString());
@@ -238,11 +276,13 @@ public class ControllerNote {
                     containerNote.getChildren().add(mediaView);
                     containerNote.getChildren().add(videoSlider);
 
+                    // Reproducir video y actualizar slider
                     mediaPlayer.setOnReady(() -> {
                         mediaPlayer.play();
                         videoSlider.setMax(mediaPlayer.getMedia().getDuration().toSeconds());
                     });
 
+                    // Actualizar el slider conforme avanza el video
                     mediaPlayer.currentTimeProperty().addListener((obs, oldTime, newTime) -> {
                         if (!videoSlider.isValueChanging()) {
                             videoSlider.setValue(newTime.toSeconds());
@@ -261,6 +301,7 @@ public class ControllerNote {
                         mediaPlayer.play();
                     });
 
+                    // Pausar/Reanudar al hacer clic en el video
                     mediaView.setOnMouseClicked(e -> {
                         if (mediaPlayer.getStatus() == MediaPlayer.Status.PLAYING) {
                             mediaPlayer.pause();
@@ -276,6 +317,7 @@ public class ControllerNote {
         }).start();
     }
 
+    //Funciona para ocultar video del VBox y limpiar recursos
     private void hideVideo() {
         if (mediaPlayer != null) {
             mediaPlayer.stop();
@@ -294,6 +336,7 @@ public class ControllerNote {
         }
     }
 
+    //Funcion para guardar la nota
     public void saveNote() throws IOException {
         String title = noteTitle.getText();
         String content = textNote.getText();
