@@ -2,3 +2,5 @@
 *.cmd text eol=crlf
 lib/ffmpeg/** linguist-vendored
 lib/** linguist-vendored
+
+resources/** linguist-vendored
