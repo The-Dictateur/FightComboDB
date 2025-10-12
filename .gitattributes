@@ -1,6 +1,7 @@
 /mvnw text eol=lf
 *.cmd text eol=crlf
-lib/ffmpeg/** linguist-vendored
-lib/** linguist-vendored
 
-resources/** linguist-vendored
+# Ignorar librerías externas y recursos que no son parte del código Java
+src/main/resources/lib/** linguist-vendored
+src/main/resources/lib/ffmpeg/** linguist-vendored
+src/main/resources/lib/ffmpeg/doc/** linguist-vendored
