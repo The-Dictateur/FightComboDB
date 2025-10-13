@@ -172,9 +172,10 @@ public class ControllerNote {
                     // Descarga para X: video HLS + audio, luego ffmpeg unifica codecs
                     pb = new ProcessBuilder(
                         ytDlpExe.getAbsolutePath(),
-                        "-f", "hls-2456+bestaudio",
+                        "-f", "bestvideo+bestaudio/best",
                         "--merge-output-format", "mp4",
                         "--ffmpeg-location", ffmpegDir.getAbsolutePath(),
+                        "--recode-video", "mp4", // fuerza conversión final a mp4
                         "-o", outputFile.getAbsolutePath(),
                         videoUrl
                     );
@@ -215,7 +216,7 @@ public class ControllerNote {
         }
     }
 
-    // Función para detectar plataforma
+    // Funcion para detectar plataforma
     private String detectPlatform(String url) {
         if (url.contains("youtube.com") || url.contains("youtu.be")) {
             return "youtube";
