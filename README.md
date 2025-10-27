@@ -36,7 +36,6 @@ Its main purpose is to serve as a note manager for fighting games, allowing you 
 
 ## 📥 Download
 
-- [Download `.exe` (Windows)](https://github.com/The-Dictateur/FightComboDB/releases/download/1.0/FightComboDB.exe)
-- [Download `.jar` (Java)](https://github.com/The-Dictateur/FightComboDB/releases/download/1.0/FightComboDB.jar)
+- [Download `.exe` (Windows)](https://github.com/The-Dictateur/FightComboDB/releases/download/1.3/FightComboDB.exe)
 
 Or check all versions in the [Releases page](https://github.com/The-Dictateur/FightComboDB/releases).
