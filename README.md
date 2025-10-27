@@ -29,7 +29,7 @@ Its main purpose is to serve as a note manager for fighting games, allowing you 
 
 ## ⚙️ Tech Stack
 
-- **Java 17+**  
+- **Java 21+**  
 - **Spring Boot**  
 - **JavaFX (FXML)**  
 - **SQLite (embedded)** 
