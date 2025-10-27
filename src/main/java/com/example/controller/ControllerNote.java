@@ -13,7 +13,6 @@ import org.springframework.stereotype.Component;
 import com.example.service.NoteService;
 
 import javafx.application.Platform;
-import javafx.embed.swing.SwingNode;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -22,6 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.MediaView;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import javafx.scene.media.Media;
@@ -47,7 +48,10 @@ public class ControllerNote {
     private NoteService noteService;
 
     @FXML
-    private ToggleButton toggleNote;
+    private ToggleButton toggleVideo;
+
+    @FXML
+    private ToggleButton toggleWeb;
 
     @FXML
     private Label labelDesc;
@@ -73,23 +77,33 @@ public class ControllerNote {
         });
 
         // Acción para el ToggleButton: cambia el texto al pulsar
-        toggleNote.selectedProperty().addListener((observable, oldValue, newValue) -> {
+        toggleVideo.selectedProperty().addListener((observable, oldValue, newValue) -> {
             if (newValue) {
-                toggleNote.setText("Link");  // Texto cuando está presionado
+                toggleVideo.setText("Link");  // Texto cuando está presionado
                 labelDesc.setText("Link:");
                 showVideo();
             } else {
-                toggleNote.setText("Note"); // Texto cuando se desactiva
+                toggleVideo.setText("Link"); // Texto cuando se desactiva
                 labelDesc.setText("Description:");
                 hideVideo();
             }
         });
-        // Texto inicial del ToggleButton
-        toggleNote.setText("Note");
 
         Platform.runLater(() -> {
             Stage stage = (Stage) containerNote.getScene().getWindow();
             stage.setOnCloseRequest(event -> hideVideo());
+        });
+
+        toggleWeb.selectedProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue) {
+                toggleWeb.setText("Web");  // Texto cuando está presionado
+                labelDesc.setText("Web Link:");
+                showWeb();
+            } else {
+                toggleWeb.setText("Web"); // Texto cuando se desactiva
+                labelDesc.setText("Description:");
+                hideWeb();
+            }
         });
     }
 
@@ -335,6 +349,20 @@ public class ControllerNote {
             System.out.println("Archivo de video eliminado: " + deleted);
             downloadedVideoFile = null;
         }
+    }
+
+    private void showWeb() {
+
+        WebView webView = new WebView();
+        WebEngine engine = webView.getEngine();
+
+        engine.load(textNote.getText().trim());
+
+        containerNote.getChildren().add(webView);
+    }
+
+    private void hideWeb() {
+        containerNote.getChildren().setAll(originalNodes);
     }
 
     //Funcion para guardar la nota
