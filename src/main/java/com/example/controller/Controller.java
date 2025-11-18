@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Observable;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
@@ -94,10 +96,44 @@ public class Controller {
     @FXML
     private Button buttonRefresh;
 
+    @FXML
+    private TextField searchField;
+
     public void initialize() {
         System.out.println("Controller initialized");
         noteContainer.getChildren().clear();
         cargarJuegos();
+
+        searchField.textProperty().addListener((Observable, oldValue, newValue) -> {
+            noteContainer.getChildren().clear();
+            String selectedChar = combo_char.getSelectionModel().getSelectedItem();
+            String selectedGame = combo_game.getSelectionModel().getSelectedItem();
+            Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
+            if (personaje == null) return;
+
+            List<Nota> notas = noteRepository.findByPersonaje(personaje).stream()
+                .filter(nota -> nota.getTitulo().toLowerCase().contains(newValue.toLowerCase()) ||
+                                nota.getContenido().toLowerCase().contains(newValue.toLowerCase()))
+                .collect(Collectors.toList());
+
+            for (Nota nota : notas) {
+                HBox notaBox = new HBox(10);
+                notaBox.setPadding(new Insets(10, 10, 10, 30));
+                notaBox.setStyle("-fx-background-color: #f0f0f0;");
+
+                Label titulo = new Label(nota.getTitulo());
+                titulo.setWrapText(true);
+                titulo.setStyle("-fx-font-weight: bold; -fx-font-size: 14;");
+                titulo.setPrefWidth(200);
+
+                Label contenido = new Label(nota.getContenido());
+                contenido.setWrapText(false);
+                contenido.setPrefWidth(400);
+
+                notaBox.getChildren().addAll(titulo, contenido);
+                noteContainer.getChildren().add(notaBox);
+            }
+        });
         
         combo_game.setOnAction(event -> {
             noteContainer.getChildren().clear();
