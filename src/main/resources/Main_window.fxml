@@ -64,8 +64,8 @@
                <effect>
                   <Blend />
                </effect></StackPane>
-            <ComboBox fx:id="combo_game" layoutX="609.0" layoutY="44.0" prefWidth="150.0" promptText="Select a game..." stylesheets="@style.css" AnchorPane.rightAnchor="31.0" />
-            <ComboBox fx:id="combo_char" layoutX="112.0" layoutY="44.0" prefWidth="150.0" promptText="Select a character..." stylesheets="@style.css" />
+            <ComboBox fx:id="combo_game" layoutX="609.0" layoutY="69.0" prefWidth="150.0" promptText="Select a game..." stylesheets="@style.css" AnchorPane.rightAnchor="31.0" />
+            <ComboBox fx:id="combo_char" layoutX="113.0" layoutY="69.0" prefWidth="150.0" promptText="Select a character..." stylesheets="@style.css" />
             <ScrollPane fx:id="scrollNotas" fitToHeight="true" fitToWidth="true" layoutX="-14.0" layoutY="146.0" prefHeight="372.0" prefWidth="807.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="146.0">
                <content>
                   <VBox fx:id="noteContainer" prefHeight="200.0" prefWidth="100.0" />
@@ -73,6 +73,7 @@
             <Button fx:id="buttonNewEntry" layoutX="14.0" layoutY="108.0" mnemonicParsing="false" stylesheets="@style.css" text="New Entry" />
             <Button fx:id="buttonRefresh" layoutX="99.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Refresh" />
             <TextField fx:id="searchField" layoutX="188.0" layoutY="108.0" promptText="Search..." />
+            <Button fx:id="buttonFav" contentDisplay="GRAPHIC_ONLY" layoutX="113.0" layoutY="32.0" mnemonicParsing="false" />
       </children>
     </AnchorPane>
   </children>

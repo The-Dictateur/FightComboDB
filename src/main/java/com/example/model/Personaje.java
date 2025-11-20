@@ -15,6 +15,7 @@ public class Personaje {
     private String nombre;
     private String juego;
     private String icon;
+    private Integer favorito;
 
     // Getters y setters
     public Long getId() {
@@ -47,5 +48,13 @@ public class Personaje {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public Integer getFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(Integer favorito) {
+        this.favorito = favorito;
     }
 }

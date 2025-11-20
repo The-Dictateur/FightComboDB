@@ -2,8 +2,11 @@ package com.example.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.stream.Collectors;
 
@@ -99,10 +102,14 @@ public class Controller {
     @FXML
     private TextField searchField;
 
+    @FXML 
+    private Button buttonFav;
+
     public void initialize() {
         System.out.println("Controller initialized");
         noteContainer.getChildren().clear();
         cargarJuegos();
+        mostrarLogoFav();
 
         searchField.textProperty().addListener((Observable, oldValue, newValue) -> {
             noteContainer.getChildren().clear();
@@ -134,6 +141,18 @@ public class Controller {
                 noteContainer.getChildren().add(notaBox);
             }
         });
+
+        buttonFav.setOnAction(event -> {
+            String selectedChar = combo_char.getSelectionModel().getSelectedItem();
+            String selectedGame = combo_game.getSelectionModel().getSelectedItem();
+            Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
+            if (personaje == null) return;
+
+            Integer esFavorito = personaje.getFavorito() != null ? personaje.getFavorito() : 0;
+            personaje.setFavorito(esFavorito == 0 ? 1 : 0);
+            charService.guardarPersonaje(personaje);
+            modificarLogoFav(personaje);
+        });
         
         combo_game.setOnAction(event -> {
             noteContainer.getChildren().clear();
@@ -158,6 +177,8 @@ public class Controller {
             mostrarLogoPersonaje(personaje);
             System.out.println("Personaje seleccionado: " + (personaje != null ? personaje.getId() : "Ninguno"));
             mostrarNotas(personaje);
+            modificarLogoFav(personaje);
+
         });
 
         buttonNewEntry.setOnAction(event -> {
@@ -197,6 +218,17 @@ public class Controller {
                     .map(n -> new NotaDTO(n.getTitulo(), n.getContenido(), n.getPersonaje().getId()))
                     .collect(Collectors.toList());
 
+            List<Personaje> personajesFav = charRepository.findByFavorito(1);
+
+            List<Long> idsPersonajesFavDTO = personajesFav.stream()
+                    .map(Personaje::getId)
+                    .collect(Collectors.toList());
+
+            // Crear objeto combinado para exportar todo en un JSON
+            Map<String, Object> exportData = new HashMap<>();
+            exportData.put("notas", notasDTO);
+            exportData.put("favoritos", idsPersonajesFavDTO);
+
             ObjectMapper mapper = new ObjectMapper();
 
             // Crear un FileChooser
@@ -215,7 +247,7 @@ public class Controller {
 
             if (file != null) {
                 try {
-                    mapper.writeValue(file, notasDTO);
+                    mapper.writeValue(file, exportData);
                     System.out.println("Notas exportadas correctamente a " + file.getAbsolutePath());
                     ControllerInfo.showInfo("Notes exported successfully to " + file.getAbsolutePath());
                 } catch (IOException e) {
@@ -226,46 +258,70 @@ public class Controller {
         });
 
         ItemImport.setOnAction(event -> {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.setTitle("Seleccionar archivo JSON de notas");
-            fileChooser.getExtensionFilters().add(
-                    new FileChooser.ExtensionFilter("Archivos JSON", "*.json")
-            );
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Seleccionar archivo JSON de notas y favoritos");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Archivos JSON", "*.json")
+        );
 
-            Stage stage = (Stage) noteContainer.getScene().getWindow();
+        Stage stage = (Stage) noteContainer.getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
 
-            File selectedFile = fileChooser.showOpenDialog(stage);
+        if (selectedFile != null) {
+            ObjectMapper mapper = new ObjectMapper();
 
-            if (selectedFile != null) {
+            try {
+                // Leer todo el JSON como un Map
+                Map<String, Object> importData = mapper.readValue(selectedFile, Map.class);
 
-                ObjectMapper mapper = new ObjectMapper();
+                // 1️⃣ Importar notas
+                List<Map<String, Object>> notasList = (List<Map<String, Object>>) importData.get("notas");
+                for (Map<String, Object> dto : notasList) {
+                    Nota nota = new Nota();
+                    nota.setTitulo((String) dto.get("titulo"));
+                    nota.setContenido((String) dto.get("contenido"));
 
-                try {
-
-                    List<NotaDTO> notasDTO = Arrays.asList(
-                    mapper.readValue(selectedFile, NotaDTO[].class)
-                    );
-
-                    for (NotaDTO dto : notasDTO) {
-                        Nota nota = new Nota();
-                        nota.setTitulo(dto.getTitulo());
-                        nota.setContenido(dto.getContenido());
-
-                        // Buscar personaje por ID
-                        Personaje personaje = charRepository.findById(dto.getIdPersonaje())
-                                .orElse(null); // si no existe, se deja null o manejar error
-                        nota.setPersonaje(personaje);
-
-                        noteRepository.save(nota); // se genera automáticamente el id
+                    // Buscar personaje por ID
+                    Number idPersonaje = (Number) dto.get("idPersonaje");
+                    Personaje personaje = null;
+                    if (idPersonaje != null) {
+                        personaje = charRepository.findById(idPersonaje.longValue()).orElse(null);
                     }
-                    ControllerInfo.showInfo("Notes imported successfully.");
-                    System.out.println("Archivo seleccionado: " + selectedFile.getAbsolutePath());
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    nota.setPersonaje(personaje);
+
+                    noteRepository.save(nota);
                 }
-                
+
+                // 2️⃣ Actualizar personajes favoritos
+                // Primero, poner todos a no favorito
+                List<Personaje> allPersonajes = charRepository.findAll();
+                for (Personaje p : allPersonajes) {
+                    p.setFavorito(0); // resetea todos
+                }
+                charRepository.saveAll(allPersonajes); // guarda todos de golpe
+
+                // Ahora marcar los que están en el JSON como favoritos
+                List<Number> favoritosList = (List<Number>) importData.get("favoritos");
+                List<Personaje> favoritosParaGuardar = new ArrayList<>();
+
+                for (Number favId : favoritosList) {
+                    charRepository.findById(favId.longValue()).ifPresent(p -> {
+                        p.setFavorito(1); // marcar como favorito
+                        favoritosParaGuardar.add(p); // añadir a la lista para guardar
+                    });
+                }
+
+                charRepository.saveAll(favoritosParaGuardar); // guardar todos juntos
+
+                ControllerInfo.showInfo("Datos importados correctamente.");
+                System.out.println("Archivo importado: " + selectedFile.getAbsolutePath());
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                ControllerInfo.showInfo("Error al importar el archivo JSON.");
             }
-        });
+        }
+    });
 
         ItemUpdate.setOnAction(event -> {
             Database.updateDatabase();
@@ -277,6 +333,7 @@ public class Controller {
             String selectedGame = combo_game.getSelectionModel().getSelectedItem();
             Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
             mostrarNotas(personaje);
+            modificarLogoFav(personaje);
         });
     }
 
@@ -428,5 +485,59 @@ public class Controller {
 
         // Aquí puedes implementar la lógica para mostrar las notas del personaje
         System.out.println("Mostrando notas para el personaje: " + personaje.getNombre() + " Id: " + idChar);
+    }
+
+    public void mostrarLogoFav() {
+        try {
+
+            String ruta = "/img/star.png";
+            java.net.URL url = getClass().getResource(ruta);
+
+            if (url == null) {
+                System.err.println("No se encontró la imagen: " + ruta);
+                return;
+            }
+
+            Image image = new Image(url.toExternalForm());
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(20);
+            imageView.setFitHeight(20);
+            buttonFav.setGraphic(imageView);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void modificarLogoFav(Personaje personaje) {
+        try {
+            String ruta;
+            if (personaje == null) {
+                ruta = "/img/star.png";
+            } else {
+                Integer fav = personaje.getFavorito();
+                if (fav != null && fav == 1) {
+                    ruta = "/img/star_fav.png";
+                } else {
+                    ruta = "/img/star.png";
+                }
+            }
+
+            java.net.URL url = getClass().getResource(ruta);
+
+            if (url == null) {
+                System.err.println("No se encontró la imagen: " + ruta);
+                return;
+            }
+
+            Image image = new Image(url.toExternalForm());
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(20);
+            imageView.setFitHeight(20);
+            buttonFav.setGraphic(imageView);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

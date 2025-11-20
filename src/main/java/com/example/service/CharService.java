@@ -29,5 +29,9 @@ public class CharService {
         return charRepository.findById(id).orElse(null);
     }
 
+    public Personaje guardarPersonaje(Personaje personaje) {
+        return charRepository.save(personaje);
+    }
+
     
 }

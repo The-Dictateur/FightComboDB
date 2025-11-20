@@ -12,4 +12,5 @@ import org.springframework.stereotype.Repository;
 public interface CharRepository extends JpaRepository<Personaje, Long> {
     List<Personaje> findByJuego(String juego);
     Optional<Personaje> findByNombreAndJuego(String nombre, String juego);
+    List<Personaje> findByFavorito(int favorito);
 }
