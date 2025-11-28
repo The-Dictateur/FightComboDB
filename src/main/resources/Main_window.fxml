@@ -74,6 +74,8 @@
             <Button fx:id="buttonRefresh" layoutX="99.0" layoutY="108.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Refresh" />
             <TextField fx:id="searchField" layoutX="188.0" layoutY="108.0" promptText="Search..." />
             <Button fx:id="buttonFav" contentDisplay="GRAPHIC_ONLY" layoutX="113.0" layoutY="32.0" mnemonicParsing="false" />
+            <Button fx:id="buttonMenuChar" layoutX="162.0" layoutY="32.0" mnemonicParsing="false" />
+            <Button fx:id="buttonMenuGame" layoutX="609.0" layoutY="32.0" mnemonicParsing="false" />
       </children>
     </AnchorPane>
   </children>

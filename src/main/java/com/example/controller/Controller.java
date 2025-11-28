@@ -3,11 +3,9 @@ package com.example.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Observable;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,11 +103,18 @@ public class Controller {
     @FXML 
     private Button buttonFav;
 
+    @FXML
+    private Button buttonMenuChar;
+
+    @FXML
+    private Button buttonMenuGame;
+
     public void initialize() {
         System.out.println("Controller initialized");
         noteContainer.getChildren().clear();
         cargarJuegos();
         mostrarLogoFav();
+        mostrarLogoMenu();
 
         searchField.textProperty().addListener((Observable, oldValue, newValue) -> {
             noteContainer.getChildren().clear();
@@ -152,6 +157,24 @@ public class Controller {
             personaje.setFavorito(esFavorito == 0 ? 1 : 0);
             charService.guardarPersonaje(personaje);
             modificarLogoFav(personaje);
+        });
+
+        buttonMenuGame.setOnAction(event -> {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/menuGames.fxml"));
+            fxmlLoader.setControllerFactory(applicationContext::getBean);
+            Parent root = null;
+            try {
+                root = fxmlLoader.load();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            Stage stage = new Stage();
+            stage.setTitle("Games Menu");
+            stage.setScene(new Scene(root));
+            stage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
+            stage.showAndWait(); // Espera hasta que se cierre
+            cargarJuegos();
         });
         
         combo_game.setOnAction(event -> {
@@ -535,6 +558,34 @@ public class Controller {
             imageView.setFitWidth(20);
             imageView.setFitHeight(20);
             buttonFav.setGraphic(imageView);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void mostrarLogoMenu() {
+        try {
+
+            String ruta = "/img/menu_apps.png";
+            java.net.URL url = getClass().getResource(ruta);
+
+            if (url == null) {
+                System.err.println("No se encontró la imagen: " + ruta);
+                return;
+            }
+
+            Image image = new Image(url.toExternalForm());
+            ImageView imageView = new ImageView(image);
+            imageView.setFitWidth(20);
+            imageView.setFitHeight(20);
+
+            ImageView imageView2 = new ImageView(image);
+            imageView2.setFitWidth(20);
+            imageView2.setFitHeight(20);
+
+            buttonMenuChar.setGraphic(imageView);
+            buttonMenuGame.setGraphic(imageView2);
 
         } catch (Exception e) {
             e.printStackTrace();
