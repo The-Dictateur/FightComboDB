@@ -8,6 +8,7 @@ import com.example.service.GameService;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 @Component
 public class ControllerGames {
@@ -18,9 +19,15 @@ public class ControllerGames {
     @Autowired
     private GameService gameService;
 
+    private Controller controller;
+
     public void initialize() {
             System.out.println("ControllerGames initialized");
             showGames();
+        }
+
+        public void setController(Controller controller) {
+            this.controller = controller;
         }
 
     public void showGames() {
@@ -61,10 +68,32 @@ public class ControllerGames {
             // Acción del botón
             botonJuego.setOnAction(event -> {
                 System.out.println("Has pulsado el juego con ID: " + juego.getId());
+
+                Stage stage = (Stage) botonJuego.getScene().getWindow();
+
+                if (controller != null) {
+                    // Forzar selección en el combo
+                    controller.combo_game.getSelectionModel().select(juego.getNombre());
+                    controller.mostrarLogoJuego(juego);
+
+                    // Disparar manualmente la acción del combo para ejecutar toda la lógica
+                    controller.combo_game.getOnAction().handle(new javafx.event.ActionEvent());
+                }
+
+                stage.close();
             });
 
             VBoxGames.getChildren().add(botonJuego);
         });
+    }
+
+    public void juegoSeleccionado(String nombreJuego) {
+        if (controller != null) {
+            System.out.println("Seleccionando juego en el controlador principal: " + nombreJuego);
+            controller.seleccionarJuegoDesdeVentana(nombreJuego);
+        } else {
+            System.err.println("El controlador principal no está establecido.");
+        }
     }
     
 }

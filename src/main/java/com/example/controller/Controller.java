@@ -49,8 +49,7 @@ import javafx.stage.Stage;
 @Component
 public class Controller {
 
-    @FXML
-    private ComboBox<String> combo_game;
+    @FXML ComboBox<String> combo_game;
 
     @FXML
     private ComboBox<String> combo_char;
@@ -160,21 +159,28 @@ public class Controller {
         });
 
         buttonMenuGame.setOnAction(event -> {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/menuGames.fxml"));
-            fxmlLoader.setControllerFactory(applicationContext::getBean);
-            Parent root = null;
             try {
-                root = fxmlLoader.load();
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/menuGames.fxml"));
+                fxmlLoader.setControllerFactory(applicationContext::getBean); // Spring
+
+                Parent root = fxmlLoader.load(); // 🔹 load() primero
+
+                ControllerGames cg = fxmlLoader.getController(); // 🔹 ahora ya no es null
+                cg.setController(this); // pasar la referencia del controlador principal
+
+                Stage stage = new Stage();
+                stage.setTitle("Games Menu");
+                stage.setScene(new Scene(root));
+                stage.initModality(Modality.APPLICATION_MODAL); // ventana modal
+                stage.showAndWait(); // espera hasta que se cierre
+                System.out.println("Juego seleccionado: " + combo_game.getSelectionModel().getSelectedItem());
+                mostrarLogoJuego(gameService.obtenerTodosLosJuegos().stream()
+                    .filter(j -> j.getNombre().equals(combo_game.getSelectionModel().getSelectedItem()))
+                    .findFirst()
+                    .orElse(null));
             } catch (IOException e) {
-                // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-            Stage stage = new Stage();
-            stage.setTitle("Games Menu");
-            stage.setScene(new Scene(root));
-            stage.initModality(Modality.APPLICATION_MODAL); // Hace la ventana modal
-            stage.showAndWait(); // Espera hasta que se cierre
-            cargarJuegos();
         });
         
         combo_game.setOnAction(event -> {
@@ -190,6 +196,26 @@ public class Controller {
             combo_char.getItems().clear(); // Limpiar personajes al cambiar juego
             stackPaneChar.getChildren().clear(); // Limpiar logo del personaje
             cargarPersonajes();
+        });
+
+        buttonMenuChar .setOnAction(event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/menuChars.fxml"));
+                fxmlLoader.setControllerFactory(applicationContext::getBean); // Spring
+
+                Parent root = fxmlLoader.load(); // 🔹 load() primero
+
+                ControllerChars cc = fxmlLoader.getController(); // 🔹 ahora ya no es null
+                cc.setController(this); // pasar la referencia del controlador principal
+
+                Stage stage = new Stage();
+                stage.setTitle("Characters Menu");
+                stage.setScene(new Scene(root));
+                stage.initModality(Modality.APPLICATION_MODAL); // ventana modal
+                stage.showAndWait(); // espera hasta que se cierre
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         });
 
         combo_char.setOnAction(event -> {
@@ -590,5 +616,18 @@ public class Controller {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+    }
+
+    public void seleccionarJuegoDesdeVentana(String nombreJuego) {
+        if (nombreJuego == null) {
+            System.out.println("No game name provided.");
+            return;
+        } else {
+            System.out.println("Seleccionando juego desde ventana: " + combo_game.getSelectionModel().getSelectedItem() + " a " + nombreJuego);
+        }
+
+        combo_game.getSelectionModel().select(nombreJuego);
+        cargarPersonajes(); // ← Esto recarga los personajes automáticamente
     }
 }
