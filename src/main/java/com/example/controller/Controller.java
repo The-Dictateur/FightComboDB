@@ -49,7 +49,12 @@ import javafx.stage.Stage;
 @Component
 public class Controller {
 
-    @FXML ComboBox<String> combo_game;
+    @FXML 
+    ComboBox<String> combo_game;
+
+    public ComboBox<String> getCombo_game() {
+        return combo_game;
+    }
 
     @FXML
     private ComboBox<String> combo_char;
@@ -207,7 +212,12 @@ public class Controller {
 
                 ControllerChars cc = fxmlLoader.getController(); // 🔹 ahora ya no es null
                 cc.setController(this); // pasar la referencia del controlador principal
+                cc.showChars();
 
+                if (combo_game.getSelectionModel().isEmpty()) {
+                    System.out.println("No game selected, cannot open characters menu.");
+                    return;
+                }
                 Stage stage = new Stage();
                 stage.setTitle("Characters Menu");
                 stage.setScene(new Scene(root));

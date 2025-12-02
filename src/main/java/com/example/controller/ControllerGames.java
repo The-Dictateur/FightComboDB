@@ -22,13 +22,13 @@ public class ControllerGames {
     private Controller controller;
 
     public void initialize() {
-            System.out.println("ControllerGames initialized");
-            showGames();
-        }
+        System.out.println("ControllerGames initialized");
+        showGames();
+    }
 
-        public void setController(Controller controller) {
-            this.controller = controller;
-        }
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
 
     public void showGames() {
         System.out.println("Showing games...");
@@ -85,15 +85,6 @@ public class ControllerGames {
 
             VBoxGames.getChildren().add(botonJuego);
         });
-    }
-
-    public void juegoSeleccionado(String nombreJuego) {
-        if (controller != null) {
-            System.out.println("Seleccionando juego en el controlador principal: " + nombreJuego);
-            controller.seleccionarJuegoDesdeVentana(nombreJuego);
-        } else {
-            System.err.println("El controlador principal no está establecido.");
-        }
     }
     
 }
