@@ -75,9 +75,6 @@ public class ControllerGames {
                     // Forzar selección en el combo
                     controller.combo_game.getSelectionModel().select(juego.getNombre());
                     controller.mostrarLogoJuego(juego);
-
-                    // Disparar manualmente la acción del combo para ejecutar toda la lógica
-                    controller.combo_game.getOnAction().handle(new javafx.event.ActionEvent());
                 }
 
                 stage.close();

@@ -55,6 +55,7 @@ public class Controller {
     public ComboBox<String> getCombo_game() {
         return combo_game;
     }
+    public ComboBox<String> getCombo_Char() { return combo_char; }
 
     @FXML
     private ComboBox<String> combo_char;
@@ -445,6 +446,12 @@ public class Controller {
     public void mostrarLogoPersonaje(Personaje personaje) {
         System.out.println("Mostrando logo del personaje: " + personaje.getNombre());
         if (personaje == null || personaje.getIcon() == null) return;
+
+        if (!personaje.getJuego().equals(combo_game.getSelectionModel().getSelectedItem())) {
+            System.out.println("Juego distinto → Actualizando combo");
+            combo_game.getSelectionModel().select(personaje.getJuego());
+            System.out.println("Juego seleccionado: " + combo_game.getSelectionModel().getSelectedItem());
+        }
 
         try {
             String ruta = "/logos/" + personaje.getJuego() + "/" + personaje.getIcon();

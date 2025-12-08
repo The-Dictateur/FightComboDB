@@ -5,6 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -93,15 +94,26 @@ public class ControllerChars {
                     imagenView.setClip(clip);
 
                     botonChar.setGraphic(imagenView); // ← Añade la imagen al botón
+
+                    botonChar.setOnAction(event -> {
+                        System.out.println(character.getNombre());
+
+                        Stage stage = (Stage) botonChar.getScene().getWindow();
+
+                        if (controller != null) {
+
+                            controller.getCombo_Char().getSelectionModel().select(character.getNombre());
+                            controller.mostrarLogoPersonaje(character);
+                        }
+                        stage.close();
+                    });
+
+                    flowPaneChar.getChildren().add(botonChar);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            botonChar.setOnAction(event -> {
-                System.out.println(character.getNombre());
-            });
-            flowPaneChar.getChildren().add(botonChar);
         });
 
         charService.obtenerPersonajeFavorito().forEach(character -> {
@@ -130,15 +142,24 @@ public class ControllerChars {
                     imagenView.setClip(clip);
 
                     botonFav.setGraphic(imagenView); // ← Añade la imagen al botón
+
+                    botonFav.setOnAction(event -> {
+                        System.out.println(character.getNombre());
+
+                        Stage stage = (Stage) botonFav.getScene().getWindow();
+
+                        if (controller != null) {
+
+                            controller.getCombo_Char().getSelectionModel().select(character.getNombre());
+                            controller.mostrarLogoPersonaje(character);
+                        }
+                        stage.close();
+                    });
+                    flowPaneFav.getChildren().add(botonFav);
                 }
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-            botonFav.setOnAction(event -> {
-                System.out.println(character.getNombre());
-            });
-            flowPaneFav.getChildren().add(botonFav);
         });
     }
     
