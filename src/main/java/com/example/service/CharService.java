@@ -21,6 +21,10 @@ public class CharService {
         return charRepository.findByJuego(nombreJuego);
     }
 
+    public List<Personaje> obtenerPersonajeFavorito () {
+        return charRepository.findByFavorito(1);
+    }
+
     public Personaje obtenerPersonajePorNombreYJuego(String nombre, String juego) {
         return charRepository.findByNombreAndJuego(nombre, juego).orElse(null);
     }
@@ -33,5 +37,4 @@ public class CharService {
         return charRepository.save(personaje);
     }
 
-    
 }

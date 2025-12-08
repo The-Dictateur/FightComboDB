@@ -157,8 +157,8 @@ public class Controller {
             Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
             if (personaje == null) return;
 
-            Integer esFavorito = personaje.getFavorito() != null ? personaje.getFavorito() : 0;
-            personaje.setFavorito(esFavorito == 0 ? 1 : 0);
+            Integer esFavorito = personaje.getFavorito() != null ? personaje.getFavorito() : (Integer) 0;
+            personaje.setFavorito(Integer.valueOf(esFavorito == 0 ? 1 : 0));
             charService.guardarPersonaje(personaje);
             modificarLogoFav(personaje);
         });
@@ -177,6 +177,7 @@ public class Controller {
                 stage.setTitle("Games Menu");
                 stage.setScene(new Scene(root));
                 stage.initModality(Modality.APPLICATION_MODAL); // ventana modal
+                stage.setResizable(false);
                 stage.showAndWait(); // espera hasta que se cierre
                 System.out.println("Juego seleccionado: " + combo_game.getSelectionModel().getSelectedItem());
                 mostrarLogoJuego(gameService.obtenerTodosLosJuegos().stream()
@@ -214,6 +215,7 @@ public class Controller {
                 cc.setController(this); // pasar la referencia del controlador principal
                 cc.showChars();
 
+
                 if (combo_game.getSelectionModel().isEmpty()) {
                     System.out.println("No game selected, cannot open characters menu.");
                     return;
@@ -222,7 +224,9 @@ public class Controller {
                 stage.setTitle("Characters Menu");
                 stage.setScene(new Scene(root));
                 stage.initModality(Modality.APPLICATION_MODAL); // ventana modal
+                stage.setResizable(false);
                 stage.showAndWait(); // espera hasta que se cierre
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -344,7 +348,7 @@ public class Controller {
                     Number idPersonaje = (Number) dto.get("idPersonaje");
                     Personaje personaje = null;
                     if (idPersonaje != null) {
-                        personaje = charRepository.findById(idPersonaje.longValue()).orElse(null);
+                        personaje = charRepository.findById(Long.valueOf(idPersonaje.longValue())).orElse(null);
                     }
                     nota.setPersonaje(personaje);
 
@@ -355,7 +359,7 @@ public class Controller {
                 // Primero, poner todos a no favorito
                 List<Personaje> allPersonajes = charRepository.findAll();
                 for (Personaje p : allPersonajes) {
-                    p.setFavorito(0); // resetea todos
+                    p.setFavorito(Integer.valueOf(0)); // resetea todos
                 }
                 charRepository.saveAll(allPersonajes); // guarda todos de golpe
 
@@ -364,8 +368,8 @@ public class Controller {
                 List<Personaje> favoritosParaGuardar = new ArrayList<>();
 
                 for (Number favId : favoritosList) {
-                    charRepository.findById(favId.longValue()).ifPresent(p -> {
-                        p.setFavorito(1); // marcar como favorito
+                    charRepository.findById(Long.valueOf(favId.longValue())).ifPresent(p -> {
+                        p.setFavorito(Integer.valueOf(1)); // marcar como favorito
                         favoritosParaGuardar.add(p); // añadir a la lista para guardar
                     });
                 }

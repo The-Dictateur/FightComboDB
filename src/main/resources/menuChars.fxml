@@ -14,9 +14,9 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane prefHeight="375.0" prefWidth="606.0" AnchorPane.bottomAnchor="-4.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-6.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane fx:id="scrollChar" prefHeight="375.0" prefWidth="606.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
-                              <FlowPane fx:id="flowPaneChar" prefHeight="360.0" prefWidth="600.0" />
+                              <FlowPane fx:id="flowPaneChar" prefHeight="362.0" prefWidth="597.0" />
                            </content>
                         </ScrollPane>
                      </children></AnchorPane>
@@ -26,9 +26,9 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <ScrollPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <ScrollPane fx:id="scrollFav" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                            <content>
-                              <FlowPane fx:id="flowPaneFav" prefHeight="400.0" prefWidth="600.0" />
+                              <FlowPane fx:id="flowPaneFav" prefHeight="365.0" prefWidth="593.0" />
                            </content>
                         </ScrollPane>
                      </children></AnchorPane>
