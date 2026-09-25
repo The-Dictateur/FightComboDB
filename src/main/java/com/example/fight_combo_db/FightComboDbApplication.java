@@ -6,6 +6,7 @@ import java.io.InputStream;
 
 import javax.sql.DataSource;
 
+import com.example.AI.OllamaClient;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
@@ -29,6 +30,9 @@ public class FightComboDbApplication extends Application {
 	@Override
 	public void init() throws Exception {
 		springContext = new SpringApplicationBuilder(FightComboDbApplication.class).run();
+        //OllamaClient client = new OllamaClient();
+        //String respuesta = client.preguntar("qwen2.5:14b-instruct", "Dime un consejo corto para mejorar en Street Fighter");
+        //System.out.println(respuesta);
 	}
 
 	@Override
