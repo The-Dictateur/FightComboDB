@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="173.0" prefWidth="456.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ControllerAI">
+   <children>
+      <Button fx:id="sendAi" layoutX="204.0" layoutY="134.0" mnemonicParsing="false" text="Enviar" />
+      <TextArea fx:id="textAi" layoutX="22.0" layoutY="14.0" prefHeight="100.0" prefWidth="412.0" />
+   </children>
+</Pane>

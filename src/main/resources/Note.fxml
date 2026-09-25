@@ -42,7 +42,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="674.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ControllerNote">
+<VBox prefHeight="674.0" prefWidth="810.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.controller.ControllerNote">
   <children>
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
          <children>
@@ -70,6 +70,7 @@
             <ToggleButton fx:id="toggleVideo" layoutX="461.0" layoutY="32.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Video" AnchorPane.rightAnchor="105.0" />
             <Label fx:id="loadLabel" layoutX="634.0" layoutY="85.0" prefHeight="17.0" prefWidth="158.0" />
             <ToggleButton fx:id="toggleWeb" layoutX="546.0" layoutY="32.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="71.0" text="Web" />
+            <Button fx:id="aiButton" layoutX="100.0" layoutY="81.0" mnemonicParsing="false" text="AI" />
          </children>
     </AnchorPane>
   </children>

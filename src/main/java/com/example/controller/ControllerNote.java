@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Modality;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -62,6 +66,9 @@ public class ControllerNote {
     @FXML
     private Label loadLabel;
 
+    @FXML
+    private Button aiButton;
+
     private Long personajeId;
 
     public void initialize() {
@@ -71,6 +78,29 @@ public class ControllerNote {
         buttonSave.setOnAction(event -> {
             try {
                 saveNote();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        aiButton.setOnAction(event -> {
+            try {
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/textAi.fxml"));
+                Parent root = fxmlLoader.load();
+
+                // Aquí está la clave: coger el controlador ya creado por el FXMLLoader
+                ControllerAI controllerAI = fxmlLoader.getController();
+                controllerAI.setTargetTextArea(textNote); // le pasamos el TextArea de la nota
+
+                Stage stageAI = new Stage();
+                stageAI.setTitle("Preguntar a la IA");
+                stageAI.setScene(new Scene(root));
+
+                stageAI.initModality(Modality.WINDOW_MODAL);
+                stageAI.initOwner(aiButton.getScene().getWindow());
+
+                stageAI.showAndWait();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }
