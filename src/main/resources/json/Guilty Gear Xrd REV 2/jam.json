@@ -1,0 +1,336 @@
+{
+  "character": "Jam Kuradoberi",
+  "game": "Guilty Gear Xrd REV 2",
+  "overview": "The ki-wielding fighting chef Jam is a highly-mobile rushdown queen with scary close-range pressure and high damage off openings. The core of her kit is three kick specials — Ryuujin (236K, a flying kick that crosses the screen), Gekirin (214K, an overhead axe kick), and Kenroukaku (623K, a DP-style kick) — which can all be canceled into each other up to three times, giving huge pressure and combo flexibility. She can power up these kicks by charging cards with Asanagi no Kokyuu (22K/S/H), making them stronger, faster, or giving them enough invulnerability to work as reversals. Very fast normals and many cancel options let her keep opponents locked in pressure until she opens them up, knocks them down, and rebuilds resources. A Jam with full Tension and maxed-out cards is terrifying: one opening leads to huge damage, great corner carry, and a near-guaranteed hard knockdown to recharge cards all over again. Her main weakness is range — among the shortest in the cast — so she must rely on speed and movement to fight her way in before her offense starts. Her basic combos are simple but her more optimal routes (her 546P K routes) are difficult and character/weight-specific, requiring practice and precision.",
+  "keyStats": {
+    "fastestNormal": "5P (3F)",
+    "reversals": ["Kenroukaku 623K (7F)", "Choukyaku Hou'Oushou 632146S (7+0F)"]
+  },
+  "prosAndCons": {
+    "pros": [
+      "Speedy: very quick character with great mobility and fast close-range normals",
+      "High damage and corner carry via carded specials and Tension usage",
+      "Built-in burst baits: several combos/pressure strings bait bursts naturally or can be adapted into an Option Select vs escape attempts",
+      "Flexible pressure: fast normals and huge cancel options allow constant assault, forcing opponents to spend meter on Faultless Defense",
+      "Tons of knockdowns: wide cancel options almost always gatling into her sweep, plus charged specials knock down from air situations too",
+      "High Tension gain: constant forward movement and special move usage in combos generate lots of Tension"
+    ],
+    "cons": [
+      "Stubby normals: often outranged by characters like Ky or Faust; requires good movement and full understanding of her tools to get in",
+      "Character-specific combos: her 46PK combo routes depend heavily on the opponent's weight and hurtbox, needing on-the-fly adaptation",
+      "Situational reversal: Kenroukaku (DP) needs a card to extend invincibility to its active frames and can be low profiled"
+    ]
+  },
+  "uniqueMechanic": {
+    "name": "Cards (Asanagi no Kokyuu)",
+    "description": "Jam's unique mechanic revolves around powering up her three kick specials (Ryuujin, Gekirin, Kenroukaku) with 'cards' that change their properties on hit and increase their damage. She can cancel these kick specials into each other up to 3 times. They also gain different properties when performed during an air dash, adding flexibility."
+  },
+  "normalMoves": [
+    {
+      "input": "5P",
+      "startup": 3,
+      "active": 3,
+      "recovery": 7,
+      "description": "One of only two characters with a 3f jab (matching Chipp's 5P), letting Jam mash out of some pressure situations others cannot. Limited hitbox and disjoint, mainly used for anti-airing. Counter Hit 5P combos into 2H for a highly damaging combo far beyond what's expected from a jab starter. Its speed also lets it catch opponents out of the air in combo routes where slower attacks would miss, such as after a charged Ryuujin. Gatlings into and out of 5K, useful to vary pressure timings and set up tick throws. After blocking j.2K, the opponent can be forced to block 5P too due to the standing hurtbox.",
+      "notes": ["Whiffs on all crouching characters except Potemkin, Bedman, Slayer (3rd 5P will whiff), and Kum", "Jump cancelable"],
+      "gatlingOptions": ["5P", "2P", "6P", "5K", "2K", "6K", "c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "5K",
+      "startup": 4,
+      "active": 4,
+      "recovery": 6,
+      "description": "Jam's primary pressure and offense tool. Frame traps into itself AND hits low, letting it both lock opponents down and open them up for tick throws. Several normals gatling back into it (6K > 2K > 5K, or 2S > 5K), making it a common pressure reset point. A practiced microdash > 5K is important for her pressure game; threatening the dash to approach, or using 5H/6H as a frame trap after 5K, is essential. Below-average hitstop (6 frames vs the standard 11), making it harder to react to on block and harder to Dead Angle Attack against — but this also means Counter Hit 5K > 6H only combos on a crouching opponent. Heavy initial damage scaling limits combos started with it, though it's still used constantly.",
+      "notes": ["Counterhit recovery", "5K > 5P whiff recovers fast enough to link back into 5K and be gapless on block"],
+      "gatlingOptions": ["5P", "2P", "6P", "2K", "6K", "c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "c.S",
+      "startup": 6,
+      "active": 8,
+      "recovery": 12,
+      "description": "A decent normal, very useful in pressure to route into her other normals. Good combo starter due to low scaling and good gatling options. Limited use as an anti-air if Jam gets under and behind the opponent. Can be used as a deep meaty to catch backdashes thanks to its high active frame count.",
+      "notes": ["Does strange things with Jam's collision box", "Jump cancelable"],
+      "gatlingOptions": ["6P", "6K", "f.S", "2S", "5H", "2H", "5D", "2D"]
+    },
+    {
+      "input": "f.S",
+      "startup": 6,
+      "active": 5,
+      "recovery": 11,
+      "description": "Amazing normal: fast startup, safe on block, good range with decent disjoint. Doesn't extend Jam's hurtbox much beforehand, making it good for whiff punishing or counter poking — an effective 'stop sign'. In pressure it gatlings directly into her sweep (f.S > 2D as the basic knockdown route from stray hits). On counter hit vs standing opponents it combos into IAD j.P for high meterless damage from a safe poke at range. Only -2 on block, so Jam can throw it out repeatedly while threatening cancels into IAD or other attacks to push the opponent to the corner.",
+      "notes": ["Jump cancelable"],
+      "gatlingOptions": ["2S", "5H", "2H", "5D", "2D"]
+    },
+    {
+      "input": "5H",
+      "startup": 13,
+      "active": "3, 3, 3, 3, 3 (multi-hit)",
+      "recovery": 15,
+      "description": "A multi-hitting normal used in combos, pressure, and as a meaty. The multiple hits encourage FD, which drains a large portion of the opponent's meter. +1 on block, setting up a frame trap into 5K. Jam ducks very low on the final hit, making many Dead Angle Attacks whiff; that final hit's low profile plus being plus on block makes it a strong meaty option when there's time to start it up. Always gatlings into f.S regardless of proximity, so 5H > f.S works even at point-blank range, punishing FD attempts to push Jam out. Careful opponents will try to IB the telegraphed last hit, requiring a delay gatling to discourage mashing. Reverse gatlings to 6K, allowing a route all the way back to 5K in the gatling tree, useful to rebuy pressure against FD.",
+      "gatlingOptions": ["6K", "f.S", "2H", "5D", "2D"]
+    },
+    {
+      "input": "5D",
+      "startup": 25,
+      "active": 4,
+      "recovery": 12,
+      "description": "Fairly standard Dust attack. Jam has several routes into it and her high-speed pressure can overwhelm opponents, but generally she has better options. 5D8 can lead to high damage with a cranked guard bar, but Jam can't knock the opponent down afterward without carded specials. The standard 5D6 route can leave the opponent very slightly outside the corner, setting up a mixup with IAD Kenroukaku. Only -2 on block, but has extremely limited range."
+    },
+    {
+      "input": "6P",
+      "startup": 9,
+      "active": "3, (gap 6), 3",
+      "recovery": 12,
+      "description": "Unorthodox 6P, more of a counterpoke than an anti-air. All upper-body invulnerability resolves during the first hit; the second punch has a more vertical hitbox. The first hit has very little pushback, making comboing into 2H after an anti-air easier. In pressure it's very effective: +2 on block with a wide cancel window, useful to threaten a low/throw mixup, especially against a cornered opponent.",
+      "gatlingOptions": ["2P", "6K", "c.S", "f.S", "2S", "5H", "2H", "5D", "2D"]
+    },
+    {
+      "input": "6K",
+      "startup": 6,
+      "active": "4, (gap 6), 12",
+      "recovery": 20,
+      "description": "A 2-hit kick typically used in pressure and combos, not neutral. The first hit is a lower attack level than the second, so to combo into 6H she must land the second hit. Reduced hitstop on the first hit lets her jump cancel to IAD back in during pressure, making it harder to react to.",
+      "notes": ["Forces stand on hit", "Jump cancelable"],
+      "gatlingOptions": ["2P", "2K", "c.S", "f.S", "2S", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "6H",
+      "startup": 14,
+      "active": 3,
+      "recovery": 22,
+      "description": "A cornerstone of Jam's neutral game thanks to huge Counter Hit reward plus forward-advancing and low-crushing properties. Low-crushing frames start as early as frame 4 and last into the first active frame, letting her punish low pokes meant to zone her out. On counter hit it's one of her best starters — the opponent is sent flying and wall bounces, allowing a big combo. Even a normal hit gives enough advantage to fully charge a card to MAX power. Risky to throw out since it can be jumped for a whiff punish or stuffed by active hitboxes. In pressure, 5K/2P/2K gatling into 6H for a frame trap on normal block; while -6 on block, it can be special canceled to Bakushuu (236S) and from there to Hamonkyaku (236S~K) to make an airtight blockstring or frame trap. Special canceling into Hochifu without attacking is also roughly -6 on block but pulls her hurtbox in for safety against reversals.",
+      "notes": ["High profile", "Wallbounces on counterhit"]
+    },
+    {
+      "input": "2P",
+      "startup": 4,
+      "active": 2,
+      "recovery": 7,
+      "description": "Another pressure tool. Doesn't hit low (discouraging reversal low Blitz) and is +3 on block. Gatlings from several normals like 6P; its high frame advantage helps her fight FD via repeated microdash 2P. 2P into 6H is a stable frame trap and hitconfirm on counter hit.",
+      "gatlingOptions": ["5P", "2P", "6P", "5K", "2K", "6K", "c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "2K",
+      "startup": 5,
+      "active": 3,
+      "recovery": 9,
+      "description": "Glue between 5K and 2D: not as fast as 5K nor as far-reaching as 2D, but its main niche is canceling into itself on hit or block, chaining hits to confirm a random touch or force the opponent to hold downback. If the opponent tries to jump/throw out during this, they get tagged by the low and Jam can confirm into 2D for a knockdown, all while remaining even on block.",
+      "gatlingOptions": ["6P", "5K", "2K", "c.S", "f.S", "2S", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "2S",
+      "startup": 6,
+      "active": 5,
+      "recovery": 9,
+      "description": "A very strong counter poke with a respectable hitbox. Wins most trades due to the stagger on Counter Hit; +0 on block, good for dashing back in or setting up a tick throw. Reverse gatlings back to 5K or 2K with a long cancel window, a great pressure reset point. Low overall active time makes it safe to throw out and hard to whiff punish.",
+      "notes": ["Staggers on counterhit"],
+      "gatlingOptions": ["5K", "2K", "5H", "2H", "5D", "2D"]
+    },
+    {
+      "input": "2H",
+      "startup": 11,
+      "active": "8, (gap 6), 4",
+      "recovery": 13,
+      "description": "Offers unique combo and pressure properties. As a combo tool, the vacuum effect enables extensions with 546P K and 236236H, and always brings grounded opponents into 2D range, making 5H > 2H > 2D her strongest resourceless knockdown combo. Being two hits and 0 on block, it serves as a pressure reset that requires conditioning: if the opponent doesn't IB either hit, Jam is free to reset with 5K or attempt a tick throw; if they IB the first hit, there's a small gap they can reversal/backdash/Blitz out of; if they IB the second hit, Jam is negative and usually pulls them into throw range — in either case she can gatling into 2D as a low hit, since most reversals/backdash/high Blitz require the opponent to stop blocking low. Alternatively, canceling the first hit into an empty 546 (Hochifu) lets her try to throw the opponent out of whatever option they pick — riskier but covers both Blitz options. Routing into 2H in pressure gives up some of her strongest tools, but can be effective vs a hesitant opponent.",
+      "gatlingOptions": ["5D", "2D"]
+    },
+    {
+      "input": "2D",
+      "startup": 6,
+      "active": 4,
+      "recovery": 16,
+      "description": "One of the best sweeps in the game: very large, disjointed hitbox coming out in a blisteringly fast 6 frames, with a very low hurtbox that stuffs mid pokes in neutral. Has a jump cancel, making it a safe return to neutral. Bakushuu~K (236S~K) can be used as a last-ditch frame trap after 2D, but it's low reward without cards. 2D is Jam's main knockdown tool off most hits and lets her get a card safely while still having time to meaty.",
+      "notes": ["Jump cancelable"]
+    },
+    {
+      "input": "j.P",
+      "startup": 6,
+      "active": 4,
+      "recovery": 16,
+      "description": "Standard aerial jab. Attacks below Jam, cancels into itself on whiff. Used with her fast IAD to get back in during pressure, or as a hitconfirm. Extensive recovery makes it very hard to bait a burst with it in air combos.",
+      "gatlingOptions": ["j.P", "j.K", "j.S", "j.H", "j.D"]
+    },
+    {
+      "input": "j.K",
+      "startup": 5,
+      "active": 8,
+      "recovery": 11,
+      "description": "Very strong air-to-air normal since Jam's hurtbox doesn't extend before the active frames. High active frame count makes it a strong stop sign against aggressive air movement. Her furthest horizontally-reaching air normal, typically used in air combos where other buttons can't reach.",
+      "gatlingOptions": ["j.P", "j.S", "j.H", "j.D"]
+    },
+    {
+      "input": "j.S",
+      "startup": 5,
+      "active": 5,
+      "recovery": 9,
+      "description": "Amazing air normal that beats most jump-ins if done early. Keeps teching opponents high in the air, punishing techs when they try to come down. Forced untech time almost always allows a combo into 214K (Gekirin), and can combo into 46PPK routes when close enough to the ground.",
+      "notes": ["Jump cancelable", "Launches opponent upwards on hit", "Forced untech time", "Good airthrow OS normal"],
+      "gatlingOptions": ["j.P", "j.H"]
+    },
+    {
+      "input": "j.H",
+      "startup": 5,
+      "active": 10,
+      "recovery": 16,
+      "description": "Infamous as a powerful tech-buttons tool: low startup and large hitbox let Jam use the invincibility from teching forward out of combos to punish a dropped route. Has two hitboxes rotating around Jam, making it a simple crossup attack — though its low attack level means it can be IB'd and punished with a throw; special cancel into j.2K if blocked. Also an excellent approach option thanks to Jam's very fast IAD complementing her low profile options. Relatively low recovery and hitbox make it viable to chase opponents while trying to air throw.",
+      "notes": ["Counterhit recovery"]
+    },
+    {
+      "input": "j.D",
+      "startup": 7,
+      "active": "3, (gap 6), 6",
+      "recovery": 16,
+      "description": "Commonly used as combo filler after j.K, but the second hit is one of Jam's best (and hardest to use) counterhit starters. Spacing an IAD j.D, or using it when the opponent is cornered, is a high-risk high-reward way to open them up. Universal landing recovery on j.D means it's punishable on block by throwing Jam as she lands.",
+      "notes": ["Second hit launches grounded opponents", "Second hit wallbounces on counterhit"]
+    }
+  ],
+  "universalMechanics": [
+    {
+      "name": "Ground Throw",
+      "input": "6H (close range)",
+      "description": "A strong grab leading to combos, important for a rushdown character like Jam. When performed as 6H, she gains extra throw range from the attack itself moving her forward; combined with her fast, plus-on-block normals and quick run speed, this makes her one of the best grapplers in the game. Requires resources to get a knockdown from it, so she can't easily chain throws back to back. With resources, RRCing the first hit of the throw can take away nearly half the opponent's life bar and gives time to charge a card, making it very scary with 50 meter."
+    },
+    {
+      "name": "Air Throw",
+      "description": "A standard air throw. Can be RRC'd for some combo opportunity but the damage is minimal — mainly used for okizeme and corner carry."
+    },
+    {
+      "name": "Dead Angle Attack",
+      "description": "Standard DA-attack, uses her f.S animation. Wallbounces."
+    },
+    {
+      "name": "Blitz Attack",
+      "description": "Always a risk, but Jam gets relatively good reward from it. A Counter Hit partial charge, or a hit with a Max Charge Blitz Attack, lets her quickly perform Asanagi no Kokyuu (22K/S/H) to charge a card and follow up with a combo while the opponent is still crumpled. Hitting a partial charge near the corner allows a combo leading to a good knockdown; hitting one midscreen gives time and space to MAX charge a card."
+    }
+  ],
+  "specialMoves": [
+    {
+      "name": "Hochifu",
+      "input": "546",
+      "description": "Jam's character-defining parry. Automatically parries and blocks incoming mid and overhead attacks during the first 8 frames; she is still hit by lows/throws and is in Counter Hit state for those first 8F. Risky to overuse against projectile okizeme since Jam is locked into the stance while the opponent can still act; if hit low during this time she is Counter Hit by the low. Can be special canceled into mid-pressure to bait bursts and Dead Angles. Has different properties depending on whether it's done in neutral or canceled into.",
+      "notes": [
+        "Non-canceled 546 can cancel into crouching or Faultless Defense after the catch",
+        "Canceling into 546 forces Jam to fully recover for 24 frames total",
+        "On a successful parry Jam is in hitstop for 7F, the opponent (if parried) for 9F; projectiles only inflict hitstop on the defender, so the opponent won't feel hitstop if Jam parries a projectile",
+        "In neutral, freely cancelable on whiff from frame 9 onward into forward/back walk and crouch, giving only 9F total recovery from neutral",
+        "Cancel options from a successful parry: Hochifu again, Zekkei, Bakushuu, any Overdrive, blocking/FD, forward dash/backdash, Yellow Roman Cancel"
+      ]
+    },
+    {
+      "name": "Zekkei",
+      "input": "546P (Hochifu > P)",
+      "description": "Jam's primary follow-up to Hochifu. Fast startup, and since Jam generally acts before the opponent on a successful parry, this move is very hard to bait after a successful parry. Small hitbox and very unsafe on block. If the opponent is attacking from outside its range, canceling to other post-parry options (dash, Yellow RC) can be better.",
+      "notes": ["Gains increased hitstop on counterhit", "Ground counterhit staggers; air counterhit is untechable until the opponent hits the ground", "Can destroy projectiles", "Can be done 10F after entering the parry stance and immediately upon a successful parry", "Counterhit recovery"]
+    },
+    {
+      "name": "Goushao",
+      "input": "546P > P (Zekkei > P)",
+      "description": "The usual follow-up to Zekkei. Generally a combo ender, sending the opponent flying and knocking them down. Done midscreen it gives lots of corner carry and a chance to charge a card (Asanagi no Kokyuu) or chase for a meaty. If the opponent is already cornered, Jam can't charge a card in time but can set up a safejump instead. Risky to use her parry follow-ups on a blocking opponent, so 50% Tension for a Red Roman Cancel keeps her safe.",
+      "notes": ["Counterhit recovery"]
+    },
+    {
+      "name": "Dowanga",
+      "input": "546P > K (Zekkei > K)",
+      "description": "The slower but more rewarding follow-up from Zekkei. Launches the opponent high into the sky for a devastating combo. Due to its large startup, Zekkei doesn't naturally combo into Dowanga without a counterhit or hitting later than the first active frame of Zekkei. Combos into Dowanga mid-combo (commonly called '546PK combos') require launching the opponent so they fall into Zekkei slightly late, requiring knowledge of the opponent's hurtbox and weight. These combos open up huge, often meterless, damage."
+    },
+    {
+      "name": "Youeikyaku",
+      "input": "j.2K",
+      "description": "A sharply-angled divekick mainly used in pressure as an instant overhead; its minimum height requirement is below Jam's initial actionable jump height, letting her do it very quickly. Advantageous on block. On hit, Jam automatically follows with multiple bicycle kicks on the way down, which can offer less frame advantage than if the move were simply blocked; requires 50 meter for RRC to guarantee a combo from it. Without RC, spacing matters — landing too close risks being thrown on hit. Acts like a special move so it can be canceled into from any air normal to surprise opponents trying to Instant Block and throw Jam on landing. Halts air momentum, so it can bait anti-airs, though its dubious frame advantage on hit usually needs a Yellow Roman Cancel to convert its momentum into a reliable air normal."
+    },
+    {
+      "name": "Bakushuu",
+      "input": "236S",
+      "description": "A command dash special with four possible follow-ups performable at any point after the first 9 frames of the dash. Used with her fast IAD to continue or repressure after blocking one of Jam's grounded strings; large startup on follow-ups means it can be interrupted. Enters a low-profile state after 10F, useful to avoid projectiles like Ky's Stun Edge or Venom's pool balls. Very committal since Jam can't cancel the stance early safely without a Yellow Roman Cancel; rarely used without one of its follow-ups."
+    },
+    {
+      "name": "Mawarikomi",
+      "input": "236S > P (Bakushuu > P)",
+      "description": "Immediately gains a super low-profile hurtbox (only hittable by sweeps or throws) and can pass through the opponent. Excellent for avoiding mid-level pokes and projectiles in neutral, and as a feint in pressure for a cheeky throw. Unlike Bakushuu itself, Jam is NOT in Counter Hit state during this move, protecting her from a bigger punish if hit during the initial slide."
+    },
+    {
+      "name": "Hamonkyaku",
+      "input": "236S > K (Bakushuu > K)",
+      "description": "A weak but important part of Jam's game plan and a mixup tool in its own right. A fast low out of Bakushuu, executing it as fast as possible gives roughly 15F startup, making it an airtight followup to 6H, and a frame trap from 2D on normal block. Discourages mashing out of her Bakushuu follow-ups. Whopping -15 on block, but special cancellable at any time into Ryuujin, Gekirin, and Kenroukaku, which can force hesitation and let her recover safely. Can even be special canceled during its own startup, functionally letting Jam cancel directly from Bakushuu into those three kick specials — the most common use is 'Karageki' (236S 214KK), quickly canceling Bakushuu into her overhead Gekirin, a powerful mixup tool.",
+      "notes": ["Special cancelable into 236K, 214K, and 623K", "Staggers on hit and longer on counterhit"]
+    },
+    {
+      "name": "Hyappo Shinshou",
+      "input": "236S > S (Bakushuu > S)",
+      "description": "Known as 'Puffball'. Much slower than Hamonkyaku but +1 on block, letting Jam continue pressure after it's blocked. Large amount of upper-body invulnerability and converts to huge damage on counterhit, so it's scary to challenge. Situational anti-air, especially done early to call out an air dash — Jam almost always gets a corner combo if timed right. 236S~S works on most of the cast after launching with 546PK, granting large corner carry and a knockdown. Can be canceled to Senri Shinshou by pressing H after the opponent is hit or blocks it ('puffpuff'); leads to a knockdown in combos, but is fairly unreliable in pressure due to the gap between hits.",
+      "notes": ["Tumbles opponents on counterhit", "26F startup from Bakushuu (best case)"]
+    },
+    {
+      "name": "Senri Shinshou",
+      "input": "236S > H, or 236S > S > H (Bakushuu > S > H)",
+      "description": "Jam's Heavy Slash follow-up to Bakushuu or Hyappo Shinshou. From Bakushuu, if far from the opponent Jam dashes twice up to them before attacking; if close, she dashes through them and attacks from the reverse side (crossup version has separate frame data). From Hyappo Shinshou, frame data is similar to the crossup version but Jam never crosses up. Large gap between hits makes it possible to hit Jam with a low or throw, or to backdash out of the single active frame. Much more startup than Hyappo Shinshou but safer on block, giving more repressure opportunities. Upper-body invul and limited tracking make it a situational anti-air vs IADs, especially cornered. Useful vs very defensive/passive opponents who are afraid of Hyappo Shinshou.",
+      "notes": ["Wallsticks on counterhit"]
+    },
+    {
+      "name": "Asanagi no Kokyuu (Card Charge)",
+      "input": "22K / 22S / 22H",
+      "description": "Jam's essential special that builds her Ki and strengthens one of her other special moves ('charging cards'). Long animation, so typically only done after a knockdown with 2D or 6H, though stealing a charge in neutral is worthwhile if the opponent is retreating. Which card to charge depends on the character/player matchup: charging Gekirin is generally most useful (mixups and combo enders); Ryuujin offers bigger damage output and a fearsome reversal in some matchups; Kenroukaku is more situational — a true invulnerable reversal but more limited as a mixup tool.",
+      "notes": ["22K charges Ryuujin (236K), 22S charges Gekirin (214K), 22H charges Kenroukaku (623K)", "Card is gained on frame 41, so Jam can be hit out of it before it fully recovers and still get the card; she can also YRC after getting the card to recover faster", "Holding the input results in a MAX card on frame 66 instead", "A MAX card can also be obtained by charging 3 of the same card type"]
+    },
+    {
+      "name": "Ryuujin",
+      "input": "236K (plain / carded / MAX)",
+      "description": "Jam's most iconic move: a powerful, hard-hitting flying kick. Done from the ground it's air unblockable but takes extra time to start. With cards, it gains invulnerability from frames 10-17 during startup, able to plow through well-timed projectiles. On counter hit the MAX version wallsticks for a very long time, enabling an incredibly powerful combo. The grounded version mostly sees use as a combo tool since it's risky in neutral; too slow to confirm from f.S, requiring IAS j.236K to combo without a counterhit.",
+      "notes": ["MAX version wallsticks on counterhit", "Kick special cancelled version is faster, deals less damage, and floats the opponent higher"]
+    },
+    {
+      "name": "Gekirin",
+      "input": "214K (plain / carded / MAX)",
+      "description": "Jam's overhead kick that actually hits overhead. Raw, it's fairly slow, easy to block, and relatively unsafe. Shines as a follow-up to Hamonkyaku — a Karageki (236S 214KK) gives a much faster and safer overhead during pressure. Charged, it gains multiple hits, harder to punish on block; MAX charged, landing recovery and startup are both greatly reduced, making a MAX-card Karageki a 15F safe-on-block overhead. All Karageki versions float the opponent for a large combo. Card Gekirin is Jam's main way to convert stray hits into damage.",
+      "notes": ["Knocks down on hit", "Kick special cancelled version is faster, deals less damage, and floats the opponent higher"]
+    },
+    {
+      "name": "Kenroukaku",
+      "input": "623K (plain / carded / MAX)",
+      "description": "Normally not a true reversal since its invulnerability doesn't reach the active frames, and it can easily be low-profiled, whiffing entirely against some meaty lows. Still usable sparingly as a reversal since it has enough invul to trade with many attacks and forces a knockdown on counterhit. If it connects, Jam can cancel into Ryuujin or Gekirin to be safer on block or escape.",
+      "notes": ["Cannot be Yellow or Purple Roman Canceled", "Normal version loses invulnerability before it becomes active", "Carded versions are true, invulnerable reversals", "MAX card version recovers in the air, but Jam cannot double jump after using it, only airdash", "Kick special cancelled version is faster, deals less damage, and floats the opponent higher"]
+    },
+    {
+      "name": "Air Ryuujin",
+      "input": "j.236K (plain / carded / MAX)",
+      "description": "Used as a combo tool without cards. Can combo into and out of Gekirin and Kenroukaku to bring the opponent closer to the corner. Should not be used to end an air combo, as Jam can be punished by a tech button before landing.",
+      "notes": ["Both card versions gain strike invulnerability from frame 1 to active", "Airdash Ryuujin loses most of its forward momentum", "Kick special cancelled version is faster, deals less damage, and floats the opponent higher"]
+    },
+    {
+      "name": "Air Gekirin",
+      "input": "j.214K (plain / carded / MAX)",
+      "description": "Jam's main combo ender without cards. Returns her to the ground quickly and sets the opponent up to tech high, letting Jam threaten with upward hitboxes like j.S or 236S~S. j.S also combos directly into Gekirin on most air hits. When carded, Gekirin always knocks down; Jam returns to the ground fast enough to safely recharge a card and still get okizeme, or pick the opponent up before they land for a combo into a super or knockdown via 546PP for more damage. Max Gekirin causes even more float, allowing a combo into 236S~S for even higher damage while still allowing a recard. Airdash Gekirin halts all vertical momentum and Jam drops straight down — a fast, hard-to-beat overhead that's relatively safe on block, and can be spaced as a crossup (though much more punishable on block then). On hit it bounces the opponent for a juggle; with a card/MAX card charged, the window to execute it during the airdash becomes much tighter.",
+      "notes": ["Airdash Gekirin stops horizontal momentum and causes a fast drop", "Opponent can air tech out of the normal version", "Carded versions always knock down on hit", "Kick special cancelled version is faster, deals less damage, and floats the opponent higher"]
+    },
+    {
+      "name": "Air Kenroukaku",
+      "input": "j.623K (plain / carded / MAX)",
+      "description": "Generally a combo tool to knock the opponent higher or deal more damage through heavy scaling off a throw starter or guts. One of the few DPs in Guilty Gear that's throw invulnerable in the air too, letting Jam hit opponents trying to IB an air throw against her. During an airdash, Jam loses vertical momentum and instead falls slowly while kicking upward; hits all around her and is completely invincible, making it a strong crossup option that beats most reversals and can't be air thrown — though reward is minimal unless a card was charged beforehand (via 22H) to give enough untech time to land and combo.",
+      "notes": ["Airdash Kenroukaku stops horizontal momentum and causes a slow fall", "Normal Kenroukaku can be air teched out of", "Both card versions knock down; MAX version recovers in the air", "Kick special cancelled version is faster, deals less damage, and floats the opponent higher", "Preserves air options when Roman Canceled out of a superjump (not on a normal jump)"]
+    }
+  ],
+  "overdrives": [
+    {
+      "name": "Choukyaku Hou'Oushou",
+      "input": "632146S / 632146D (Burst)",
+      "description": "Jam's cinematic super, used the least of her options. Strike invulnerable through startup, but generally outshined by Kenroukaku (623K) as a reversal. Rushes forward before attacking, making it harder to whiff than her other reversal options. Only strike invulnerable — Jam can still be thrown out of it. In longer combos, the Burst version offers better utility due to multiple hits and higher minimum damage."
+    },
+    {
+      "name": "Bao Saishinshou",
+      "input": "236236H, followed by P (236236H > P)",
+      "description": "Jam's other reversal super, more often used as a combo ender. Much faster startup than Choukyaku Hou'Oushou but very small range, easy to whiff. Has a minimum damage scaling of 50% and high base damage, allowing it to add massive damage to the end of most combos. Launches the opponent high, setting up the Kaorinkuen follow-up. If blocked or whiffed it can be RC'd; on hit Jam is completely invincible until she recovers. Pressing Punch after the launch starts the Kaorinkuen followup with 3 possible outcomes depending on timing: a glancing/normal hit (single hit, drops the opponent straight down, fastest recovery, some okizeme), a clean hit (two hits with extreme zoom-in/hitstop, drops the opponent slightly forward pulling them from the corner if applicable, slower recovery/weaker okizeme but much higher damage), or an outright whiff (no damage, Jam splats into the wall — she can RRC on contact with the wall to be safe; an early whiff lets her recover in time, a late whiff usually means eating a huge punish). Timing practice can use the flame aura animation or sound cues; correct timing shifts depending on how high the opponent was launched."
+    },
+    {
+      "name": "Renhoukyaku",
+      "input": "632146H",
+      "description": "Less flashy than her other supers but very useful. Completely throw invulnerable through startup and gains a large window of strike invulnerability after 5F, making it a strong neutral stop-sign or an anti-wakeup option to bait and punish reversals. Only source of Jam's projectile YRC okizeme — she can YRC after the flash and use the super's FX to hide a high/low mixup, as the ki blast almost completely obscures 5D's orange flash. On hit, Jam can follow up in the corner with 5P and combo to a knockdown via 546P~P. On block, +3, though many opponents will mash IB against it. Multiple hits let it chip out low-HP opponents or hit OTG to secure a kill.",
+      "notes": ["Throw invulnerability frames 1-5, complete invulnerability frames 6-23", "Can be YRC'd before superflash for 1-5 throw invul + 6-20F all invul, for 25 meter", "Can be YRC'd AFTER startup for a better combo or a mixup"]
+    }
+  ],
+  "instantKill": {
+    "name": "Gasenkotsu",
+    "input": "During IK Mode: 236236H",
+    "description": "Uses the animation of her Goushao. Jam has a fairly practical IK thanks to her ability to build stun on the opponent through CH Hyappo Shinshou and CH Senri Shinshou, plus several ways to combo into Gold IK: CH puffballs, CH MAX Ryuujin, or hitting with MAX Gekirin or 5D. She can also use Parry and Zekkei to RRC and combo into Gold IK from the stagger state. With 50-100 meter and the opponent in Hellfire state, she can often just combo into Bao Saishinshou and win the match that way instead."
+  }
+}

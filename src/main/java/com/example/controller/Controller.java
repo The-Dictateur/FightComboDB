@@ -249,6 +249,7 @@ public class Controller {
             String selectedChar = combo_char.getSelectionModel().getSelectedItem();
             String selectedGame = combo_game.getSelectionModel().getSelectedItem();
             Personaje personaje = charService.obtenerPersonajePorNombreYJuego(selectedChar, selectedGame);
+            System.out.println("PJ:" + selectedChar);
 
             if (personaje == null) {
                 ControllerInfo.showInfo("No character selected or character does not exist.");

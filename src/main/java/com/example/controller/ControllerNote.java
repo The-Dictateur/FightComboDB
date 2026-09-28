@@ -7,11 +7,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import com.example.model.Personaje;
+import com.example.service.CharService;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
 
 import com.example.service.NoteService;
@@ -38,6 +41,9 @@ public class ControllerNote {
     private MediaPlayer mediaPlayer;
     private File downloadedVideoFile;
     private java.util.List<javafx.scene.Node> originalNodes;
+
+    @Autowired
+    private ApplicationContext applicationContext;
 
     @FXML
     private Button buttonSave;
@@ -69,6 +75,9 @@ public class ControllerNote {
     @FXML
     private Button aiButton;
 
+    @Autowired
+    private CharService charService;
+
     private Long personajeId;
 
     public void initialize() {
@@ -86,11 +95,17 @@ public class ControllerNote {
         aiButton.setOnAction(event -> {
             try {
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/textAi.fxml"));
+                fxmlLoader.setControllerFactory(applicationContext::getBean);
                 Parent root = fxmlLoader.load();
 
                 // Aquí está la clave: coger el controlador ya creado por el FXMLLoader
                 ControllerAI controllerAI = fxmlLoader.getController();
                 controllerAI.setTargetTextArea(textNote); // le pasamos el TextArea de la nota
+
+                Personaje personaje = charService.obtenerPersonajePorId(personajeId);
+                if (personaje != null) {
+                    controllerAI.setJuego(personaje.getJuego());
+                }
 
                 Stage stageAI = new Stage();
                 stageAI.setTitle("Preguntar a la IA");

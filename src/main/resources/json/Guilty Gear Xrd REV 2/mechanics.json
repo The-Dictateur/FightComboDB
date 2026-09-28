@@ -1,0 +1,201 @@
+{
+  "game": "Guilty Gear Xrd REV 2",
+  "mechanics": [
+    {
+      "name": "Guard (Blocking)",
+      "description": "The fundamental defense. Standing guard blocks High and Mid attacks; crouching guard blocks Mid and Low attacks. Guarding an attack pushes the defender back (pushback); in the corner, pushback is applied to the attacker instead so net pushback stays consistent. Special moves and Overdrives inflict chip damage on block. Throws and Unblockable attacks cannot be guarded against."
+    },
+    {
+      "name": "Block Carryover",
+      "description": "During blockstun the defender automatically blocks other attacks regardless of held direction until blockstun ends. Ends immediately when blockstun ends, even with only a one frame gap. Works even if the opponent switches sides. Defender must still block high/low correctly."
+    },
+    {
+      "name": "Unblockable Attacks",
+      "description": "Some attacks cannot be guarded: Throws (proximity based, no guard possible) and true Unblockables (special strikes that hit even when guarding). There is also a High+Low Unblockable type: hitting a grounded opponent with high and low attacks simultaneously guarantees a hit since both cannot be blocked at once."
+    },
+    {
+      "name": "Airborne Guard",
+      "description": "No high/low distinction in the air; hold any backward direction to block. Landing while in air blockstun converts remaining air blockstun into ground blockstun. Many grounded normal moves are Air Unblockable; these can still be air blocked using Faultless Defense. In frame data, an attack that is NOT air unblockable lists its Guard value as 'Air' (distinct from 'Mid')."
+    },
+    {
+      "name": "Cross-up Protection",
+      "description": "After the opponent switches sides, the first 3 frames still block attacks from the opposite direction even while holding forward, giving leniency to switch blocking direction. All other blocking rules (high/low) still apply."
+    },
+    {
+      "name": "Instant Block",
+      "description": "Begin guarding right before an attack connects (8 frame window). On success the character flashes white. Benefits: faster blockstun recovery, reduced pushback, extra Tension gain, increased Tension Balance, and longer airborne time when done in the air (Air IB). Does not allow illegal blocks (high/low rules still apply, air unblockables still need FD). Mistiming an IB locks the mechanic out for 20 frames; another attempt during lockout resets the timer."
+    },
+    {
+      "name": "Faultless Defense (FD)",
+      "description": "While guarding, hold any 2 attack buttons (except Dust) to activate. Consumes Tension Gauge while held. Prevents chip damage, increases pushback and blockstun. Can be used in the air to guard almost all air unblockable strikes. High/low blocking rules still apply."
+    },
+    {
+      "name": "Blitz Shield",
+      "description": "Input: H + any other attack button (except Dust), costs 25% Tension Gauge, usable in the air. Deflects the opponent's attack and puts them in 'reject' state, open to punish. Grants brief invincibility after a successful shield. Does not work against throws, max-charge Blitz Attacks, or Overdrives. Successfully shielding a strike refunds 10% Tension and some Burst Gauge. Comes out in 1 frame, making it usable as an emergency reversal. Standing version: 5 or 8; crouching: 2 or 3; air version: 5 only (holding back/forward does not work)."
+    },
+    {
+      "name": "Blitz Attack",
+      "description": "Hold H during a grounded Blitz Shield to charge a Blitz Attack; release to attack. While charging, continues to reject attacks; upon glowing red it rejects all rejectable moves regardless of high/mid/low. At max charge the attack gains greatly increased Attack Level and can no longer be rejected by a Blitz Shield. Partial charge has 55% initial proration; max charge does not prorate. All charge levels steal some of the opponent's Burst Gauge on hit."
+    },
+    {
+      "name": "Walking",
+      "description": "Basic movement by holding forward (6) or back (4). Each character has a unique forward/backward walk speed. Provides fine positional control, can be canceled immediately (allowing free blocking after forward movement), and is silent (no audio cue), making it hard to react to."
+    },
+    {
+      "name": "Running",
+      "description": "Input 6[6]. Faster than walking but ends in a vulnerable 5-frame 'run skid' animation if not canceled into another action (guard is disabled during run skid). Can be canceled early via Faultless Defense ('FD Braking'/'Brake'). Some characters cannot run at all (e.g. Potemkin) and have alternative special dash types (Step Dash, Hover Dash, Teleport Step Dash, Guard Point Step Dash, Invincible Run) depending on the character."
+    },
+    {
+      "name": "Backdash",
+      "description": "Input 44 on the ground. Quick burst of backward movement, invulnerable from the first frame of the animation. Travels a fixed distance at a set speed, is not cancelable, and is fully vulnerable during the latter part of the animation."
+    },
+    {
+      "name": "Jumping",
+      "description": "Any upward direction while grounded. Locks the character into a fixed arc determined by input direction and existing momentum. Preceded by a short Prejump animation. During the first airborne frame, only guarding is possible (not attacking) — relevant for Instant Air Special timing. Most characters can jump twice before returning to the ground."
+    },
+    {
+      "name": "High Jump (Super Jump)",
+      "description": "Input: any downward direction then any upward direction (e.g. 2 then 8) while grounded. Jumps higher than a standard jump but disables double jump (air dash still available). Character automatically turns to face the opponent if jumping over them."
+    },
+    {
+      "name": "Prejump",
+      "description": "Before becoming airborne from a jump or high jump, characters enter a brief standing Prejump state: cannot block, but invincible to throws. Duration varies by character (heavier/slower characters have longer prejump). Prejump can be canceled into Blitz Shield, Burst, Specials, and Supers, commonly used to combo into Blitz Attack via a jump-canceled normal."
+    },
+    {
+      "name": "Air Dash",
+      "description": "Input j.44 or j.66. Near-universal burst movement option while airborne. Most characters get one air dash per jump; some cannot air dash at all, others (Dizzy, Millia) can air dash twice. Character is not actionable for a period after the dash begins."
+    },
+    {
+      "name": "Air Options",
+      "description": "Represents how many times a character can jump/dash in the air before touching ground. Most characters have 1 air option. Exceptions: Dizzy and Millia can air dash twice; Chipp can jump 3 times; Bedman has an 8-Way Air Dash instead of double jump/air dash; Zato-1 has Flight instead of double jump; Potemkin cannot air dash. Air options are regained by touching the ground, air recovery, air blocking, air Blitz Shielding, or air Throw Break."
+    },
+    {
+      "name": "Landing Recovery",
+      "description": "Standard Landing Recovery: on the first landing frame all actions are disabled except block, Instant Block and Faultless Defense; for N following frames (character-specific), walking, jumps, crouching, running and backdash are disabled, but attacking, Blitz Shield and throws are allowed. Does not apply if holding back on landing versus a non-throw attack (Proximity Guard). Special Landing Recovery: some airborne moves impose their own unactionable recovery on landing (noted as +(X)L in frame data), overriding standard recovery; canceled by double jump, Roman Cancel, or connecting an airborne hit right before landing."
+    },
+    {
+      "name": "Wakeup",
+      "description": "After a knockdown and a brief vulnerable OTG period, the character enters a fully invincible wakeup animation. Duration is character-specific and depends on whether the knockdown is face-up or face-down."
+    },
+    {
+      "name": "Stagger Recovery",
+      "description": "Stagger leaves the defender helpless to strikes and throws (can be hit/thrown during it). Mashing Punch/Kick/Slash/Heavy Slash/Dust (including during hitstop) reduces the stagger duration by up to half, 3 frames per button press (multiple simultaneous presses count as one). The final 4 frames are a fixed, non-reducible Stagger Recovery Animation."
+    },
+    {
+      "name": "Air Recovery (Air Tech/Ukemi)",
+      "description": "Direction + any button (except Dust) after leaving the untechable state; hold left/right/neutral to tech in that direction. Regains air control after being hit. Invulnerability from the tech carries over to the very next action taken."
+    },
+    {
+      "name": "Normal Attacks",
+      "description": "P/K = weak and fast; S/H = strong and slow; D = overhead/low. Normals generally cancel in the order P > K > S > H > D (Gatling), though exact chains vary by character. Command Normals (direction + button, e.g. 6P, 6H) exist for every character; 6P typically has upper-body invincibility, making it a common anti-air tool."
+    },
+    {
+      "name": "Dust Attack (5D)",
+      "description": "Overhead attack that launches a grounded opponent for a combo (airborne opponents cannot be combo'd off it). After launching, press Up (Homing Jump: air normals chain freely for a short window) or Forward (Homing Dash: normals chain freely and force a tumble state, enabling wall stick/corner combos) to follow up."
+    },
+    {
+      "name": "Throws (Normal)",
+      "description": "Input 6H or 4H at close range (air OK). No startup at all — instant on input. Whiffs into a normal 6H/4H if out of range. Cannot be performed while running/dashing, during/after an air dash until landing, or while holding a diagonal. A throw always beats a strike hitting on the same frame."
+    },
+    {
+      "name": "Throw Invulnerability",
+      "description": "Characters cannot be thrown during: prejump, blockstun + 5F after, hitstun + 6F after, knockdown + 9F after, or while under an explicit throw invulnerability effect. Can still be ground thrown during Stagger."
+    },
+    {
+      "name": "Special Move Throws",
+      "description": "Some special moves have throw properties, split into: Command Throws (cannot be broken, often higher damage/startup), Combo Throws (behave like throws but can be comboed into without Stagger), and Hit Grabs (technically strikes that transition into a throw animation on hit — can be Blitz Shielded since they are strikes)."
+    },
+    {
+      "name": "Throw Break",
+      "description": "Input a normal throw within a 3 frame window of being thrown (same frame, or 1 frame earlier/later) to break it — both characters back off and recover simultaneously. Only normal throws can be broken, not command throws. Cannot be performed during Counter Hit state or while recovering from a move. The break animation is 30F and fully invincible. Breaking an air throw resets both characters' air options."
+    },
+    {
+      "name": "Cancels",
+      "description": "Gatling: normal attacks canceling into other normals per character-specific chains (generally P>K>S>H>D). Special Cancel: normals into specials/Overdrives. Jump Cancel: normals into jump/super jump. Prejump Cancel: prejump into specials/supers, often used to reach Blitz Attack. Kara Cancel: canceling the first few startup frames of a normal into specials/supers. Also Roman Cancel and Clash (see their own entries)."
+    },
+    {
+      "name": "Roman Cancel (RC)",
+      "description": "Press any 3 attack buttons (except Dust), air OK. Cancels almost any action. Three types: Yellow (25% Tension, 6F startup, 18F slowdown; usable in neutral when opponent is not in blockstun/hitstun), Red (50% Tension, 1F startup, 60F slowdown; usable when opponent IS in blockstun/hitstun, or vs a blue Psych Burst), Purple (50% Tension, 6F startup, 40F slowdown; usable during late active/recovery frames in neutral). All RCs are fully invincible 1 frame before and after super flash. During any RC the opponent's movement (and effectively hitstun) is slowed roughly by half; RC-ing into a hit while the opponent is in this slowdown adds 80% extra forced proration."
+    },
+    {
+      "name": "Dead Angle Attack",
+      "description": "Input 6 + any 2 attack buttons (except Dust) during grounded blockstun; costs 50% Tension. Invincible startup attack used to interrupt pressure. Deals zero damage if the opponent is at low health. Puts the user into a 240 frame Tension Cooldown."
+    },
+    {
+      "name": "Special Attacks",
+      "description": "Motion input + button. Have unique properties (invincibility, unique movement, etc.) that vary per character. Typically deal 5% of their base damage as chip damage on block unless the opponent uses Faultless Defense."
+    },
+    {
+      "name": "Burst (Psych Burst)",
+      "description": "Any attack button + Dust, costs the full Burst Gauge. Two types depending on the character's current state: Gold Burst (during neutral, air OK) — fully invulnerable to strikes for its duration (but can still be air thrown), cannot be comboed into, maxes out Tension Gauge on hit ignoring Tension Penalty, refunds 33% Burst Gauge regardless of hit or miss. Blue Burst (during blockstun or hitstun, air OK) — recovery is fully vulnerable (can be punished), can be air thrown even during startup, refunds 33% Burst Gauge on hit. Blue Burst is temporarily disabled while being thrown, hit by an Overdrive/Instant Kill, hit by certain throw-like special moves, or while stunned. Burst Gauge starts full each match and carries over between rounds (using it at round end means starting the next round empty)."
+    },
+    {
+      "name": "Overdrives (Supers)",
+      "description": "Motion input + button, costs 50% Tension Gauge. Preceded by a 'super flash' freeze. Cannot be Bursted on hit or Blitz Shielded. Deal at least 20% minimum damage, and 20% more damage during Hellfire. Most Overdrives (unlike other Tension-spending actions) do not inflict a Tension Penalty."
+    },
+    {
+      "name": "Burst Overdrive",
+      "description": "A powered-up version of a character's cinematic Overdrive, performed with the same motion + Dust instead of the normal button. Costs 50% Tension + the full Burst Gauge. Fully invulnerable startup, deals 25% more damage than the regular version (minimum damage also increased). Restores one third of the Burst Gauge on a successful hit."
+    },
+    {
+      "name": "Hellfire",
+      "description": "Activated when a character has roughly 20% life remaining and returns to a neutral state ('It's not over yet!'). Overdrives deal 20% more damage during Hellfire; character-empowering Overdrives last longer."
+    },
+    {
+      "name": "Instant Kill (IK)",
+      "description": "Input 236236H while in Instant Kill Mode (activated with P+K+S+H in grounded neutral) to instantly win the round if it connects. IK Mode turns the Tension Gauge into a countdown timer and disables Tension-related actions (RC, FD); once the timer empties, health slowly drains instead (cannot kill directly). Performing an IK removes the Tension Gauge for the rest of the round. Comboing into an IK is normally disabled, except under 'Gold IK' conditions: one round from winning, opponent's life is flashing (below ~20% or combo'd under 10%), and the attacker has 50%+ Tension — this speeds up IK Mode activation and the IK itself."
+    },
+    {
+      "name": "Tension Gauge",
+      "description": "Central resource, starts empty each round. Gained through offensive actions (attacking, advancing); the more aggressive the action, the faster the gain, via a 'Tension Balance' modifier. Spent on: Faultless Defense (0.25% per frame, or (damage×0.25 + 2.5)% on block), Dead Angle Attack (50%), Red/Purple Roman Cancel (50% each), Yellow Roman Cancel (25%), Blitz Shield (25%), Overdrives (50%), Burst Overdrives (50% + full Burst Gauge), Negative Penalty (100%). Backing off, backdashing, or standing still reduces Tension Balance and slows future gain."
+    },
+    {
+      "name": "Tension Cooldown",
+      "description": "Reduces Tension Gain to 20% of normal for a duration after spending Tension: Faultless Defense 60F, Dead Angle Attack 240F, Roman Cancel 360F, Negative Penalty 600F. Penalties do not stack; a new penalty resets the timer to the larger duration. Overdrives and Blitz Shield do not trigger Tension Cooldown."
+    },
+    {
+      "name": "Negative Penalty",
+      "description": "Discourages prolonged non-interactive play (backdashing, jumping back, air backdashing repeatedly, or standing still). A warning appears over the Tension Gauge; continued avoidance triggers Negative Penalty, causing the player to lose all stored Tension and suffer severely reduced Tension Gain for 10 seconds. Actively using ranged offense (e.g. zoning) does not trigger it."
+    },
+    {
+      "name": "Burst Gauge",
+      "description": "15000 units total, needed (full) for Burst and Burst Overdrive. Starts full each match and carries over between rounds. Increases automatically every 60 frames at a rate depending on current health (60/60F at 100-51% HP, 120/60F at 50-26% HP, 180/60F at 25-0% HP — lower health regenerates Burst faster). Also increases when taking damage, via formula (100 + Move Damage × 3) × (1.0 + Combo Count × 0.03)."
+    },
+    {
+      "name": "R.I.S.C. Level",
+      "description": "Gauge below the Life Gauge that governs damage scaling; rises when an attack is blocked (basic block or Instant Block) and is unaffected by Faultless Defense or Blitz Shield. Damage scaling from R.I.S.C. only applies once the gauge is emptied, resetting when the combo ends. When R.I.S.C. is over half full (flashing), any hit becomes a Counter Hit, including throws and mid-combo attacks. Each attack has R.I.S.C.- (lowers on hit) and R.I.S.C.+ (raises on block) values; R.I.S.C.+ gained is halved while already in blockstun."
+    },
+    {
+      "name": "Attack Level",
+      "description": "Determines standardized hitstun, blockstun, and pushback for most attacks, unless a move overrides these values explicitly (noted in frame data). Higher Attack Level generally means more pushback on block."
+    },
+    {
+      "name": "Counter Hit (CH)",
+      "description": "Occurs when hitting an opponent who is in Counter Hit state (character flashes red). Grants more hitstun, air untechable time, and hitstop, enabling CH-specific combos and sometimes additional effects (Wallbounce, Hard Knockdown). All attacks are in CH state during their startup and active frames; most are not during recovery, with exceptions like Dead Angle Attacks and Blitz Shield/Blitz Attack. Any hit is automatically a Counter Hit while R.I.S.C. Level is flashing."
+    },
+    {
+      "name": "Mortal Counter",
+      "description": "Occurs when a strike (not Dead Angle Attack) lands during Danger Time. Triggers Counter Hit effects plus extra hitstop/slowdown, and allows the attack to cancel into virtually anything a Clash could cancel into, including dashes and Faultless Defense, turning even slow-recovery moves into strong combo starters."
+    },
+    {
+      "name": "Stun",
+      "description": "Accumulating enough stun damage in a short time 'dizzies' the character (2560 stunmash points), disabling all actions including blocking and teching. Naturally decays 10 per frame; mashing buttons/directions accelerates escape (25 per input, 40 if button+direction on the same frame; optimal mashing allows escape after 64 frames). Stun decay pauses during combos except on OTG hits. Formula: ((Move Damage × Combo Hit Modifier × Character State Modifier) - 5) × IK Modifier × 15 × 1.15; stun resistance × 100 is the threshold to become stunned. Counter Hit doubles the Character State Modifier (200% vs 100% normal hit); OTG and armored hits contribute 0%."
+    },
+    {
+      "name": "Invincibility Types",
+      "description": "Attribute Invincibility: invulnerable only to specific attack types (e.g. Bursts are invulnerable to strikes/projectiles but not throws). Hurtbox Invincibility: an attack's hurtbox visually/physically shrinks during parts of its animation (common on anti-air 6P normals with upper-body invincibility), described in frame data as 'above knees invincibility', 'above chest invincibility', 'low profile', etc."
+    },
+    {
+      "name": "Clash",
+      "description": "Strike Clash: occurs when two attacks' attack-boxes collide without hitting either character's hurtbox; the hit is nullified and both characters can cancel into almost any action (attack, jump if jump-cancelable, forward run/air dash if applicable, Faultless Defense, Blitz Shield). Projectile Clash: projectiles have a clash level; equal-level projectile clashes remove one hit from each; higher-level projectiles reduce a lower-level projectile's hits without losing their own. Most strikes can clash; projectile-attribute strikes are generally Clash Level 1."
+    },
+    {
+      "name": "Danger Time",
+      "description": "Triggered with a 30% chance whenever a Clash occurs. After a 3 second countdown (both players get a free 25% Tension), all hits deal 20% more damage and inflict Mortal Counter instead of a normal Counter Hit."
+    },
+    {
+      "name": "Taunts and Respects",
+      "description": "Taunt (Start/R) can be canceled into an attack after about half its animation and raises the opponent's Tension Gauge by 10% (modified by their Tension Balance/penalty); taunting after defeating the opponent grants them 50% Tension at the start of the next round. Respect (6R/6Start) can be canceled at any time, making it the safer option for baiting the opponent into attacking."
+    }
+  ]
+}

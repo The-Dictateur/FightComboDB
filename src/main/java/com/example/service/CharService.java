@@ -13,10 +13,6 @@ public class CharService {
     @Autowired
     private CharRepository charRepository;
 
-    public List<Personaje> obtenerTodosLosPersonajes() {
-        return charRepository.findAll();
-    }
-
     public List<Personaje> obtenerPersonajePorJuego (String nombreJuego) {
         return charRepository.findByJuego(nombreJuego);
     }
@@ -29,12 +25,12 @@ public class CharService {
         return charRepository.findByNombreAndJuego(nombre, juego).orElse(null);
     }
 
-    public Personaje obtenerPersonajePorId(Long id) {
-        return charRepository.findById(id).orElse(null);
-    }
-
     public Personaje guardarPersonaje(Personaje personaje) {
         return charRepository.save(personaje);
+    }
+
+    public Personaje obtenerPersonajePorId(Long id) {
+        return charRepository.findById(id).orElse(null);
     }
 
 }

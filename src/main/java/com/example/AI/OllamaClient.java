@@ -15,18 +15,18 @@ public class OllamaClient {
     private final HttpClient httpClient = HttpClient.newHttpClient();
     private final ObjectMapper mapper = new ObjectMapper();
 
-    /**
-     * Envía un prompt a un modelo local de Ollama y devuelve la respuesta como texto.
-     *
-     * @param modelo nombre del modelo, p.ej. "qwen2.5:14b-instruct"
-     * @param prompt el texto completo que se le manda al modelo
-     * @return la respuesta generada por la IA
-     */
-    public String preguntar(String modelo, String prompt) throws Exception {
+    public String preguntar(String modelo, String systemPrompt, String prompt) throws Exception {
+        Map<String, Object> options = Map.of(
+                "num_ctx", 8192, // aumenta la ventana de contexto
+                "temperature", 0.3
+        );
+
         Map<String, Object> body = Map.of(
                 "model", modelo,
+                "system", systemPrompt,
                 "prompt", prompt,
-                "stream", false
+                "stream", false,
+                "options", options
         );
 
         String jsonBody = mapper.writeValueAsString(body);
