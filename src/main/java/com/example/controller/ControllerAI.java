@@ -1,7 +1,9 @@
 package com.example.controller;
 
 import com.example.AI.OllamaClient;
+import com.example.service.FrameDataService;
 import com.example.service.MecanicasJuegoService;
+import com.fasterxml.jackson.databind.JsonNode;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -24,9 +26,13 @@ public class ControllerAI {
 
     private TextArea targetTextArea;
     private String juego;
+    private String personaje;
 
     @Autowired
     private MecanicasJuegoService mecanicasJuegoService;
+
+    @Autowired
+    private FrameDataService frameDataService;
 
     private volatile boolean cargando = false;
 
@@ -85,10 +91,6 @@ public class ControllerAI {
         });
     }
 
-    /**
-     * Construye el "carácter" de la IA, insertando el juego actual como variable.
-     * Esto es lo que define cómo se comporta la IA, no lo que sabe en concreto.
-     */
     private String construirSystemPrompt() {
         StringBuilder sb = new StringBuilder();
 
@@ -110,6 +112,11 @@ public class ControllerAI {
             sb.append("No specific game has been identified for this note. Ask the user to clarify which game they mean if it's not obvious from their question.\n");
         }
 
+        if (personaje != null && !personaje.isBlank()) {
+            sb.append("The character this note is about is: ").append(personaje).append(".\n");
+            sb.append("You have been provided with that character's data (moveset, frame data, strengths/weaknesses) below — use it as ground truth for anything specific to ").append(personaje).append(".\n");
+        }
+
         sb.append("""
             
             Your job is to help write clear, useful study notes about specific characters,
@@ -118,6 +125,7 @@ public class ControllerAI {
             
             Important rules:
             - Never mix mechanics from a different game than the one specified above.
+            - Never mix moves or data from a different character than the one specified above.
             - If you don't have a specific data point (exact frame data, exact damage, etc.), say so clearly instead of inventing it.
             - Answer in the language the user is talking to you in, in a clear and organized way, suitable to be saved directly as a study note.
             """);
@@ -126,7 +134,7 @@ public class ControllerAI {
     }
 
     /**
-     * Construye el contexto concreto (mecánicas del juego) + la pregunta del usuario.
+     * Construye el contexto concreto (mecánicas del juego + datos del personaje) + la pregunta del usuario.
      */
     private String construirPrompt(String pregunta) {
         StringBuilder sb = new StringBuilder();
@@ -141,8 +149,19 @@ public class ControllerAI {
                     sb.append("- ").append(m.getName()).append(": ").append(m.getDescription()).append("\n");
                 }
             }
-            // Refuerzo: lo repetimos justo antes de la pregunta, después de la lista larga
             sb.append("\n(Remember: all of the above mechanics belong specifically to ").append(juego).append(".)\n\n");
+        }
+
+        if (personaje != null && !personaje.isBlank()) {
+            JsonNode datosPersonaje = frameDataService.obtenerPersonaje(juego, personaje);
+            if (datosPersonaje != null) {
+                sb.append("Character data for ").append(personaje).append(":\n");
+                sb.append(datosPersonaje.toPrettyString()).append("\n");
+                sb.append("\n(Remember: all of the above character data belongs specifically to ").append(personaje).append(".)\n\n");
+            } else {
+                sb.append("No character data file was found for ").append(personaje).append(". ");
+                sb.append("Answer using your general knowledge of this character if you have it, but say clearly when unsure instead of inventing.\n\n");
+            }
         }
 
         sb.append("Pregunta del usuario: ").append(pregunta);
@@ -160,5 +179,11 @@ public class ControllerAI {
 
     public void setJuego(String juego) {
         this.juego = juego;
+        System.out.println("Juego recibido en ControllerAI: [" + juego + "]");
+    }
+
+    public void setPersonaje(String personaje) {
+        this.personaje = personaje;
+        System.out.println("Personaje recibido en ControllerAI: [" + personaje + "]");
     }
 }

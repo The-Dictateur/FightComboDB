@@ -105,6 +105,7 @@ public class ControllerNote {
                 Personaje personaje = charService.obtenerPersonajePorId(personajeId);
                 if (personaje != null) {
                     controllerAI.setJuego(personaje.getJuego());
+                    controllerAI.setPersonaje(personaje.getNombre());
                 }
 
                 Stage stageAI = new Stage();
