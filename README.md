@@ -13,6 +13,7 @@ Its main purpose is to serve as a note manager for fighting games, allowing you 
 - 💾 Export and import notes in **`.json`** format.
 - 🖥️ Local desktop app compatible with **Windows**.
 - 🎨 Graphical interface built with **JavaFX + FXML**.
+- 🤖 Built-in AI assistant (via local Ollama) to help answer questions and generate notes for each character.
 
 ---
 
