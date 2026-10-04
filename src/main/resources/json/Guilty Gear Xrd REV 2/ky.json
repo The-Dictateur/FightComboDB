@@ -1,0 +1,297 @@
+{
+  "character": "Ky Kiske",
+  "game": "Guilty Gear Xrd REV 2",
+  "overview": "Ky is comfortable anywhere, but he excels in grounded footsies. He uses his fast and long f.S to tame opponents and complements it with 2S, 5H, 2K, and 2D. Opponents frustrated into jumping at him face his above-the-knees invulnerable 6P and giant, disjointed 2H. Any of these pokes or anti-airs can lead into a knockdown or a solid combo. Farther away, he uses Stun Edge (236S) projectiles to harass opponents, either covering his approach or playing keep away. By placing 'Grinders' and using them via Durandal Call to power up his projectiles, Ky has a wide variety of strong options in neutral, okizeme, and combos. After securing a knockdown, Ky can safely set up okizeme using Charged Stun Edge (236H), then apply strong pressure mixing in low attacks, frame traps, throws, and pressure resets with 6H and 6K. If footsies don't cut it, Ky can use Stun Dipper (236K) to slide under pokes/projectiles and score knockdowns, his overhead Greed Sever (214K) to check reactions and hop over lows, or his reversal Vapor Thrust (623H) to challenge pressure. Ky can quickly switch between keeping the opponent away and turning on the offensive; his diverse moveset has a tool for every situation, and everything about him is average at worst — usually quite a bit better.",
+  "keyStats": {
+    "fastestNormals": "5P, 2P, 5K, 2K (all 5F)",
+    "reversals": ["Vapor Thrust 623S/623H (9F/11F)", "Ride the Lightning 632146H (10+1F)"]
+  },
+  "prosAndCons": {
+    "pros": [
+      "Strong neutral game: normals that are either fast or have strong hitboxes often convert into a knockdown or damage while controlling space well",
+      "Variable pressure routing: an open gatling table and a suite of versatile normals allow variable pressure structure to keep opponents guessing",
+      "Projectile okizeme: Charged Stun Edge and Grinders grant strong, looping okizeme given meter or a Grinder set up in the corner",
+      "Jack of all trades: performs well in most aspects of the game with few major flaws — two strong anti-airs, an invulnerable DP, an invulnerable super, and versatile projectiles"
+    ],
+    "cons": [
+      "Securing air knockdowns: unless the opponent is cornered, it's difficult (sometimes impossible against airborne lightweight characters) to get a knockdown from air combos, forcing a choice between higher damage or okizeme without spending meter on Ride the Lightning in many midscreen routes"
+    ]
+  },
+  "uniqueMechanic": {
+    "name": "Fortified Projectiles (Durandal Call)",
+    "description": "Ky can use specific attacks (5D, j.D, Split Ciel/236D) to summon small floating circles called Grinders, lasting 210 frames (3.5 seconds) or until used. One ground Grinder (from 5D and Split Ciel) and one air Grinder (from j.D) can be active at once; summoning a second of either kind erases the older one. Shooting a projectile through a Grinder powers it up into a Fortified state, consuming the Grinder: Stun Edge (236S) becomes a full-screen sword-beam for zoning, Charged Stun Edge (236H) becomes a large, long-lasting stationary projectile for okizeme, and Sacred Edge (236236P) becomes a massive full-screen blade that wallsplats opponents for combos. Fortified projectiles still count toward Ky's projectile limit of 1 Stun Edge on screen — locking the ground down with a Fortified Charged Stun Edge means no other Stun Edge can be used until it goes away. (Older notation calls this mechanic 'Durandal Call', abbreviated DC — e.g. 'DC CSE' means Fortified Charged Stun Edge.)"
+  },
+  "normalMoves": [
+    {
+      "input": "5P",
+      "startup": 5,
+      "active": 4,
+      "recovery": 5,
+      "description": "Useful for pressure, tick throws, frame traps, burst-safe combos, and situational anti-airs. Generally a 'backup plan' since Ky has stronger tools in most situations, but it's a quick all-purpose attack that sets up pressure for throws and frame traps, and is safe from Bursts due to its fast recovery. Hits a bit high up, making it a nice backup anti-air when 6P would fail (opponent too close and/or crossing up).",
+      "gatlingOptions": ["5P", "2P", "6P", "5K", "2K", "6K", "c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "5K",
+      "startup": 5,
+      "active": 8,
+      "recovery": 7,
+      "description": "A standing low used for mixups, okizeme, frame traps, and tick throws. Shorter range than 2K, but better proration (80% vs 70%), making it a better close-range low mixup. Very long active time also makes it a reliable meaty on wakeup.",
+      "gatlingOptions": ["6P", "6K", "c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "c.S",
+      "startup": 7,
+      "active": 2,
+      "recovery": 18,
+      "description": "Used for frame traps, punishing, pressure, option selecting with forward throw, and as a situational anti-air. Essential in pressure due to its high attack level, jump cancelability, use as a frame trap, high counter-hit reward, and throw option select. Safe to end pressure with, and commonly jump canceled into TK Aerial Stun Edge or used to escape. Late canceling other attacks into c.S creates a frame trap. On Counter Hit, combos into 6H for high damage. Fast startup and high damage also make it a good punish tool; hits a bit higher than the animation implies and occasionally works as an anti-air, faster than 5H or 6H — if an opponent jumps a throw attempt without holding FD, they can be caught.",
+      "notes": ["On Counter Hit, combos into 6H"],
+      "gatlingOptions": ["6P", "6K", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "f.S",
+      "startup": 10,
+      "active": 6,
+      "recovery": 19,
+      "description": "A long-reaching normal with slight disjoint used for spacing and pressure. One of Ky's cornerstone moves — his farthest-reaching ground normal and standard spacing/harassment tool, used to prevent the opponent from advancing or escaping. On crouching hit or Counter Hit it can be canceled into 3H for a combo at most ranges (not at max range). With strong confirms and spatial awareness, it combos into Stun Dipper on hit for a knockdown. Ky's hurtbox extends far forward during the attack, punishable if used recklessly; some characters can get under it with low-profile or airborne moves, so mix in 5H, 2S, and Stun Edge against those. A perfect candidate for YRC OS to remove most of its risk at the cost of Tension.",
+      "notes": ["On crouching hit or Counter Hit, combos into 3H", "Can be avoided with low profile attacks"],
+      "gatlingOptions": ["6K", "2S", "3H", "5D", "2D"]
+    },
+    {
+      "input": "5H",
+      "startup": 10,
+      "active": 6,
+      "recovery": 12,
+      "description": "Used for spacing, frame traps, situational anti-air, and punishes. A shorter-range but safer version of f.S — a medium-reach poke slightly plus on block, strong combined with Ky's other spacing tools. Hits a bit higher than f.S and can function as an anti-air plus spacing tool. On Counter Hit it staggers the opponent, great for frame trapping in pressure. Key for ending pressure due to its long cancel window and block advantage; Ky can end with 5H or late cancel into 2D to trip opponents expecting to escape. On hit, use the late cancel window to space Stun Dipper correctly and secure both hits for a knockdown.",
+      "gatlingOptions": ["6K", "5D", "2D"]
+    },
+    {
+      "input": "5D",
+      "startup": 28,
+      "active": 13,
+      "recovery": 11,
+      "description": "Ky's universal grounded overhead. Among the slower 5D moves in the game, but much safer on block than his other grounded-usable overhead, Greed Sever. If a Fortified Charged Stun Edge is obscuring him, 5D becomes significantly harder to see and react to, making it more appealing. Split Ciel summons Grinders faster, so 5D isn't recommended purely for that, though it can destroy the opponent's projectiles and leave Ky with a Grinder (slow startup makes this hard to use purposefully). Since it counts as a projectile it can be YRC'd and still connect (becoming a mid), enabling an expensive F-shiki overhead: 25 meter to YRC the startup, get the opponent to block standing, then an instant overhead with another 50 meter to RRC into a combo.",
+      "notes": ["Summons a Grinder and clashes with projectiles during active frames", "Becomes a mid attack when Yellow Roman Canceled"]
+    },
+    {
+      "input": "6P",
+      "startup": 9,
+      "active": 5,
+      "recovery": 15,
+      "description": "Used as an anti-air, pressure tool, frame trap, and counterpoke. An extremely reliable anti-air and Ky's primary tool for airborne opponents alongside 2H. Its disjointed hitbox also makes it good for countering mid-range pokes on the ground, and it can bait certain Dead Angles in pressure.",
+      "gatlingOptions": ["6K", "c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "6K",
+      "startup": 19,
+      "active": 2,
+      "recovery": 11,
+      "description": "An advancing, plus-on-block pressure reset and combo tool. +4 on block and moves Ky forward, letting him start a new blockstring afterward. Slow startup means it loses to jumping/backdashing/mashing, so the opponent must be conditioned to block first. YRC during its startup is a gimmicky way to close distance for a throw. Even at +4 on block, since Ky's fastest normals are 5F, the opponent has a 1F gap to input a reversal even without instant blocking.",
+      "notes": ["On hit, Ky is plus enough to link into any of his 5F normals"]
+    },
+    {
+      "input": "6H",
+      "startup": 23,
+      "active": "8, gap 8 (offset 6)",
+      "recovery": 6,
+      "description": "Used for resetting pressure, frame traps, and in combos after Counter Hit c.S. High frame advantage, with a large forward step before swinging. Used to reset pressure against passive opponents, forcing his way back in and trapping them again, or to bait Tension use to get Ky off them. A great tool for building meter and cranking the opponent's R.I.S.C. gauge.",
+      "notes": ["First hit is special cancellable", "Forces opponent into crouching state on ground hit, making it always +13 on hit"]
+    },
+    {
+      "input": "3H",
+      "startup": 15,
+      "active": 4,
+      "recovery": 25,
+      "description": "Used in pressure, frame traps, punishes, and to launch for combos. Often extends pressure after f.S and confirms crouching/counter hits into a launcher for high damage. On block, usually canceled into Stun Edge and Split Ciel to stay safe; on hit, canceled into Greed Sever for a combo. Like 6K, YRC during its startup is a tricky way to close in for a throw. Connects from f.S, but not from an f.S that hits at the very tip.",
+      "notes": ["Ky slides forward before slashing", "Combos from f.S on crouching and counter hit"]
+    },
+    {
+      "input": "2P",
+      "startup": 5,
+      "active": 4,
+      "recovery": 4,
+      "description": "Used for pressure, frame traps, tick throws, and burst-safe confirms. Essential in Ky's pressure: fast, +2 on block, and easy to confirm into a combo. From here he can frame trap to c.S or 5H, gatling into another normal, or go for a throw. Quick recovery creates burst-safe points in combos.",
+      "gatlingOptions": ["5P", "2P", "6P", "5K", "2K", "6K", "c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "2K",
+      "startup": 5,
+      "active": 4,
+      "recovery": 6,
+      "description": "Used for neutral, pressure, and setting up frame traps and tick throws. Good range and fast startup, though 5K is preferred as a mixup tool since 2K prorates damage by 70% versus 5K's 80%. Neutral on block in pressure, making it strong for tick throws and frame traps.",
+      "gatlingOptions": ["6P", "6K", "c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "2S",
+      "startup": 9,
+      "active": 2,
+      "recovery": 15,
+      "description": "Used for spacing, low mixup, and gatling from f.S for safety. A long-range low supplementing Ky's other spacing attacks, stopping opponents trying to low-profile other attacks or rush in from the ground. A version of f.S that trades range/damage for the safety of crouching under aerial attacks. With good spacing and fast reactions, cancels near the tip into Stun Dipper for a knockdown. Often canceled from f.S on hit or block, and used in pressure to add a low to blockstrings.",
+      "gatlingOptions": ["6K", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "2H",
+      "startup": 11,
+      "active": 5,
+      "recovery": 20,
+      "description": "Used for anti-air, situational spacing, and frame traps. An amazing swiss army knife: a high-potential preemptive anti-air covering massive space, hitting farther and higher than 6P. Also surprisingly functional as a ground poke, so running forward and throwing it out walls off both air and ground in neutral. Hits twice, great against armor like Potemkin's Hammerfall; launches on Counter Hit for high damage potential; jump cancelable both on hit and block, making it hilariously safe as long as it touches the opponent. Startup can sometimes be too slow to anti-air on reaction relative to 6P, but is overall very fast for how large it is; recovery isn't insignificant but relatively safe for what it is.",
+      "notes": ["Pulls in opponent toward Ky on air hit", "Launches and pulls in opponent toward Ky on Counter Hit"],
+      "gatlingOptions": ["5D", "2D"]
+    },
+    {
+      "input": "2D",
+      "startup": 7,
+      "active": 12,
+      "recovery": 12,
+      "description": "Used for leading combos into knockdown, poking, and as a low mixup. A fast, long-range sweep active for an unusually long time. Often used as a poke or canceled from a poke in neutral to keep opponents from jumping during pressure, and sometimes on defense as a fast, long-range counterattack. Can also catch reversal backdashes on oki."
+    },
+    {
+      "input": "j.P",
+      "startup": 6,
+      "active": 6,
+      "recovery": 6,
+      "description": "Used for countering opponents in the air, controlling air space, tick throws, and burst-safe confirms. Ky's fastest and least risky airborne attack, a great way to interrupt opponents approaching from above. Not guaranteed to beat an air throw attempt since it hits more high/horizontal than low/vertical.",
+      "gatlingOptions": ["j.P", "j.K", "j.S", "j.H", "j.D"]
+    },
+    {
+      "input": "j.K",
+      "startup": 7,
+      "active": 4,
+      "recovery": 12,
+      "description": "Used for long-range air-to-air encounters and catching opponents jumping away. Very fast and hits very far, almost as fast as j.P but reaching further and a bit higher — great to catch opponents escaping pressure by jumping, or to challenge from the air at range.",
+      "gatlingOptions": ["j.P", "j.S", "j.H", "j.D"]
+    },
+    {
+      "input": "j.S",
+      "startup": 7,
+      "active": 3,
+      "recovery": 21,
+      "description": "Used for okizeme, air combos, as an air-to-ground attack, and in fuzzy guard setups. Ky's standard jump-in attack, often used for safejumps over a knocked-down opponent. Jump cancelable, important in air combos and fuzzy guard mixups.",
+      "gatlingOptions": ["j.P", "j.H", "j.D"]
+    },
+    {
+      "input": "j.H",
+      "startup": 13,
+      "active": 4,
+      "recovery": 23,
+      "description": "Used for okizeme, air combos, as an air-to-ground or air-to-air attack, countering anti-airs, and controlling air space. Hits very far and slightly below Ky — a gigantic swipe used to space opponents at the tip or cover escapes while backdashing; can even beat anti-air attacks when spaced at max range. Off a falling counter hit there's enough hitstun to pick up a combo. In okizeme it's used as a safejump right before landing; its longer startup is also useful in empty-jump mixups as a 'fake' overhead that doesn't become active before being cancelled by landing.",
+      "gatlingOptions": ["j.D"]
+    },
+    {
+      "input": "j.D",
+      "startup": 38,
+      "active": 13,
+      "recovery": 25,
+      "specialRecovery": 8,
+      "description": "Used for zoning, space control, okizeme, crossups, and summoning Grinders. A passive 'trap' tool with considerable startup that suspends Ky briefly in the air, best used from a distance or while the opponent is downed. Leaves an electric cross hanging in the air that hits the opponent if touched while active — useful for zoning and setting up okizeme; can cross up an opponent's block by airdashing over them the moment they wake up into j.D. Also an anti-zoning tool since it creates a Grinder, letting Ky immediately use Aerial Stun Edge afterward for a fortified Stun Edge. Launches opponents on Counter Hit, convertible into a combo. If done close enough to the ground, ground Stun Edges can pass through the air Grinder set by j.D.",
+      "notes": ["Disappears if Ky is hit but remains even if Ky blocks", "Creates a Grinder and clashes with projectiles", "Has landing recovery unless Yellow Roman Canceled or double jumping after it", "Can only be used once per jump"]
+    }
+  ],
+  "universalMechanics": [
+    {
+      "name": "Ground Throw",
+      "description": "The cornerstone of Ky's mixup game, letting him safely set up Charged Stun Edge or TK j.D. Can be Roman Canceled in the corner for high-damage Vapor Thrust and Split Ciel loops, or midscreen to carry the opponent to the corner."
+    },
+    {
+      "name": "Air Throw",
+      "description": "Basic air throw. Not enough time to use Charged Stun Edge oki safely from this knockdown, but it can be Roman Canceled to add extra damage midscreen or start Vapor Thrust loops in the corner."
+    },
+    {
+      "name": "Dead Angle Attack",
+      "startup": 12,
+      "active": 3,
+      "recovery": 24,
+      "description": "A standard Dead Angle Attack, using Ky's 6P animation. Moderate startup and recovery, hits pretty consistently. Ky also has Vapor Thrust and Ride the Lightning as other defensive tools, so always weigh all options."
+    },
+    {
+      "name": "Blitz Attack",
+      "startup": 28,
+      "active": 3,
+      "recovery": 20,
+      "description": "Same as the rest of the cast's Blitz Attack; Ky has little use for it in combos."
+    }
+  ],
+  "specialMoves": [
+    {
+      "name": "Stun Edge",
+      "input": "236S (plain / Fortified via Grinder)",
+      "description": "Plain Stun Edge (SE): a fast projectile used for spacing, zoning, ending blockstrings, and resetting pressure with YRC. An important part of Ky's neutral game, very powerful with Yellow Roman Cancel. Low reward on hit relative to the risk of throwing it within an opponent's IAD range; without meter to YRC, use it more at farther ranges. Not a pure zoning tool — beaten by multi-hit projectiles or characters who quickly create multiple projectiles. Shines when YRC'd: a fast hitbox lets Ky react immediately to the opponent's response, confirming into a combo on hit or starting a blockstring on block. Deletes moves like Sol's Gun Flame or Venom's pool balls, punishing their recovery. Fortified Stun Edge: shooting SE through a Grinder turns it into a full-screen sword beam that passes through other projectiles and knocks down on Counter Hit — invaluable for zoning/anti-zoning since plain SE is weak against many other projectiles. In pressure after a Grinder is placed, it resets pressure since it's +8 on block.",
+      "notes": ["Can be avoided with low profile moves (both versions)"]
+    },
+    {
+      "name": "Charged Stun Edge",
+      "input": "236H (plain / Fortified via Grinder)",
+      "description": "Plain Charged Stun Edge (CSE): larger and slower than Stun Edge, hits 3 times instead of 1. Mainly used for safe, easy okizeme after a knockdown due to its large frame advantage; considerable startup/recovery make it less suited to neutral, and it's still avoidable by low-profile moves. Once out, Ky can IAD over it and use j.S or j.H to lock the opponent down, or run behind it while reacting to jump-out attempts. Limited as a pressure reset due to slow startup, but can catch passive opponents. With YRC it becomes much easier to use in neutral and less risky as a pressure reset. Fortified Charged Stun Edge (DC CSE): firing CSE through a Grinder transforms it into a nearly fullscreen stationary rotating blade, hitting 6 times and slightly more plus on block than CSE. Gives Ky plenty of time to dash/jump for a high/low mixup covering many non-invulnerable defensive options; rapidly expands to full range on becoming active (doesn't need to travel like regular CSE), and with YRC the mixups become reversal-safe and doable from farther away. Can also be used in neutral by YRCing CSE then running in front of it and placing a Grinder with Split Ciel for it to pass through.",
+      "notes": ["Fortified version clashes with other projectiles", "Can still be avoided with low profile moves that hit Ky"]
+    },
+    {
+      "name": "Aerial Stun Edge",
+      "input": "j.236S / j.236H (plain or Fortified via Grinder)",
+      "description": "S Aerial Stun Edge: a multi-purpose projectile used for punishing anti-air attempts, stopping mid-air momentum, pressure, resetting pressure, frame traps, and zoning. Can catch approaching opponents and punish anti-air attempts in neutral; extremely safe with YRC since it removes landing recovery, letting Ky assess and confirm into a combo on hit, mix up on block, or disengage with an airdash if avoided. When TK'd, it's advantageous on block, another way to reset pressure, especially after a jump cancelable normal like 2H or c.S — unconventional enough that many opponents try to challenge it, leading to an easy frame trap, especially in the corner. H Aerial Stun Edge: far less multi-use than the S version, generally TK'd from far away to cover a good portion of the screen and harass the opponent, or to call out jump-out attempts in pressure. Fortified S Aerial Stun Edge: functions like the normal version but at an angle; usable after j.D as an okizeme tool, or after jump canceling a normal in pressure and using j.D. Stuns the opponent for a long time on counter hit, giving time to run in for a quick combo (even into 3H if done quickly). Fortified H Aerial Stun Edge: used like the normal version but far more potent as a zoning/anti-zoning tool; set up a Grinder with j.D in neutral far from the opponent — its angle is very hard for opponents to deal with.",
+      "notes": ["Ky is crouching during landing recovery (both plain versions)", "Fortified versions pass through projectiles and knock down on Counter Hit"]
+    },
+    {
+      "name": "Vapor Thrust",
+      "input": "623S / 623H (air OK)",
+      "frameData": {
+        "sVersion": { "startup": 9, "active": 3, "recovery": 32, "specialRecovery": 9 },
+        "hVersion": { "startup": 11, "active": 4, "recovery": 35, "specialRecovery": 9 },
+        "airVersion": { "startup": 9, "active": 3, "specialRecovery": 9 }
+      },
+      "description": "S Vapor Thrust (SVT): Ky's invulnerable reversal. Extremely rewarding on Counter Hit, starts up/recovers slightly faster than the H version but has much less invulnerability time. Usually a high-risk high-reward anti-air, or on defense to take advantage of the long untechable time on Counter Hit for a combo. H Vapor Thrust (HVT): better than SVT as a wakeup reversal but still risky — easily loses to some meaty low-profile attacks and safe jumps, starts up more slowly, and lacks forward momentum/range. Still a good pressure-defense tool thanks to good invulnerability; hits on both sides of Ky, one of the rare reversals useful against crossups (if the input isn't crossed up). Ky isn't left in Counter Hit or crouching state during recovery, reducing risk when the opponent has no Tension to punish hard. HVT RC can escape oki and pick up a combo on hit, though saving Tension for FD or Dead Angle is safer. Also used outside defense to anti-air some moves that beat 6P/2H, though the startup can be reacted to and YRC'd/punished. Integral to combos (Vapor Thrust loops, Split Ciel loops, Dash VT combos); scores knockdowns easily on medium/heavy characters, but light characters can float too high and recover before hitting the ground. Air Vapor Thrust: lacks a low-hitting hitbox like the grounded version, rarely used mid-air like Sol's Volcanic Viper — 99% of the time used to end air combos, with occasional wildcard use.",
+      "notes": ["All versions cannot be Yellow or Purple Roman Canceled"]
+    },
+    {
+      "name": "Stun Dipper",
+      "input": "236K",
+      "startup": 5,
+      "active": "14, gap 7, 3",
+      "recovery": 26,
+      "description": "One of Ky's defining attacks: ridiculously fast startup, low profile, and long travel distance make it useful in a wide variety of situations. Counters opponents by sliding under attacks that don't cover the ground, and confirms knockdowns from combos/pokes spaced at the tip of f.S, 2S, and 5H; commonly used to challenge pressure during small gaps. Very punishable on block and won't combo if the opponent is too close (around the tip of 2S/5H range is the sweet spot). Unlike Greed Sever, the second hit always has the same frame (dis)advantage, making it easily punished — very risky without a good read, spacing awareness, or meter. Ky's neutral becomes much better with 50 Tension, since he can mitigate SD's negative consequences: save meter and get oki off a knockdown hit, or RC it for damage; if blocked or dodged, RRC or PRC keeps him safe.",
+      "notes": ["Second hit will not combo after the first if spaced too close", "Second hit always combos on Counter Hit"]
+    },
+    {
+      "name": "Greed Sever",
+      "input": "214K",
+      "startup": 19,
+      "active": 14,
+      "recovery": 5,
+      "specialRecovery": 11,
+      "description": "Used as a combo tool, to control space against active opponents, to counter hit low attacks, and as an overhead mixup. As an overhead, somewhat telegraphed despite its speed, and unsafe on block at most ranges — primarily used in combos and as an advanced counter-poke option. Faster than most Dusts but has a unique animation and loud audio cue making it easier to react to. Shines at range to catch defensive mashing, hop over lows, and check over-aggressive movement in neutral. Connecting with the opponent's block near the tip at the end of the animation makes it safe on block; typically saved until 50 Tension to RC in case it's blocked.",
+      "notes": ["Startup is 19F but doesn't hit crouching opponents until later (24F)", "Ky is in crouching state during recovery"]
+    },
+    {
+      "name": "Split Ciel",
+      "input": "236D",
+      "startup": 15,
+      "active": 3,
+      "recovery": 15,
+      "description": "Used to summon Grinders, in combos, and to end blockstrings. In neutral, used to summon Grinders for Durandal Call as quickly and safely as possible; even whiffing it threatens a Grinder, letting Ky play a more passive neutral game and compelling the opponent to avoid Fortified Stun Edges. On hit, it staggers the opponent, creating gimmicky mixup and pressure-reset opportunities against opponents who can't mash out well. Ky's signature Vapor Thrust loop combo ender — the reason he can set up Fortified Charged Stun Edge oki and go for free IAD/empty-jump mixups. Ending blockstrings with it is viable since it's only -1 on block and leaves a Grinder to work with; be careful using it to end pressure when pushed out too far due to its whiff recovery. Ky's hurtbox shifts as he lifts his foot during the startup's middle, giving niche counterpoke utility, such as versus Venom's 2S at round start."
+    }
+  ],
+  "overdrives": [
+    {
+      "name": "Ride the Lightning",
+      "input": "632146H (air OK) / 632146D (air OK, Burst)",
+      "frameData": {
+        "ground": { "startup": 11, "active": 42, "recovery": 18 },
+        "air": { "startup": 9, "active": 42, "specialRecovery": 6 }
+      },
+      "description": "Ky's signature super, sending him bolting across the screen surrounded by lightning. Lots of invulnerability and high damage, especially in Hellfire state. Its horizontal movement beats options that would otherwise counter Vapor Thrust, though it's ultimately the same speed as HVT. Ending common midscreen air combos with it adds damage and scores knockdowns at times Ky usually cannot. Unsafe on block and has Counter Hit recovery, making it risky as a reversal, though each hit pushes the opponent away, making it strangely difficult to punish — mitigated by Instant Blocking the last hit, though the timing varies with Ky's position.",
+      "notes": ["Projectile invincible during all active frames"]
+    },
+    {
+      "name": "Sacred Edge",
+      "input": "236236P (plain / Fortified via Grinder)",
+      "description": "Primarily used in combos. Ky's preferred Overdrive for using Tension to add combo damage anywhere on screen; since Overdrives don't trigger the Roman Cancel Tension-gain penalty, Ky regains much of the Tension spent by completing the combo. A strong, plus-on-block projectile, but mostly used in combos since Stun Edge and Charged Stun Edge accomplish nearly the same things outside combos without costing 50% Tension. Fortified Sacred Edge wall-sticks the opponent in the corner on hit, creating new high-damage combo opportunities."
+    }
+  ],
+  "instantKill": {
+    "name": "Rising Force",
+    "input": "During IK Mode: 236236H",
+    "startup": 21,
+    "active": 4,
+    "recovery": 30,
+    "description": "A nice and fast Instant Kill with uses in specific IK setups when the game's IK conclusion conditions are met.",
+    "notes": ["Uses the animation and hitbox of 3H"]
+  }
+}
