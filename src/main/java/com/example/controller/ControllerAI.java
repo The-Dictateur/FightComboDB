@@ -3,6 +3,7 @@ package com.example.controller;
 import com.example.AI.OllamaClient;
 import com.example.service.FrameDataService;
 import com.example.service.MecanicasJuegoService;
+import com.example.service.NotationService;
 import com.fasterxml.jackson.databind.JsonNode;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -35,6 +36,9 @@ public class ControllerAI {
 
     @Autowired
     private FrameDataService frameDataService;
+
+    @Autowired
+    private NotationService notationService;
 
     private volatile boolean cargando = false;
 
@@ -115,13 +119,20 @@ public class ControllerAI {
 
         sb.append("""
             
-            You will be given the game's mechanics and the character's data as reference material in the user message below.
-            Use that reference material as ground truth. If a specific data point isn't in it (exact frame data, exact damage, etc.),
-            say so clearly instead of inventing it.
+            You will be given an input notation reference, the game's mechanics, and the character's data as
+            reference material in the user message below. Use that reference material as ground truth. If a
+            specific data point isn't in it (exact frame data, exact damage, etc.), say so clearly instead of
+            inventing it.
             
             Your job is to help write clear, useful study notes about this specific character,
             explaining strengths, weaknesses, key normals, neutral tools, pressure options, combos
             and matchups when you have enough information for it.
+            
+            Notation rule: whenever you refer to any move, button, or input, you MUST write it using the
+            numpad notation defined in the input notation reference (e.g. 236K, 2P, j.S, 623H, c.S, f.S).
+            Never use arrow symbols, words like "quarter circle forward", or any other notation style to
+            describe an input — always use the numpad digits and letters exactly as shown in the reference
+            and in the character's own movelist.
             
             Answer in the language the user is talking to you in, in a clear and organized way, suitable to be saved directly as a study note.
             """);
@@ -134,6 +145,13 @@ public class ControllerAI {
      */
     private String construirPrompt(String pregunta) {
         StringBuilder sb = new StringBuilder();
+
+        JsonNode notacion = notationService.obtenerNotacion();
+        if (notacion != null) {
+            sb.append("=== INPUT NOTATION REFERENCE (applies to all fighting games unless the game's own mechanics below say otherwise) ===\n");
+            sb.append(jsonATextoLegible(notacion));
+            sb.append("\n");
+        }
 
         if (juego != null && !juego.isBlank()) {
             sb.append("=== GAME: ").append(juego).append(" ===\n");

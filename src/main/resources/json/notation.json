@@ -1,0 +1,116 @@
+{
+  "title": "Universal Fighting Game Notation",
+  "scope": "This notation applies across fighting games in general. If a specific game's own mechanics file explicitly states a different convention, that game's file takes priority over this one.",
+  "numpadNotation": {
+    "description": "The most common way to write fighting game inputs in text is 'numpad notation': each direction on the joystick/d-pad is mapped to a number on a keyboard's numeric keypad (numpad), based on its physical layout. This lets inputs be written as plain numbers instead of arrows, and works the same way regardless of keyboard language.",
+    "assumption": "All directions assume the player is on the LEFT side of the screen facing right (the default convention in nearly all fighting game wikis and guides). If the player is on the right side, directions are mirrored (so 6 becomes 'towards the opponent' = left on the stick instead of right, etc.) — but written notation almost always keeps left-side convention for simplicity.",
+    "diagram": "7 8 9\n4 5 6\n1 2 3",
+    "directions": {
+      "1": "Down-Back (crouching + holding away from the opponent / towards your own corner)",
+      "2": "Down / Crouch (neutral down, no horizontal direction)",
+      "3": "Down-Forward (crouching + holding towards the opponent)",
+      "4": "Back (holding away from the opponent; also used for blocking high when grounded)",
+      "5": "Neutral (no direction held; often omitted in notation, e.g. '5P' and 'P' can mean the same thing)",
+      "6": "Forward (holding towards the opponent; also the most common 'advance/dash-in' direction)",
+      "7": "Up-Back (jumping away from the opponent)",
+      "8": "Up / Jump (neutral jump straight up)",
+      "9": "Up-Forward (jumping towards the opponent)"
+    }
+  },
+  "commonMotionInputs": [
+    { "notation": "236", "name": "Quarter Circle Forward (QCF)", "description": "Roll the stick from down (2) to down-forward (3) to forward (6). One of the most common special move inputs across fighting games (e.g. a classic 'fireball' motion)." },
+    { "notation": "214", "name": "Quarter Circle Back (QCB)", "description": "Roll the stick from down (2) to down-back (1) to back (4). The mirror of 236; also extremely common for special moves." },
+    { "notation": "623", "name": "Dragon Punch motion / Forward, Down, Down-Forward", "description": "Forward (6), then down (2), then down-forward (3). Classically used for rising uppercut-type moves (hence 'Dragon Punch motion' or 'DP motion')." },
+    { "notation": "421", "name": "Reverse Dragon Punch motion", "description": "Back (4), then down (2), then down-back (1). The mirrored version of 623, used in some games for back-side uppercut-type specials." },
+    { "notation": "41236", "name": "Half Circle Forward (HCF)", "description": "Roll the stick from back (4) through down (1, 2) to forward (6). Common for command grabs and some specials." },
+    { "notation": "63214", "name": "Half Circle Back (HCB)", "description": "Roll the stick from forward (6) through down (2, 1) to back (4). The mirror of 41236; also common for command grabs." },
+    { "notation": "236236", "name": "Double Quarter Circle Forward", "description": "Two quarter-circle-forward motions performed one after another, typically input quickly. Common for super/overdrive-level attacks (higher resource cost than a single-QCF special)." },
+    { "notation": "214214", "name": "Double Quarter Circle Back", "description": "Two quarter-circle-back motions performed one after another. Mirror of 236236, also common for supers." },
+    { "notation": "632146", "name": "360-style / Half Circle Back into Forward", "description": "A long rolling motion (often forward, down-back arc, into forward) typically used for powerful reversal or super-level command grabs/attacks." },
+    { "notation": "41236 / 63214 doubled, or a full 360", "name": "Full Circle", "description": "A complete 360-degree rotation of the stick, classically used for command throw characters (grappler archetype)." }
+  ],
+  "prefixesAndSuffixes": [
+    {
+      "symbol": "j.",
+      "name": "Jumping",
+      "description": "Placed before a button or input to specify the attack is performed while airborne/jumping (e.g. 'j.P' is a jumping Punch, 'j.236S' is a special move input while airborne). Without this prefix, the move is assumed to be done on the ground.",
+      "universal": true
+    },
+    {
+      "symbol": "c.",
+      "name": "Close / Crouching (context-dependent — see note)",
+      "description": "Most commonly means 'close' version of a standing normal, i.e. the version of the attack that comes out when very close to the opponent (as opposed to 'f.' for 'far'). In some games or community notations 'c.' can instead be used to mean 'crouching', so always check whether a given game's own materials define it as close-range standing or crouching — if unclear, '2' (e.g. '2P') is the unambiguous numpad notation for a crouching attack.",
+      "universal": false,
+      "note": "This one is NOT fully universal — confirm against the specific game's conventions when available."
+    },
+    {
+      "symbol": "f.",
+      "name": "Far",
+      "description": "Placed before a button to specify the 'far' version of a standing normal attack — the version that comes out when NOT close to the opponent (as opposed to 'c.' for 'close'). Many characters have a different standing normal at close range vs far range for the same button.",
+      "universal": true
+    },
+    {
+      "symbol": "2 (as a prefix within a numbered input, e.g. 2P, 2S, 2D)",
+      "name": "Crouching",
+      "description": "A button pressed while holding down-back/down/down-forward is a crouching attack. In numpad notation, crouching attacks are written with a leading '2' (neutral down) by convention, even if the player is technically also holding 1 or 3.",
+      "universal": true
+    },
+    {
+      "symbol": "6 or 4 (as a prefix within a numbered input, e.g. 6P, 4K)",
+      "name": "Command Normal",
+      "description": "A button pressed while holding forward (6) or back (4) that produces a different attack than the neutral version of that button. These are called 'command normals' and often have unique properties (e.g. overheads, better range, launchers) compared to the plain button press.",
+      "universal": true
+    },
+    {
+      "symbol": "[X]",
+      "name": "Hold / Charge",
+      "description": "Square brackets around part of an input mean that input (often a button) is held down rather than tapped, usually to charge up a stronger version of a move. For example '623[K]' means performing the 623 motion and holding K rather than releasing it immediately.",
+      "universal": true
+    },
+    {
+      "symbol": "~",
+      "name": "Followed by / Cancel into",
+      "description": "A tilde between two inputs means the second input follows the first, typically as a special cancel or a scripted follow-up specific to that move (e.g. 'A~B' means perform A, then B as a direct follow-up).",
+      "universal": true
+    },
+    {
+      "symbol": "(N) after a move, e.g. 5H(2)",
+      "name": "Specific hit of a multi-hitting move",
+      "description": "When a normal or special hits multiple times, '(N)' specifies which hit of that move is being referenced — e.g. '5H(2)' means specifically the second hit of the 5H attack, as opposed to the whole multi-hit string.",
+      "universal": true
+    },
+    {
+      "symbol": "5 (as an explicit prefix, e.g. 5P, 5K)",
+      "name": "Neutral / standing, no direction held",
+      "description": "Explicitly marks a standing attack with no direction held, to distinguish it from command normals (6P, 4K) or crouching attacks (2P). Often the '5' is dropped in casual writing and the bare button name (e.g. just 'P') implies neutral/standing.",
+      "universal": true
+    }
+  ],
+  "commonAbbreviations": [
+    { "abbr": "OS", "meaning": "Option Select", "description": "An input or sequence of inputs designed so that, depending on what the opponent does, the game automatically resolves to the most favorable one of two or more possible actions for the player performing it." },
+    { "abbr": "RC", "meaning": "Roman Cancel (or that game's equivalent universal cancel mechanic)", "description": "A generic universal-cancel mechanic found in some fighting games (most notably the Guilty Gear series) that can cancel almost any action at the cost of a resource. Specific variants (color-coded or otherwise) are usually defined in that game's own mechanics file." },
+    { "abbr": "YRC", "meaning": "Yellow Roman Cancel", "description": "A specific variant of Roman Cancel (see that game's mechanics file for exact properties and cost), generally the 'neutral' or cheapest version used to cancel recovery/startup safely." },
+    { "abbr": "RRC", "meaning": "Red Roman Cancel", "description": "A specific variant of Roman Cancel (see that game's mechanics file for exact properties and cost), generally used during hitstun/blockstun for combo extension." },
+    { "abbr": "PRC", "meaning": "Purple Roman Cancel", "description": "A specific variant of Roman Cancel (see that game's mechanics file for exact properties and cost), generally used during the late active/recovery frames of an attack." },
+    { "abbr": "IB", "meaning": "Instant Block", "description": "A precisely-timed block performed right before an attack connects, which in many games grants reduced blockstun, reduced pushback, or other defensive benefits compared to a normal block." },
+    { "abbr": "FD", "meaning": "Faultless Defense", "description": "A defensive mechanic (naming/specifics vary by game) typically used to push the attacker away and/or prevent chip damage at the cost of a resource." },
+    { "abbr": "CH", "meaning": "Counter Hit", "description": "Landing a hit on an opponent while they are in the middle of their own attack's startup or active frames (as opposed to a 'normal hit'), usually granting bonus effects such as extra hitstun, extra damage, or special combo routes." },
+    { "abbr": "DP", "meaning": "Dragon Punch (motion or move archetype)", "description": "Refers either to the 623-style input motion itself, or to a rising-uppercut-style special move performed with that motion, often used as a reversal/anti-air." },
+    { "abbr": "TK", "meaning": "Tiger Knee (motion)", "description": "A specific fast input technique (named after a classic 'Tiger Knee' special move) used to perform an air special move as early as possible after leaving the ground, typically by inputting the motion starting from a crouching position and ending with an upward direction plus the button." },
+    { "abbr": "IAD", "meaning": "Instant Air Dash", "description": "A technique to air dash as early as possible after jumping, typically by inputting an upward direction immediately followed by the air dash input, minimizing the time spent unable to act before the dash begins." },
+    { "abbr": "Oki / Okizeme", "meaning": "Knockdown pressure / wake-up pressure", "description": "The general strategy and set of options used by a player to pressure an opponent as they are getting up ('waking up') from a knockdown." },
+    { "abbr": "DAA", "meaning": "Dead Angle Attack (or that game's equivalent reversal-during-blockstun mechanic)", "description": "A defensive option usable during blockstun to interrupt an attacker's pressure, usually at a resource cost. Exact name and properties vary by game — check that game's mechanics file." },
+    { "abbr": "Meaty", "meaning": "Meaty attack", "description": "An attack intentionally timed so that its active frames connect as late as possible against an opponent getting up from a knockdown, maximizing the attacker's frame advantage on block or hit." },
+    { "abbr": "Whiff", "meaning": "Missing / not connecting", "description": "When an attack is performed but does not hit the opponent (no contact at all), as opposed to being blocked or landing a hit." },
+    { "abbr": "Proration / Scaling", "meaning": "Combo damage reduction", "description": "A general term for mechanics that reduce the damage of successive hits within a combo, to prevent combos from being disproportionately rewarding the longer they go on. Exact formulas vary by game." },
+    { "abbr": "f-shiki", "meaning": "A specific overhead/mixup setup technique named after its origin in competitive play", "description": "Refers to a specific, often resource-intensive setup used to make an otherwise slow or reactable overhead attack safe and hard to react to, typically by using a cancel mechanic to hide or delay its visual tell. Exact execution is character/game specific." }
+  ],
+  "framesAndTiming": {
+    "frame": "The base unit of time in a fighting game, corresponding to a single frame of the game's rendering (commonly 1/60th of a second in most modern fighting games, written as '60fps').",
+    "startup": "The number of frames between an attack's input and the first frame it can actually hit the opponent (its first active frame). Lower startup means a faster, harder-to-react-to attack.",
+    "active": "The number of frames during which an attack's hitbox can actually connect with the opponent.",
+    "recovery": "The number of frames after an attack's active frames end during which the attacking character cannot act freely.",
+    "frameAdvantage": "The difference in how many frames each player is able to act again after an exchange. A positive number ('plus on block/hit') means the attacker gets to act again before the defender; a negative number ('minus') means the opposite.",
+    "exampleNotation": "A frame data entry like '5P: 5F startup, 4F active, 5F recovery' means the move takes 5 frames to come out, stays active (able to hit) for 4 frames, and the attacker is unable to act for 5 frames after the active frames end, before accounting for hit/block advantage."
+  }
+}
