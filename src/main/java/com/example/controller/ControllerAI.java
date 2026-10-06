@@ -13,7 +13,9 @@ import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class ControllerAI {
@@ -67,6 +69,7 @@ public class ControllerAI {
                     String prompt = construirPrompt(pregunta);
                     System.out.println("=== SYSTEM PROMPT ===\n" + systemPrompt);
                     System.out.println("=== PROMPT ===\n" + prompt);
+                    System.out.println("=== Longitud aproximada del prompt: " + prompt.length() + " caracteres (~" + (prompt.length() / 4) + " tokens) ===");
                     return ollamaClient(systemPrompt, prompt);
                 }
             };
@@ -94,78 +97,121 @@ public class ControllerAI {
     private String construirSystemPrompt() {
         StringBuilder sb = new StringBuilder();
 
-        if (juego != null && !juego.isBlank()) {
-            sb.append("You are a highly experienced professional coach and teacher specialized in fighting games.\n");
-            sb.append("The game you are currently helping with is: ").append(juego).append(".\n");
-            sb.append("Every answer you give must be specific to ").append(juego).append(" and its actual mechanics.\n");
+        sb.append("You are a highly experienced professional coach and teacher specialized in fighting games.\n");
 
-            List<MecanicasJuegoService.Mecanica> mecanicas = mecanicasJuegoService.obtenerMecanicas(juego);
-            if (!mecanicas.isEmpty()) {
-                sb.append("You have been provided with the official mechanics of ").append(juego).append(" below — use them as ground truth.\n");
-            } else {
-                sb.append("No mechanics data file was found for ").append(juego).append(". ");
-                sb.append("Answer using your general knowledge of this specific game if you have it, ");
-                sb.append("but clearly say when you are not certain about a specific detail instead of inventing it.\n");
-            }
+        if (juego != null && !juego.isBlank()) {
+            sb.append("GAME: ").append(juego).append("\n");
+            sb.append("Every answer must be specific to ").append(juego).append(" and its actual mechanics. ");
+            sb.append("Never mix in mechanics, terms or numbers from any other fighting game.\n");
         } else {
-            sb.append("You are a highly experienced professional coach and teacher specialized in fighting games in general.\n");
             sb.append("No specific game has been identified for this note. Ask the user to clarify which game they mean if it's not obvious from their question.\n");
         }
 
         if (personaje != null && !personaje.isBlank()) {
-            sb.append("The character this note is about is: ").append(personaje).append(".\n");
-            sb.append("You have been provided with that character's data (moveset, frame data, strengths/weaknesses) below — use it as ground truth for anything specific to ").append(personaje).append(".\n");
+            sb.append("CHARACTER: ").append(personaje).append("\n");
+            sb.append("Every answer must be specific to ").append(personaje).append(" and their actual moveset. ");
+            sb.append("Never mix in moves, frame data or combos from any other character.\n");
         }
 
         sb.append("""
             
-            Your job is to help write clear, useful study notes about specific characters,
+            You will be given the game's mechanics and the character's data as reference material in the user message below.
+            Use that reference material as ground truth. If a specific data point isn't in it (exact frame data, exact damage, etc.),
+            say so clearly instead of inventing it.
+            
+            Your job is to help write clear, useful study notes about this specific character,
             explaining strengths, weaknesses, key normals, neutral tools, pressure options, combos
             and matchups when you have enough information for it.
             
-            Important rules:
-            - Never mix mechanics from a different game than the one specified above.
-            - Never mix moves or data from a different character than the one specified above.
-            - If you don't have a specific data point (exact frame data, exact damage, etc.), say so clearly instead of inventing it.
-            - Answer in the language the user is talking to you in, in a clear and organized way, suitable to be saved directly as a study note.
+            Answer in the language the user is talking to you in, in a clear and organized way, suitable to be saved directly as a study note.
             """);
 
         return sb.toString();
     }
 
     /**
-     * Construye el contexto concreto (mecánicas del juego + datos del personaje) + la pregunta del usuario.
+     * Construye el contexto concreto (mecánicas del juego + datos del personaje, en texto legible) + la pregunta.
      */
     private String construirPrompt(String pregunta) {
         StringBuilder sb = new StringBuilder();
 
         if (juego != null && !juego.isBlank()) {
-            sb.append("Game: ").append(juego).append("\n");
+            sb.append("=== GAME: ").append(juego).append(" ===\n");
 
             List<MecanicasJuegoService.Mecanica> mecanicas = mecanicasJuegoService.obtenerMecanicas(juego);
             if (!mecanicas.isEmpty()) {
-                sb.append("Game mechanics:\n");
+                sb.append("Mechanics of ").append(juego).append(":\n");
                 for (MecanicasJuegoService.Mecanica m : mecanicas) {
                     sb.append("- ").append(m.getName()).append(": ").append(m.getDescription()).append("\n");
                 }
+            } else {
+                sb.append("(No mechanics file found for this game.)\n");
             }
-            sb.append("\n(Remember: all of the above mechanics belong specifically to ").append(juego).append(".)\n\n");
+            sb.append("\n");
         }
 
         if (personaje != null && !personaje.isBlank()) {
+            sb.append("=== CHARACTER: ").append(personaje).append(" (from ").append(juego).append(") ===\n");
+
             JsonNode datosPersonaje = frameDataService.obtenerPersonaje(juego, personaje);
             if (datosPersonaje != null) {
-                sb.append("Character data for ").append(personaje).append(":\n");
-                sb.append(datosPersonaje.toPrettyString()).append("\n");
-                sb.append("\n(Remember: all of the above character data belongs specifically to ").append(personaje).append(".)\n\n");
+                sb.append(jsonATextoLegible(datosPersonaje));
             } else {
-                sb.append("No character data file was found for ").append(personaje).append(". ");
-                sb.append("Answer using your general knowledge of this character if you have it, but say clearly when unsure instead of inventing.\n\n");
+                sb.append("(No character data file found for ").append(personaje).append(". ");
+                sb.append("Answer using your general knowledge of this character if you have it, but say clearly when unsure instead of inventing.)\n");
             }
+            sb.append("\n");
         }
+
+        sb.append("=== END OF REFERENCE MATERIAL ===\n");
+        sb.append("Everything above belongs strictly to ");
+        if (juego != null && !juego.isBlank()) sb.append(juego);
+        if (personaje != null && !personaje.isBlank()) sb.append(" and the character ").append(personaje);
+        sb.append(". Do not reference any other game or character.\n\n");
 
         sb.append("Pregunta del usuario: ").append(pregunta);
         return sb.toString();
+    }
+
+    /**
+     * Convierte un JsonNode (el JSON de un personaje) en texto plano legible, campo por campo,
+     * en vez de volcar el JSON crudo con llaves/corchetes. Esto reduce muchísimo los tokens
+     * y es más fácil de "leer" correctamente para el modelo.
+     */
+    private String jsonATextoLegible(JsonNode node) {
+        StringBuilder sb = new StringBuilder();
+        recorrerJsonNode(node, sb, "");
+        return sb.toString();
+    }
+
+    private void recorrerJsonNode(JsonNode node, StringBuilder sb, String prefijo) {
+        if (node.isObject()) {
+            Iterator<Map.Entry<String, JsonNode>> campos = node.fields();
+            while (campos.hasNext()) {
+                Map.Entry<String, JsonNode> campo = campos.next();
+                JsonNode valor = campo.getValue();
+
+                if (valor.isValueNode()) {
+                    sb.append(prefijo).append(campo.getKey()).append(": ").append(valor.asText()).append("\n");
+                } else {
+                    sb.append(prefijo).append(campo.getKey()).append(":\n");
+                    recorrerJsonNode(valor, sb, prefijo + "  ");
+                }
+            }
+        } else if (node.isArray()) {
+            int i = 1;
+            for (JsonNode item : node) {
+                if (item.isValueNode()) {
+                    sb.append(prefijo).append("- ").append(item.asText()).append("\n");
+                } else {
+                    sb.append(prefijo).append("[").append(i).append("]\n");
+                    recorrerJsonNode(item, sb, prefijo + "  ");
+                }
+                i++;
+            }
+        } else {
+            sb.append(prefijo).append(node.asText()).append("\n");
+        }
     }
 
     public String ollamaClient(String systemPrompt, String prompt) throws Exception {
