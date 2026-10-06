@@ -1,0 +1,366 @@
+{
+  "character": "Sol Badguy",
+  "game": "Guilty Gear Xrd REV 2",
+  "overview": "Sol is a character who likes to get up close and personal, but doesn't sacrifice a balanced toolkit to do so. He has tricky special moves to help him get in, a suite of normals that excel at setting up traps, and throw mixups. Proper conditioning is a huge part of his offensive gameplan — conditioning the opponent to jump, attack, or backdash upon seeing certain attacks can open up opportunities to punish those responses. Sol rewards strong reads with high-damage counter-hit combos off moves like 5H and 6H. He also has moves that augment the universal defensive mechanics: Volcanic Viper (623S), a fast DP usable with IB to challenge gaps in the opponent's pressure, and Ground Viper (214S), a move with extreme low-profile properties that can slip past some attacks' hitboxes. Players looking to express themselves further get Sol's unorthodox moves to supplement his core gameplan: Dragon Install (214214H), Riot Stamp (214K), and Gun Flame Feint (214P) give niche but useful additional options.",
+  "keyStats": {
+    "fastestNormal": "5P (4F)",
+    "reversals": ["Volcanic Viper 623S/H (7F/5F)", "Tyrant Rave ver.β 632146H (5+1F)"]
+  },
+  "prosAndCons": {
+    "pros": [
+      "Slugger: excellent buttons and solid frame data make Sol a menace once he's in. 5K is obnoxious to deal with, while YRC Gun Flame and Fafnir keep opponents blocking for long periods",
+      "High meterless damage: corner combos ('the Dustloop') can deal 50% or more, and combos off Wild Throw give good damage and a knockdown",
+      "Solid defense: Volcanic Viper is the best meterless reversal in the game, hands down; fast close-range buttons also give good abare",
+      "Meter burn: Tyrant Rave Overdrive is an excellent combo ender and reversal, and RC/YRC are used liberally for mixups and pressure; Dragon Install (50 meter) grants incredible combos and even better pressure, at the risk of potentially losing the round if mismanaged",
+      "Easy stun: big individual hits and lengthy combos generate tons of stun — counter hit starters can almost certainly earn stun in many matchups"
+    ],
+    "cons": [
+      "Zoned out: issues with long-range zoning, forced to either take careful approaches with dashblocking or wild risks with Ground Viper and Riot Stamp",
+      "Tensionless mixups: without ample Tension his mixup is basic — high reward but predictable and easily countered by universal mechanics like Faultless Defense and Instant Block"
+    ]
+  },
+  "uniqueMechanic": {
+    "name": "Dragon Install (DI)",
+    "description": "Dragon Install defines the term 'Install super' — a move, usually a super, that changes the character's own properties, usually for the better. DI makes Sol and his normals faster while buffing his special moves, giving them unique properties only accessible during DI. It also changes Sol's character model and the match music to a unique theme. After DI expires, Sol is left helpless momentarily while he recovers from the transformation."
+  },
+  "normalMoves": [
+    {
+      "input": "5P",
+      "frameData": {
+        "normal": { "startup": 4, "active": 4, "recovery": 6 },
+        "dragonInstall": { "startup": 3, "active": 1, "recovery": 5 }
+      },
+      "description": "Sol's fastest normal outside of DI, useful for abare and initiating pressure in close range, especially given its expansive gatling options. Will whiff against some characters' crouching hurtboxes.",
+      "gatlingOptions": ["5P", "2P", "6P", "5K", "2K", "c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "5K",
+      "frameData": {
+        "normal": { "startup": 5, "active": 7, "recovery": 13 },
+        "dragonInstall": { "startup": 4, "active": 5, "recovery": 7 }
+      },
+      "description": "A somewhat unusual K normal serving more as a fast up-close attack and anti-air rather than a poke. A great combo and pressure starter leading into many routes, frequently used due to its speed and jump cancelability. The second hit has great vertical and horizontal reach and relatively fast whiff recovery, extremely useful for anti-airing and catching jump-ins. Commonly used as an option select with forward throw.",
+      "gatlingOptions": ["6P", "c.S", "f.S", "2S", "5H", "2H", "5D", "2D"]
+    },
+    {
+      "input": "c.S",
+      "frameData": {
+        "normal": { "startup": 5, "active": 2, "recovery": 16 },
+        "dragonInstall": { "startup": 3, "active": 1, "recovery": 10 }
+      },
+      "description": "A staple pressure and hitconfirming tool thanks to its speed and various gatlings. One of Sol's most damaging starters, making it a strong frame trap option and punisher on highly unsafe attacks; in blockstrings its many cancels let Sol threaten simple mixups despite lacking frame advantage. Combos into j.D on air hit, used to set up Dustloops.",
+      "gatlingOptions": ["6P", "f.S", "2S", "5H", "2H", "5D", "2D"]
+    },
+    {
+      "input": "f.S",
+      "frameData": {
+        "normal": { "startup": 7, "active": 2, "recovery": 23 },
+        "dragonInstall": { "startup": 5, "active": 1, "recovery": 13 }
+      },
+      "description": "Sol's main long-range poke with an excellent combination of speed and horizontal reach. Useful for countering attacks at long range, catching opponent movement, and punishing unsafe attacks at a distance. On block, cancels into specials to apply pressure, or gatlings into 2S to reset the situation. On hit, gatlings into 5H for long-range Tension confirms. Drawbacks are significant recovery and an extended hurtbox, which can get it stuffed by preemptive attacks, but its speed usually has to be respected.",
+      "gatlingOptions": ["2S", "5H", "2H", "5D", "2D"]
+    },
+    {
+      "input": "5H",
+      "frameData": {
+        "normal": { "startup": 11, "active": 2, "recovery": 26 },
+        "dragonInstall": { "startup": 6, "active": 1, "recovery": 13 }
+      },
+      "description": "Sol's other long-range poke, trading speed for greater range and significantly higher Counter Hit reward. Its hurtbox doesn't extend far relative to its max range, strong combined with pokes that extend his hurtbox more (f.S, 2D), though it recovers slower than those. In pressure, gatlings from 6P as a far-range frame trap; if blocked, jump or special cancelable to return to neutral or keep the offense. A common combo part — combos into Instant Air Dash j.P/j.K, or can be Roman Canceled into Bandit Bringer for follow-ups. Combos into j.D on air hit, frequently used to set up Dustloops in the corner.",
+      "gatlingOptions": ["2H", "5D", "2D"]
+    },
+    {
+      "input": "5D",
+      "startup": 24,
+      "active": 3,
+      "recovery": 24,
+      "description": "Should be used sparingly. Hits overhead but can be reacted to easily, and is unsafe on block. Small rewards on hit outside the corner. Can be used as a combo part for Dragon Install combo enders due to the wall stick it causes in corner combos. YRCing it on startup can lead to particularly tricky setups."
+    },
+    {
+      "input": "6P",
+      "frameData": {
+        "normal": { "startup": 9, "active": 3, "recovery": 20 },
+        "dragonInstall": { "startup": 6, "active": 2, "recovery": 10 }
+      },
+      "description": "Has upper-body invulnerability, countering higher-hitting pokes at range. For anti-airing it's most effective against shallow jump angles or low air dashes, but can also counter air attacks used early in descent (e.g. against a 5K anti-air attempt). A strong pressure tool, leading to many easily hit-confirmable and delayable options on connect. Converts to combos on trades if it hits near the corner or on Counter Hit; the wall bounce makes it a staple in corner pressure and combos. 6P > short delay 6H can set up sneaky crossups.",
+      "notes": ["Knocks away and down on hit, wall bounces within range", "Greater knockback on Counter Hit, enabling wall bounce at most ranges"],
+      "gatlingOptions": ["c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "6H",
+      "frameData": {
+        "normal": { "startup": 17, "active": 3, "recovery": 26 },
+        "dragonInstall": { "startup": 10, "active": 2, "recovery": 13 }
+      },
+      "description": "Sol's longest range normal, rarely used on its own due to slow, obvious startup, lengthy recovery, awkward angle, and limited cancel options. Useful as a frame trap from 2S or 6P, and the gap between Sol's hurtbox and the attack's hitbox lets it crush certain low attacks. Small reward on regular hit without Tension, but on Counter Hit it causes ground bounce for devastating combos, solidifying its use as a frame trap. Also a strong corner combo ender, leading to safe, high-advantage Gun Flame okizeme; raises R.I.S.C. Level significantly on block. In Dragon Install this move is an entirely different beast with greatly reduced startup and recovery.",
+      "notes": ["Forces crouch on ground hit, knocks down on air hit", "Ground bounces on Counter Hit"]
+    },
+    {
+      "input": "2P",
+      "frameData": {
+        "normal": { "startup": 5, "active": 4, "recovery": 4 },
+        "dragonInstall": { "startup": 3, "active": 1, "recovery": 5 }
+      },
+      "description": "A staple in Sol's pressure game, similar utility to 5P but plus on block as well. Sets up tick throws or frame traps, easily hit-confirmed. Quick recovery creates Burst-safe points in combos.",
+      "gatlingOptions": ["5P", "2P", "6P", "5K", "2K", "c.S", "f.S", "2S", "5H", "2H", "5D", "2D"]
+    },
+    {
+      "input": "2K",
+      "frameData": {
+        "normal": { "startup": 6, "active": 3, "recovery": 8 },
+        "dragonInstall": { "startup": 4, "active": 1, "recovery": 7 }
+      },
+      "description": "Sol's fastest low, important in pressure and okizeme. Quick recovery makes it a decent tick throw option; decent reach for its speed, useful as a standalone poke to check low-profile moves without committing to a riskier attack. Useful as an empty-jump low option for okizeme, and with proper spacing can outrange throws.",
+      "gatlingOptions": ["6P", "c.S", "f.S", "2S", "2H", "5D", "2D"]
+    },
+    {
+      "input": "2S",
+      "frameData": {
+        "normal": { "startup": 10, "active": 3, "recovery": 8 },
+        "dragonInstall": { "startup": 7, "active": 1, "recovery": 5 }
+      },
+      "description": "A strong neutral and pressure tool. Relatively slow startup but recovers incredibly fast while keeping Sol's hurtbox far back, great for stopping ground approaches and countering shorter pokes; its disjointed hitbox during active frames beats many similarly-high pokes. Gatling an f.S into a 2S whiff is a common technique to reset to a safer distance. Advantageous on block, a great way to safely end blockstrings or lead into extended pressure since it still cancels into some of Sol's most damaging frame traps, whose fear can open the opponent up to a throw. Also usable as a meaty to maintain frame advantage even on Instant Block, which gives read on the opponent.",
+      "gatlingOptions": ["5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "2H",
+      "frameData": {
+        "normal": { "startup": 8, "active": 6, "recovery": 26 },
+        "dragonInstall": { "startup": 5, "active": 3, "recovery": 13 }
+      },
+      "description": "Primarily used in combos on airborne opponents, such as off an anti-air 5K or corner 6P. Rarely useful on its own due to slow startup, long recovery, and a large hurtbox, though occasionally used in anticipation for a rewarding Counter Hit launch anti-air. From farther air hits, combos into Instant Air Dash j.P/j.K for follow-up combos that reach a knockdown otherwise unreachable. Combos into j.D on air hit, frequently used in place of 5H for Dustloop routes needing greater height thanks to its higher vertical range.",
+      "notes": ["Floats on Counter Hit"],
+      "gatlingOptions": ["5D", "2D"]
+    },
+    {
+      "input": "2D",
+      "frameData": {
+        "normal": { "startup": 7, "active": 3, "recovery": 20 },
+        "dragonInstall": { "startup": 5, "active": 1, "recovery": 13 }
+      },
+      "description": "A powerful normal with an exceptional combination of speed, reach, evasive properties, and reward on hit. Its low-profile ability counters pokes that don't reach the floor. On Counter Hit, combos into Gun Flame for high-damage, Tension-free combos; on normal hit it leads to multiple combo options depending on range and resources. A strong frame trap since it low-profiles many fast pokes. Useful as an empty-jump low option for okizeme since it can easily outrange throws."
+    },
+    {
+      "input": "j.P",
+      "frameData": {
+        "normal": { "startup": 5, "active": 7, "recovery": 4 },
+        "dragonInstall": { "startup": 3, "active": 4, "recovery": 3 }
+      },
+      "description": "Sol's fastest air normal, ideal for close-quarters air-to-air. Cancels into itself even on whiff, useful to cover space with a long series of active hitboxes; combined with its quick recovery, rising j.P is a low-risk space control option. Shifts Sol's hurtbox forward and upward, so it can be hard to anti-air and can evade aerial attacks from below. Its speed is also ideal when pressing offense after teching out of a combo. Following knockdowns, usable as a safe jump that puts the opponent in short blockstun, making it a common tick throw option. Creates Burst-safe points in combos.",
+      "gatlingOptions": ["j.P", "j.K", "j.S", "j.H"]
+    },
+    {
+      "input": "j.K",
+      "frameData": {
+        "normal": { "startup": 6, "active": 6, "recovery": 17 },
+        "dragonInstall": { "startup": 6, "active": 3, "recovery": 12 }
+      },
+      "description": "Usable for long-distance air-to-air or to pressure opponents trying to jump away. In combos, frequently used from long-range hits and can increase corner carry in many confirms, being only a frame slower than j.P while having much more horizontal range. Has a large hitbox behind Sol, allowing crossups, useful for okizeme off closer knockdowns. Doesn't reach low, so certain characters can crouch to make it whiff.",
+      "notes": ["Large cross-up hitbox"],
+      "gatlingOptions": ["j.S", "j.D"]
+    },
+    {
+      "input": "j.S",
+      "frameData": {
+        "normal": { "startup": 10, "active": 3, "recovery": 23 },
+        "dragonInstall": { "startup": 6, "active": 2, "recovery": 12 }
+      },
+      "description": "Sol's best air starter for combos, commonly used in okizeme as a high hit. Also used to extend combos on airborne opponents thanks to being jump cancellable. Reaches far downward with relatively quick startup, a great air-to-ground button.",
+      "gatlingOptions": ["j.K", "j.H", "j.D"]
+    },
+    {
+      "input": "j.H",
+      "frameData": {
+        "normal": { "startup": 9, "active": 14, "recovery": 0 },
+        "dragonInstall": { "startup": 9, "active": 6, "recovery": 0 }
+      },
+      "description": "Has utility in many areas and is Sol's most commonly used air normal. For okizeme it's a safe jump that can hit high twice. Doesn't gatling to other air normals but recovers instantly, so j.P or j.K can be linked afterward. Useful as both air-to-air and air-to-ground thanks to its large hitbox, long active frames, and evasive hurtbox — Sol's hurtbox shifts far above the lower limit of j.H's hitbox, a great way to counter anti-airs and help approach from the air. As a jump-in, its only drawback is not reaching quite as deep as j.S, so it can be low-profiled. At neutral, rising j.H has similar utility to rising j.P for covering space, hitting slightly above Sol. Creates Burst-safe points in combos due to instant recovery."
+    },
+    {
+      "input": "j.D",
+      "startup": 9,
+      "active": 7,
+      "recovery": 13,
+      "specialRecovery": 5,
+      "description": "Primarily used in combos on airborne opponents to maximize corner carry and damage, such as Dust loops near the corner. Commonly used as a gatling from j.S to launch the opponent. On its own, limited use as an air-to-ground attack since the hitbox has more horizontal and upward range than downward, plus extra landing recovery weakening follow-up pressure on block. Occasionally useful as an air-to-air with decent active frames and horizontal reach.",
+      "notes": ["Knocks away on hit with significant untechable time; combined with its short recovery, two j.Ds can be done in a single regular jump, leading to Sol's famous Dust loop combos", "Wall bounces on Counter Hit within range"]
+    }
+  ],
+  "universalMechanics": [
+    {
+      "name": "Ground Throw",
+      "description": "Used much more frequently on defense than offense, since Wild Throw is usually a stronger offensive option. Throw is faster though, usable when the opponent is briefly throwable. Can only be followed up with combos using Roman Cancel. Performing throw as 6K+H is a useful option select: 5K if the opponent isn't throwable, throw if they are. Can't be used to throw opponents behind due to Faultless Defense, but much safer than using 6H."
+    },
+    {
+      "name": "Air Throw",
+      "description": "Useful in multiple situations since air throws are strong in general; Sol uses it particularly on offense to grab opponents trying to escape by jumping. Knocks down on connect and usually needs a Roman Cancel for any follow-up. Does significant stun damage, so a successful tech trap can often stun the opponent. j.H is a strong normal that often leaves Sol in a favorable situation due to recovering instantly on active frames' end, so missing an air throw doesn't necessarily put him in a bad spot."
+    },
+    {
+      "name": "Dead Angle Attack",
+      "startup": 11,
+      "active": 3,
+      "recovery": 25,
+      "description": "An anti-pressure option costing 50% Tension, knocking the opponent away and down for ground okizeme follow-up. Occasionally useful since usable during blockstun, but Sol has particularly good defensive options otherwise, so he doesn't need to rely on it much, especially since it's highly unsafe on block or whiff."
+    },
+    {
+      "name": "Blitz Attack",
+      "startup": 28,
+      "active": 3,
+      "recovery": 20,
+      "description": "Causes spinning blowback on hit, wallsticks in the corner. Crumples on ground Counter Hit, floats and wallsticks in the corner on air hit. Steals a small amount of Burst Gauge on hit."
+    }
+  ],
+  "specialMoves": [
+    {
+      "name": "Gun Flame",
+      "input": "236P",
+      "description": "A vital neutral and offensive tool, one of Sol's few ways to pressure at longer ranges. Follow-up combos vary by spacing and whether it Counter Hit — the later the flames hit, the more time Sol has to follow up, on block or hit. When combo'd into (e.g. from a Counter Hit 2D) it has significant hitstun, allowing a 5H follow-up. At neutral, covers a huge area for a long time, ideal for ground space control. Significant recovery means jumping over it can lead to Counter Hit punishes. Much more threatening with meter for Yellow Roman Cancel, letting Sol move with the projectile to meet the opponent in the air or catch their landing. On offense, used to frame trap or as a pressure reset via YRC. For okizeme, a meaty GF can be significantly advantageous on block and lead to high/low mixups if it hits late or with YRC, especially strong in the corner.",
+      "notes": ["The 3rd and 4th pillars of Gun Flame don't disappear when Sol gets hit", "Launches on hit, Counter Hit is untechable", "Sol is in Counter Hit state for the entire duration", "Attack power and level change with each set of 9 active frames"]
+    },
+    {
+      "name": "Gun Flame (Feint)",
+      "input": "214P",
+      "description": "Often used as a cancel option from 5H or 6H on block. Doesn't improve frame advantage, but brings Sol's hurtbox back to a safer distance. Builds a small amount of Tension, so usable at farther ranges during downtime to build meter for free, or as a special cancel from certain combo enders for more meter gain. In pressure, a risky but occasionally useful way to make the opponent flinch, though it can be punished.",
+      "notes": ["Has no hitbox"]
+    },
+    {
+      "name": "Volcanic Viper",
+      "input": "623S / 623H (air OK)",
+      "description": "Ground S Volcanic Viper (SVV): the slower and more invincible version of Sol's DP, slightly less unsafe on block than its heavy counterpart. In neutral, can be used at range to counter a poke into a knockdown, but risky and only effective against attacks that extend their hurtbox. Usable as an invulnerable reversal, though slower than HVV with a much thinner hitbox. Aerial S Volcanic Viper (j.SVV): usable as an anti-anti-air, particularly strong with Roman Cancel available; its hurtbox reaches much lower than j.HVV's. Also counters close-range aerial attacks and is used frequently to end air combos with a knockdown. A close-to-ground j.SVV links into 5P on landing, making Tiger Knee j.SVV useful in certain mid-screen confirms. Ground H Volcanic Viper (HVV): Sol's strongest defensive tool, with neutral and offensive applications too. Fast startup, invulnerable instantly, usable on wakeup or at any gap in the opponent's pressure. Highly unsafe on block or whiff; RC available removes much of that risk, allowing combos on hit or pressure if blocked. If the second hit connects on Counter Hit, it follows up into a combo at no Tension cost. A powerful anti-air, though vulnerable to Faultless Defense; particularly useful punishing forward air dashes since the opponent must wait for the dash to finish before FDing. On offense, usable as a frame trap and anti-throw option if Sol is negative, though still heavily unsafe. Aerial H Volcanic Viper (j.HVV): counters aerial attacks and ends air combos with a knockdown, reaching much higher than its S counterpart so usable from farther away; higher base damage than j.SVV, but requires being closer to land both hits.",
+      "notes": ["All versions hit twice, both hits launch; first hit is fully untechable on Counter Hit; second hit can be canceled into Knockdown on hit, block, or whiff", "Sol is crouching during landing recovery", "Cannot Yellow or Purple Roman Cancel"]
+    },
+    {
+      "name": "Knockdown",
+      "input": "Volcanic Viper > 214K",
+      "description": "The add-on to Volcanic Viper used to knock the opponent down after VV hits. The cancel is delayable, so timing may need adjusting depending on the height VV connects at. Whiffing Knockdown after VV connects leaves Sol at a disadvantage, sometimes even punishable. A delay cancel into Knockdown can also throw off the opponent's punish timing when they block or dodge a VV, but it puts Sol in Counter Hit state, leaving VV even more punishable if it fails. During Dragon Install, Sol falls to the ground quickly after Knockdown, making him less vulnerable and allowing better follow-ups.",
+      "notes": ["Can be canceled into from Volcanic Viper on hit, block, or whiff", "Knocks down on hit", "Sol is in Counter Hit state for the entire duration", "Cannot Yellow or Purple Roman Cancel"]
+    },
+    {
+      "name": "Bandit Revolver",
+      "input": "236K (air OK)",
+      "description": "Primarily used to end combos into Sol's most advantageous knockdown. The second hit has a large hitbox and must be blocked with Faultless Defense in the air. Block frame advantage depends on distance and whether it's crouch, stand, or instant blocked — from mid-range on crouching block it's slightly advantageous, but otherwise can range from slightly negative to punishable. Also has niche use as a low crush since it's airborne after frame 9. j.236K: in the air, Sol travels far forward and moves the opponent a great distance on hit, granting significant corner carry if successful; the opponent can tech after the second hit if high enough."
+    },
+    {
+      "name": "Bandit Bringer",
+      "input": "236[K]",
+      "description": "Should be used sparingly outside combos. Very slow, telegraphed startup, easily punished (countered out of startup or thrown after an Instant Block). Hits overhead, but too slow to realistically hit a crouch-blocking opponent. Mainly used as a high-risk, high-reward evasive attack to dodge and whiff-punish at long range, or to catch backdashes or jump startup. Frequently used in combos for added damage and corner carry.",
+      "notes": ["Floor bounce on hit, higher bounce on Counter Hit", "Sol is crouching during landing recovery"]
+    },
+    {
+      "name": "Riot Stamp",
+      "input": "214K",
+      "description": "A risky but useful movement-based special, generally used with Sol's back to the corner to quickly dodge and whiff-punish. Recovers quickly on connect, and Sol can act shortly after the apex of his ascent from the second hit, allowing follow-up combos on hit and safety on block. At mid-screen it's reaction-punishable by 6P, invulnerable attacks, Blitz Shield, etc., making it dangerous to use often. With his back to the corner it's much more practical, with less distance to travel backward, potentially usable as a sneaky overhead. Using YRC during the backward travel is a useful way to quickly distance from the opponent.",
+      "notes": ["Wall bounces on hit", "Travel distance of the initial backward leap isn't infinite — if Sol can't reach a wall in time he harmlessly falls to the ground without performing the attack"]
+    },
+    {
+      "name": "Break",
+      "input": "j.214K",
+      "description": "AKA 'Kudakero'. An all-around strong dive kick that stalls Sol's momentum in mid-air, usable as an anti-anti-air since it comes down quickly after the delay to whiff-punish. Follows up on hit near the corner, or mid-screen via Roman Cancel. Frequently used in corner combos due to high hitstun, allowing many follow-up options. Safe on block only if the flame pillar connects — from a close-range block (often from an Instant Block), the flame pillar will whiff behind the opponent after the dive kick, leaving Sol vulnerable. Done from farther ranges, it's difficult to whiff punish since the flame pillar still comes out even if the dive kick whiffs. Using YRC as Sol begins descending makes him drop quickly, a particularly strong aerial approach.",
+      "notes": ["Launches on hit, Counter Hit is untechable", "Cannot be performed close to the ground"]
+    },
+    {
+      "name": "Wild Throw",
+      "input": "623K",
+      "description": "Makes Sol especially dangerous within its range, a fundamental part of his offense. Only 4 frames startup, can outrange normal throws. Allows strong Tension-free follow-up combos; forces a side switch, but Sol recovers so quickly he can run under the opponent to swap sides again while still comboing. In pressure, most effective combined with frame traps and lows, with the outcome depending on whether the opponent tries to counter its startup or jump/backdash away. Opponents using Faultless Defense excessively to keep Sol out are extra susceptible to it. Important to space it well, since it can be thrown out of startup if done too close. Whiffing leaves a punishable recovery animation, but can be Purple Roman Canceled for safety."
+    },
+    {
+      "name": "Ground Viper",
+      "input": "214S",
+      "description": "Sol's riskiest attack. Massive recovery and cannot be canceled on whiff. The player must rapidly press directions and buttons (not D) to achieve maximum travel distance and 9 hits. Reaches the opponent quickly from nearly full screen, useful to catch opponents out of anything from far away. Low-profiles any attack that doesn't reach the floor, useful at neutral, on wakeup, or while being pressured. Mid-screen ground hits confirmed into it lead to high-damage combos with great corner carry.",
+      "notes": ["Hits low for all but the last 3 hits, minimum 5 hits, maximum 9 hits; rapid directional/button inputs increase hit count and travel distance; knockdown from the final hit", "With a jump install, RRCing GV's airborne hits lets Sol airdash for more damaging combos"]
+    },
+    {
+      "name": "Fafnir",
+      "input": "41236H",
+      "description": "A strong neutral and pressure tool with far reach thanks to Sol stepping a large distance forward, ideal in neutral at long distance. Counters attacks at long range into full-screen carry combos, or as a whiff punisher. The tumble on Counter Hit can often be followed up even on trades, making it a frightening move to challenge. Sol's hurtbox lowers slightly during startup, letting it duck under certain higher-hitting attacks and counter them. Recovers quickly, so an opponent avoiding it by jumping often leaves Sol well positioned to anti-air. Useful in ranged pressure against conditioned opponents; must be blocked with Faultless Defense in the air, catching opponents at the start of a jump. Plus on block (unless Instant Blocked), and increases R.I.S.C. Level considerably. Frequently used in combos near the corner; high base damage contributes to Sol's stunning ability, especially off a Counter Hit Fafnir starter. Drawbacks: relatively slow startup and a large horizontal hurtbox.",
+      "notes": ["Tumbles on hit; significantly longer tumble on Counter Hit"]
+    },
+    {
+      "name": "DI Gun Flame",
+      "input": "236P (while in Dragon Install)",
+      "description": "Doesn't travel like the regular version; the static projectile covers a significant amount of screen while recovering much faster. Very useful to occupy mid-range space, preventing the opponent from approaching, and even grants block advantage, letting Sol dictate the pace at distances where he's normally disadvantaged, especially with YRC. Also useful in corner combos, with a large amount of untechable time on hit and good damage.",
+      "notes": ["Launches on hit, Counter Hit is untechable", "Sol is in Counter Hit state for the entire duration"]
+    },
+    {
+      "name": "DI Volcanic Viper",
+      "input": "623S / 623H (air OK, while in Dragon Install)",
+      "description": "DI Ground/Aerial S Volcanic Viper: used much like the regular versions. The additional hit increases combo damage and decreases block disadvantage, though not enough to prevent heavy punishability. DI j.SVV also requires Faultless Defense to block after the first hit, unlike the regular version. Neither DI SVV nor DI j.SVV see much use during DI due to the far higher reward of the H versions. DI Ground/Aerial H Volcanic Viper: greatly enhanced firepower, dealing a total of 10 hits; connecting with either version deals a large amount of damage, especially raw. All 9 rising hits build a base 7.2% Tension each on hit, giving DI HVV the highest Tension Gain of any attack in the game — a successful DI HVV almost always builds enough Tension for a Roman Cancel, converting the already powerful attack into a full combo. DI j.HVV also requires Faultless Defense to block after the first hit. Both versions are massively unsafe on block or whiff, more than any other Sol attack, so never go for it in unconfirmable situations without the 50% Tension to RC. With an RC available, the first hit alone deals 60 damage, launches, is completely untechable and only decreases R.I.S.C. Level by one, making it perhaps the most dangerous single hit in the game — RCing the first hit into a combo can mean massive damage off a 7-frame attack with invulnerable startup.",
+      "notes": [
+        "DI S version: hits 3 times, all launch; third hit can be canceled into Knockdown on hit, block, or whiff; cannot Yellow or Purple Roman Cancel",
+        "DI H version: hits 10 times, all launch; tenth hit can be canceled into Knockdown on hit, block, or whiff; cannot Yellow or Purple Roman Cancel"
+      ]
+    },
+    {
+      "name": "DI Bandit Revolver",
+      "input": "236K (air OK, while in Dragon Install)",
+      "description": "Becomes a pressure and combo tool: improved startup, movement speed and active time force opponents to respect the ground version in neutral far more than the regular BR, and the improved attack level grants block advantage, allowing a pressure reset. Doesn't work well as close-range pressure on grounded opponents though, since Sol moves so far forward that crouching usually makes the last hit whiff over the opponent, leaving him wide open — best used at a distance or in expectation of a jump. Since the last hit of the ground version is an overhead, it's common to reset pressure at a distance where only the last hit connects against a scared opponent. Significant untechable time also makes it a combo tool near the corner, especially on air hit, even loopable several times in the corner (though damage isn't ideal). In the air, functions like its regular counterpart, but the increased attack level and decreased landing recovery let it also be used as a combo part on air hit."
+    },
+    {
+      "name": "DI Bandit Bringer",
+      "input": "236[K] (while in Dragon Install)",
+      "description": "Carries the usual neutral risks despite a minuscule startup improvement and a seemingly larger hitbox. Being in DI, the reward for landing it is potentially greater since it lacks the initial proration of the regular version. Tumbles on hit, often used in combos after a mid-screen DI Break for the extra corner carry needed to reach the corner. Interestingly, landing it without any preceding tumble causes a tumble, but landing it after a tumble in the same combo causes a ground bounce instead, since combos have a one-tumble limit.",
+      "notes": ["Tumbles on hit during the first tumble in a combo, ground bounces after a tumble"]
+    },
+    {
+      "name": "DI Riot Stamp",
+      "input": "214K (while in Dragon Install)",
+      "description": "The first two hits are entirely unchanged outside of Tension gain, so neutral use is almost entirely restricted to the same situations as the regular version. If a DI Riot Stamp gets to the second hit, the situation changes dramatically: an inferno rises from under the opponent with a ludicrous amount of active frames, and since Sol himself recovers at the same time as the regular version, his block advantage goes from high to absurd; on hit he gets a lot more freedom to follow up.",
+      "notes": ["When right next to the wall, startup is 16 frames"]
+    },
+    {
+      "name": "DI Break",
+      "input": "j.214K (while in Dragon Install)",
+      "description": "Break's all-around usefulness increases greatly in DI, though its damage doesn't. Startup becomes noticeably faster, enhancing its neutral viability; Sol doesn't hang in the air as long to bait anti-airs, but the move's speed and DI's general danger make it risky to challenge anyway. The ground flame is replaced by a large explosion, granting even greater advantage without the second hit whiffing at point-blank; the explosion even hits behind Sol for potential crossups, though the minimum height requirement usually restricts this to okizeme or situations where Sol gets high above the opponent. On hit, the explosion launches the opponent high and far with massive untechable time, letting Sol follow up with any jumping normal (including after an IAD) or even DI Bandit Bringer during low untechable time decay. A very versatile combo part in DI combos, mid-screen for corner carry and in the corner for j.D > DI Break loops — though using it in combos limits maximum damage, so avoid it there if possible.",
+      "notes": ["Second hit has a massive amount of untechable time on hit"]
+    },
+    {
+      "name": "DI Wild Throw",
+      "input": "623K (while in Dragon Install)",
+      "description": "Functions exactly the same as normal Wild Throw; the only change is doubled base damage. It's also considerably more threatening thanks to Sol's massively increased movement speed in DI."
+    },
+    {
+      "name": "DI Ground Viper",
+      "input": "214S (while in Dragon Install)",
+      "description": "Faster startup, movement speed and an immediate super low-profile state make it a very scary ranged low. On block, cranks the opponent's R.I.S.C. Level up far more than any other attack, basically guaranteeing an automatic Counter Hit state if Sol gets the maximum number of hits. On hit, Sol can increase hits (and damage), but there's incentive to let the attack hit its minimum: due to the increased launch height on the final hit, a low hit count means less gravity scaling, letting Sol follow up with a fast anti-air normal like 5K or 2H into an extended combo. Also lacks several weaknesses of the regular version: as Sol moves across the ground he creates high-reaching flame pillars behind him, making it much harder to jump over, and while the pillars can be blocked any way, they push the opponent back toward Sol, meaning a jumping opponent caught by a stray flame can get pushed back into the rising section regardless of their attempt to clear it. Sol can Purple Roman Cancel to safety with 50% Tension, or Yellow Roman Cancel the early portion if he doesn't want to commit fully or just wants to scare the opponent with a quick burst of movement.",
+      "notes": ["Hits low for all but the last 3 hits, minimum 15 hits, maximum 25 hits; rapid directional/button inputs increase hit count and travel distance; knockdown from the final hit"]
+    },
+    {
+      "name": "DI Fafnir",
+      "input": "41236H (while in Dragon Install)",
+      "description": "Can deal up to three hits in immediate succession. Has more recovery in this state, considerably riskier to whiff and noticeably less advantageous on hit, though its block advantage is slightly higher so it can be used similarly to the regular version. On hit, it decreases the opponent's R.I.S.C. Level significantly more than regular Fafnir, causing heavier damage scaling, but the opposite is true on block — an overly defensive opponent quickly earns a flashing R.I.S.C. Level.",
+      "notes": ["Tumbles on hit"]
+    },
+    {
+      "name": "P.B.B.",
+      "input": "j.623K (Dragon Install exclusive special)",
+      "description": "Sol's DI-exclusive special, primarily a combo ender during DI's final moments, letting Sol safely recover without repercussion by causing a knockdown and creating distance from the opponent. Uniquely, despite being classified as an air throw, it's possible to land it on grounded opponents, but only while they're already in hitstun; combined with its fast startup and short burst of horizontal movement, this lets Sol end almost any DI combo with P.B.B. without unnecessary filler, maximizing combo damage. As an air throw, it can also be used for resets on an opponent trying to air tech away, or to throw someone out of Burst startup.",
+      "notes": ["Can grab airborne opponents both in and out of hitstun", "Can grab grounded opponents in hitstun"]
+    }
+  ],
+  "overdrives": [
+    {
+      "name": "Tyrant Rave ver.β",
+      "input": "632146H / 632146D",
+      "description": "Primarily used for unburstable damage in combos, usually when it will kill; also gives high damage from a corner 2D hit. Usable as a more costly reversal on wakeup or in pressure, though Roman Canceling Volcanic Viper is almost always a better, less risky idea. Slightly unsafe on block whether the opponent interrupts the second hit or not. As a reversal, its only benefits over VV are more horizontal range and being unburstable; with 75% Tension it can be Yellow Roman Canceled for safety when the opponent is ready to block, though this is costlier than RCing VV. Can also be used offensively like VV as a frame trap, though rarely practical.",
+      "notes": ["Hits twice; first hit launches, second hit knocks away and is untechable; wall bounces near the corner with enough hitstun to follow up"]
+    },
+    {
+      "name": "Dragon Install",
+      "input": "214214H (air OK)",
+      "description": "A situational, high-risk, high-reward Overdrive in which Sol's movement speed increases, his normals become noticeably faster and safer, and his specials are all significantly buffed. Used in neutral, Sol gains a great amount of initiative — he recovers instantly once the super freeze ends, and the combination of his speed advantage and reward off any hit is large enough to make it very risky for opponents to try forcing the pace in their favor. Carries a large risk: when the mode's natural duration ends and Sol returns to neutral on the ground, he loses all his Tension and is forced into a lengthy recovery animation, incredibly vulnerable to counter-offense. Only really recommended where the recovery animation won't come into play — a last-minute comeback, finishing off an opponent on their last legs, or a combo that guarantees a safe exit. With proper timing, DI's invulnerability can call out a reversal attempt after a knockdown, especially one intending to RC on connect. Can also create Burst-safe points. Can be Roman Canceled just as the animation starts, only burning meter for the cancel and canceling the transformation.",
+      "notes": ["Greatly enhances movement speed, all offensive specials, and almost all normals; plays a unique theme, Ride The Fire!"]
+    },
+    {
+      "name": "DI Tyrant Rave ver.β",
+      "input": "632146H (while in Dragon Install)",
+      "description": "A very scary version of Tyrant Rave. The first hit is basically the same, a couple frames slower, but the second hit is replaced by a traveling blast of fire dealing 15 hits total, traveling from Sol's fist across the entire length of the screen. Immense raw damage, especially during Hellfire, and increased strike invulnerability make it not entirely terrible to throw out raw. Sol is at a disadvantage on block, but the pushback from the blast forces the opponent to either Instant Block the first hit and punish before the second, or not at all. Really shines as a late combo part in the corner: the projectile causes wall stick near the corner for easy P.B.B. enders; delaying it so the first hit connects right before the opponent hits the ground makes them stick to the wall low enough to guarantee a slump afterward, letting many combos continue with a grounded combo continuation into an ender.",
+      "notes": ["First hit launches, following hits are part of a large traveling projectile", "Wall sticks near the corner", "Does not have a Burst version"]
+    }
+  ],
+  "instantKill": {
+    "name": "Branding Breach",
+    "input": "236236H",
+    "description": "Like most Instant Kills, only particularly useful in two situations: when the opponent is stunned and Sol has a way to quickly activate IK Mode, or when combo-into-IK conditions are met. A fairly versatile IK in terms of startup, with a lengthy amount of invulnerability and a decent hitbox thanks to a startup animation based on Fafnir. If conclusion conditions are met, it's possible to combo into it off a Roman Canceled Ground Throw or Wild Throw mid-screen, and any corner combo leading into a high air-hit Fafnir can also combo into it without needing a Roman Cancel.",
+    "notes": ["Used for killing stunned opponents, and comboing into a guaranteed finish during match point when the opponent is in Hellfire state"]
+  }
+}

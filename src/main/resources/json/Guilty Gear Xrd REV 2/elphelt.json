@@ -1,0 +1,353 @@
+{
+  "character": "Elphelt Valentine",
+  "game": "Guilty Gear Xrd REV 2",
+  "overview": "Elphelt is a versatile stance character with many tools for different situations. She has incredibly strong pokes and anti-airs for confirming into a knockdown (usually via Bridal Express, 214K) where she can force mixups or extend pressure thanks to her Berry Pine grenade. Otherwise she can enter the close-range Miss Travailler (236H) stance where the opponent must deal with even more obnoxious pressure options. Her high-damage options lead to more knockdowns, letting her repeat the cycle. While scoring hits she also gains a lot of meter, which she can spend on Berry Pine YRC to safely ready a grenade as a projectile, or on Red Roman Cancel extensions for more corner carry. Once she has the opponent cornered she unleashes her full potential: regular pressure and mixups, terrorizing the opponent on block with Shotgun pressure (massive chip damage and huge tension drain if they FD, while being incredibly difficult to contest), high-damage Shotgun loops, unblockable setups via Berry Pine and her rifle stance Miss Confille (236S), or even more high/low/throw mix. Having this many strong options is powerful, but choosing the wrong one can put Elphelt in bad spots that, without meter, can be hard to escape.",
+  "keyStats": {
+    "fastestNormals": "sg.P (Miss Travailler Thrust, 3F), 2P (4F)",
+    "reversal": "Judge Better Half 236236K (3+1F)"
+  },
+  "prosAndCons": {
+    "pros": [
+      "Versatility: can zone, pressure, play footsies, and mix opponents up, on top of solid defensive options",
+      "Berry Pine: the grenade (4P/2P toss), one of the best moves in Xrd — excellent okizeme tool, can be YRC'd in neutral for screen control, beats out many projectiles with its large explosion, and enables unblockable setups",
+      "Great normals: most buttons are fast, disjointed, long range, or have good cancel options; c.S in particular gives abnormally fast and rewarding anti-air options",
+      "Rewarding combos: high damage, great meter gain, and superb corner carry maximize the return on any hit; most combos end in a hard knockdown feeding her pressure game",
+      "Superb neutral: in scramble situations the risk-reward of a trade or abare is skewed in her favor; her huge buttons synergize well with Miss Confille",
+      "Grenade explosion can save her: if she's clipped by an attack while cooking her grenade, the explosion can bail her out of what would've been a worse combo"
+    ],
+    "cons": [
+      "Grenade explosion can hurt her too: being clipped while cooking a grenade can open her up to bigger punishes than the opponent would normally get without resources (a double-edged aspect of the same mechanic)"
+    ]
+  },
+  "normalMoves": [
+    {
+      "input": "5P",
+      "startup": 5,
+      "active": 3,
+      "recovery": 5,
+      "description": "Fast jab, but whiffs against crouching characters except Potemkin and Bedman; active frames end as soon as the rose is dropped. Usually outclassed by 5K in neutral despite being 2 frames faster, and not very useful in blockstrings. Has occasional use at round start to stop moves with an early hurtbox since it's slightly disjointed. Niche anti-air since Elphelt lacks a conventional 6P, but has no upper-body invuln. Decent for confirming air combos at certain angles, and sees minor use faking her 6P overhead in okizeme.",
+      "notes": ["Jump cancellable"],
+      "gatlingOptions": ["5P", "2P", "6P", "5K", "2K", "c.S", "f.S", "2S", "5H", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "5K",
+      "startup": 7,
+      "active": 4,
+      "recovery": 5,
+      "description": "Standing low, jump and special cancelable, with pretty good proration for a low. Great for footsies to counter-poke sweeps while being incredibly difficult to poke back at due to the complete lack of a hurtbox on Elphelt's leg. Small pushback, plus frames, and a decent number of active frames make it a great pressure starter and go-to meaty low.",
+      "gatlingOptions": ["c.S", "f.S", "2S", "2H", "6H", "5D", "2D"]
+    },
+    {
+      "input": "c.S",
+      "startup": 5,
+      "active": 5,
+      "recovery": 18,
+      "description": "An extremely versatile move: Elphelt's go-to anti-air and incredibly fast for a close Slash, jump and special cancelable. Lack of proration and strong gatlings make it an excellent combo starter. Useful in pressure thanks to its wide cancel options and being delayable near the end of its recovery animation. Also leads to high reward defensively, calling out poorly timed meaties or low airdash mixups on wakeup. Creates a strong Option Select with 6H+S, which lets Elphelt throw on the first frame or hit at the 5th frame with c.S — useful against crossups too, since its wide hitbox hits on either side.",
+      "notes": ["Can hit most opponents at the top of their jump but has no upper-body invulnerability"],
+      "gatlingOptions": ["6P", "f.S", "2S", "5H", "2H", "5D", "2D"]
+    },
+    {
+      "input": "f.S",
+      "startup": 9,
+      "active": 5,
+      "recovery": 16,
+      "description": "Excellent poke in range, damage and speed, jump and special cancellable. Unlike most characters, Elphelt can get a knockdown at nearly max range against standing opponents by canceling into 5H, and at about 2/3 range against crouching opponents or on counter hit by canceling into 2H. Can also cancel into IAD combos with a fast reaction on counter hit. Can be low-profiled by certain moves, and her foot extends the hurtbox's lower portion forward, making it vulnerable to sweeps — don't be too predictable with it.",
+      "gatlingOptions": ["2S", "5H", "2H", "2D"]
+    },
+    {
+      "input": "5H",
+      "startup": 11,
+      "active": "1 per hit, up to 5 hits (cancels into itself up to 5 times)",
+      "recovery": 28,
+      "description": "A great, fully disjointed normal reaching half-screen that stuffs a lot in neutral, canceling into itself up to 5 times. Excellent neutral and counterpoking tool, extremely fast for its range; all 5 hits do 76 damage (vs Sol). With an RC, Elphelt can corner carry, get big damage, and still get a knockdown, helped by the time gained from 5 hits for hit-confirming. A huge pain for big, slow characters due to its range and long active time. Can be low-profiled by some moves, and on block the opponent can crouch block to make later hits whiff — it's also coded to whiff on all crouching characters, even Potemkin, and on crouching normals with hurtboxes extending upward (it loses to nearly any 2H). Triggers Berry Pine explosion on contact and looks like a projectile but is a normal attack and doesn't nullify other projectiles. Despite its weaknesses, its YRC window is lenient (up to the end of the active frames), enabling punishes against low-profile attempts, and a YRC OS: 5H>214K~RC — if 5H whiffs she gets a YRC, if it's blocked or hits she does 214K instead. 5H>214K is generally plus on block unless the opponent is quite close, and 5H CH>214K true combos even at max range for a knockdown.",
+      "notes": ["Special cancelable only for the first hit of 5H", "5th hit blows away and knocks down on ground hit (blows away but doesn't knock down on air hit)"],
+      "gatlingOptions": ["5H (hits 2-5)"]
+    },
+    {
+      "input": "5D",
+      "startup": 24,
+      "active": 6,
+      "recovery": 16,
+      "description": "More freely cancelable than her other standing overhead (6P), but still reactable and really only a cheap 'gotcha' move. Unsafe on block, mediocre reward on midscreen hit but good reward on corner hit. Mostly useless against an attentive opponent. Occasionally useful for confirming stray corner hits into Shotgun loops, but nearly everything Elphelt does as a combo ender in normal stance blows away or knocks down, making 5D situational at best."
+    },
+    {
+      "input": "6P",
+      "startup": 23,
+      "active": 4,
+      "recovery": 22,
+      "description": "Very long range overhead with lots of scaling and pushback. An unconventional 6P: has upper-body invuln but is rather slow at 23F, so not advisable as an anti-air or counterpoke. Generally used as a mixup option because it's an overhead; combos meterlessly on normal hit, allowing conversions off grenade detonations and extremely high corner damage. Midscreen without tension, only 236H and 214K are available cancel options for minimal damage but a potentially decent knockdown. Scales heavily when RRC'd, so spending meter on a midscreen combo gives decent corner carry but low damage.",
+      "notes": ["Special cancelable", "Knocks down on air hit, ground bounces on air counter hit"]
+    },
+    {
+      "input": "6H",
+      "startup": 15,
+      "active": 10,
+      "recovery": 30,
+      "description": "Huge normal covering a wide area above and in front of Elphelt with a lot of active frames. A highly rewarding counterhit option used as a frame trap or to catch a jumpout attempt in pressure; also usable as a neutral poke or preemptive anti-air. As a level 4 attack, canceling into 236H makes it plus on block, while canceling into 236P leaves Elphelt slightly minus; also used in combo routes canceling into 236H. Landing a counter hit with 6H is one of her most rewarding starters, leading to high damage and setups almost anywhere on screen — but its high recovery and short YRC window make it dangerous to whiff, so only throw it out when confident it will hit or be blocked.",
+      "notes": ["Special cancelable", "Knocks down on normal hit, ground bounce on Counter Hit", "Draws her hurtbox back slightly during startup, making some moves whiff at round-start distance", "Despite the animation, she is NOT airborne and is vulnerable to throws"]
+    },
+    {
+      "input": "2P",
+      "startup": 4,
+      "active": 2,
+      "recovery": 7,
+      "description": "Standard crouching jab, Elphelt's fastest normal outside of stances. A strong tool for stagger pressure, mashing out of fake pressure situations, and wakeup abare.",
+      "gatlingOptions": ["5P", "2P", "6P", "5K", "2K", "c.S", "f.S", "2S", "2H", "5D", "2D"]
+    },
+    {
+      "input": "2K",
+      "startup": 5,
+      "active": 5,
+      "recovery": 6,
+      "description": "Crouching low with the worst proration of any of Elphelt's moves, lower damage and a worse hitbox than 5K, but quite fast, useful for high/low mixups. Gatlings into 5K, letting her chain 3 lows in a blockstring (2K>5K>2D) to catch opponents attempting to fuzzy jump.",
+      "gatlingOptions": ["6P", "5K", "c.S", "f.S", "2S", "2H", "5D", "2D"]
+    },
+    {
+      "input": "2S",
+      "startup": 8,
+      "active": 6,
+      "recovery": 18,
+      "description": "Fast mid-range move that hits all the way to the floor. In neutral, an alternative to f.S for catching opponents trying to low profile. On block, naturally frame traps into a low 2D or advancing 2H, though the gap isn't as small as f.S>2H. Awkward to convert on normal hit due to limited gatling options (2S>5H only hits standing opponents, 2S>2D has limited range), but on counter hit the stagger property lets Elphelt do 2S>5Hx5 at any range and 2S>2H true combos at just short of max range, making it very rewarding used defensively. Her hurtbox shrinks vertically during active and recovery, letting her make moves whiff, but it doesn't low profile until later frames so it's not a reliable anti-air or low-profile option.",
+      "notes": ["Staggers on CH"],
+      "gatlingOptions": ["5H", "2H", "5D", "2D"]
+    },
+    {
+      "input": "2H",
+      "startup": 18,
+      "active": "3, gap 3, 3 (two hits)",
+      "recovery": 18,
+      "description": "A two-hit normal that slides Elphelt forward, used as a low-profile attack to close distance and as a frame trap gatling option; also a staple of her bread-and-butter 50-tension combos. Very useful in pressure thanks to its evasive properties and attack level 3, letting f.S>2H canceled into 236H be a frame trap sequence that's plus on block and leaves her in prime position to pressure in Shotgun stance via more frame traps or her command grab. Sliding distance can be increased with a microdash before inputting it, good for low-profiling certain moves and getting in. Defensively, its low-profile and advancing properties can escape pressure and steal a turn back, but it's on the slower side at 18F, and Elphelt is crouching the entire duration. On counter hit, pops opponents off the ground close enough to follow with c.S.",
+      "notes": ["First hit on CH is untechable, but the second hit makes it air techable"],
+      "gatlingOptions": ["5D", "2D"]
+    },
+    {
+      "input": "2D",
+      "startup": 8,
+      "active": 6,
+      "recovery": 18,
+      "description": "Elphelt's sweep: fast for its range, used for ground footsies thanks to its large disjointed hitbox. Knocks down on both normal and counter hit, and can combo into 214K for more damage and corner carry. Jump cancelable, great for blockstring mixups and safe for pressure. Also an excellent starter for canceling into 236H and detonating a grenade in okizeme situations. Some characters are popped up so high by 2D that at close range they can be picked up into an air combo for high damage and an advantageous knockdown.",
+      "notes": ["Jump cancellable"]
+    },
+    {
+      "input": "j.P",
+      "startup": 6,
+      "active": 6,
+      "recovery": 9,
+      "description": "Downward angled air jab and Elphelt's fastest air normal. Usable as an air-to-air when speed is needed, though its range is worse than most j.Ps and it can be stuffed easily. Its downward hitbox suits air strings or 50/50s like j.S>j.P/land 5K.",
+      "notes": ["Jump cancellable"],
+      "gatlingOptions": ["j.P", "j.K", "j.S", "j.H", "j.D"]
+    },
+    {
+      "input": "j.K",
+      "startup": 8,
+      "active": 6,
+      "recovery": 15,
+      "description": "Air attack that reaches downward. Occasionally useful for F-shiki setups, but mostly used as air combo filler.",
+      "gatlingOptions": ["j.P", "j.S", "j.H", "j.D"]
+    },
+    {
+      "input": "j.S",
+      "startup": 7,
+      "active": 5,
+      "recovery": 16,
+      "description": "Hits above, in front, below, and even behind her — by far Elphelt's best air normal. High speed, great gatling options, jump cancellable, good combo filler, and lots of active frames; easily hitconfirmed in air-to-air situations by buffering j.P. Also her fastest reliable instant airdash overhead option when using j.D YRC for fuzzies, coming out at a speed comparable to Millia's 6K when done as fast as possible.",
+      "notes": ["Jump cancellable"],
+      "gatlingOptions": ["j.P", "j.S", "j.H", "j.D"]
+    },
+    {
+      "input": "j.H",
+      "startup": 10,
+      "active": 6,
+      "recovery": 18,
+      "description": "More range than j.S but less versatile. Mostly used for air combo filler leading into j.D. Its respectably vertical initial hitbox is useful when Elphelt wants to quickly knock an airborne opponent to the ground and take advantage of its 20F untechable time on normal hit.",
+      "gatlingOptions": ["j.D"]
+    },
+    {
+      "input": "j.D",
+      "startup": 11,
+      "active": 8,
+      "recovery": 29,
+      "specialRecovery": 5,
+      "description": "A completely disjointed air-space-control move with good active frames. A staple air combo ender that grants very high frame advantage for Berry Pine okizeme. From a rising jump, recovery is so long Elphelt can't act until landing, so without 25 meter to YRC it's better used while falling — though she can do high jump > rising j.D and still airdash before landing to get in or run away. Like 5H, j.D is normally hard-coded to be unable to hit crouchers, but loses both this and its overhead property when YRC'd. j.D YRC still has the hitbox come out, hits crouching opponents, but can also be blocked crouching; notably its hitbox reaches MUCH lower after YRC, all the way to the bottom of her hurtbox, making it very difficult to consistently anti-air. If j.D YRC is blocked standing, Elphelt can do fuzzy overheads with instant airdash jump normals (doesn't work if blocked crouching, but she can mix up oki options with an actual overhead instead), making nearly any knockdown a dangerous situation.",
+      "notes": ["Untechable for 30F on normal hit"]
+    }
+  ],
+  "universalMechanics": [
+    {
+      "name": "Ground Throw",
+      "description": "Important for Elphelt's strike/throw mixup game when backed by Berry Pine. Long recovery means she usually only gets okizeme in the corner. Like all throws, can be option selected with a button — her best throw OS option is c.S. In the corner she can RC the throw and go straight into Shotgun loops, or with 100 tension and an opponent in Hellfire, do throw>RC>IK mode>236236H for an unburstable Instant Kill combo. Some basic grenade okizeme setups enable a meterless combo off throw by chucking the opponent into the grenade explosion."
+    },
+    {
+      "name": "Air Throw",
+      "description": "Knocks the opponent down right next to Elphelt, so okizeme is possible. Can be RC'd for an air combo. Dunking the opponent into a grenade explosion grants a meterless combo. Option selects well with j.S."
+    },
+    {
+      "name": "Dead Angle Attack",
+      "startup": 9,
+      "active": 4,
+      "recovery": 18,
+      "description": "Elphelt's most reliable defensive option with tension. Same hitbox as 6P; fast startup and good reach; hard to punish because the DA pushes Elphelt away from the opponent."
+    },
+    {
+      "name": "Blitz Attack",
+      "startup": 28,
+      "active": 3,
+      "recovery": 20,
+      "description": "Run of the mill Blitz Attack, used to call out loose blockstrings for a flashy reversal, or sometimes to drain burst after a command grab."
+    }
+  ],
+  "specialMoves": [
+    {
+      "name": "Berry Pine",
+      "input": "236P (air OK) — also Berry Pine 4P (upper toss), Berry Pine 2P (lower toss), Berry Pine j.4P",
+      "recovery": 19,
+      "isProjectile": true,
+      "description": "Berry Pine (aka 'Pineberry' or 'Pine') is a grenade that automatically detonates after 3 seconds and can be thrown with 2P (lower toss) or 4P (upper toss, air OK). One of Elphelt's most important specials and the core of her okizeme game — it should be tossed nearly every time she gets a knockdown, since the toss always hits the opponent on the first frame after they get up. Also key to her unblockable setups. In neutral, Pine provides incredible space control: a high toss travels in a long arc covering the entire screen and then some. Neither the toss nor the explosion prorate, so both lead to solid damage. j.236P stops momentum, which can bait anti-airs, help in combos, or enable safejumps; done during an airdash it alters Elphelt's aerial momentum, rocketing her toward the ground while releasing it and allowing continued pressure.",
+      "notes": [
+        "The thrown grenade has a hitbox until it loses momentum, dealing 0 damage on hit",
+        "If not thrown within 3 seconds (or thrown too late), it detonates on Elphelt, though she can block the explosion; if she's hit while holding it, it self-destructs and launches her, potentially granting the opponent a combo. The timer starts counting down on frame 14 of the startup animation, so the opponent can trigger a self-destruct before she can act",
+        "All of Elphelt's gun normals/specials (5H, j.D, sg.H, Sniper shot) can activate the explosion early by hitting the grenade, increasing its damage; it also explodes on contact with an opponent's projectile, potentially combo-ing the opponent",
+        "Throwing the grenade with the timer at or under 1 second makes it a level 3 move: Toss > Explosion combos if the timer is under ~0.5s, or Elphelt can poke between the toss and explosion if above ~0.5s",
+        "Pine stays on screen if Elphelt is blocking, but disappears if she's hit",
+        "Pine can be knocked away by the opponent's normals/specials, but remains on screen and can only be hit once",
+        "Elphelt cannot pull out another grenade until 31F after the grenade explodes or she gets hit"
+      ]
+    },
+    {
+      "name": "Bridal Express",
+      "input": "214K (air OK)",
+      "frameData": {
+        "ground": { "startup": 14, "active": 12, "recovery": 12 }
+      },
+      "description": "Ground version: moves forward, blows the opponent away and knocks down, useful for corner carry. In blockstrings, used as far as possible it's a frightening pressure reset and can frame trap where it's also plus on block; spaced correctly it's effective against opponents using FD early in her pressure. Not foolproof — dangerous on whiff, and a savvy opponent can FD the last few normals of a blockstring to make Elphelt land in front of them without connecting, ready to be punished; instant blocking it also nearly always allows a throw punish. Punishable done point-blank, but plus when blocked in the move's later active frames and/or at the tip of the hitbox. Air version: moves diagonally downward toward the ground; slow startup but hard to punish if the opponent isn't ready, since it stops air momentum briefly before descending, useful to bait anti-airs. Hitting the opponent as low as possible grants even more plus frames, though usually impractical. Best used unpredictably, as it can be beaten by air throws, DPs, or 6Ps if the opponent is ready."
+    },
+    {
+      "name": "Roll, and Aim with Miss Travailler",
+      "input": "236K",
+      "recovery": 28,
+      "description": "Elphelt does her shotgun stance's roll from neutral and enters Shotgun stance at the end of the roll's recovery. Useful for mixups combined with grenade pressure, since the explosion will either leave her plus on block or knock the opponent into the air for an easy combo with sg.S.",
+      "notes": ["Moves Elphelt forward and crosses up at close range", "Lacks the invulnerability of the Shotgun stance version, so mostly useful for mixups or avoiding projectiles in certain matchups", "Can also be used to exit rifle (Miss Confille) stance in reaction to incoming moves"]
+    }
+  ],
+  "stances": [
+    {
+      "name": "Miss Confille (Rifle / Sniper stance)",
+      "input": "236S",
+      "frameData": { "startup": 3, "active": 3, "recovery": 47 },
+      "description": "A long-range focused stance that prevents Elphelt from moving, jumping, or blocking while active. Directional inputs instead control a reticle on the screen. She fires at the reticle's location by pressing any attack button (P, K, S, or HS) other than D. If the target stays in place for 32 frames, it upgrades to a level 2 shot: the reticle grows and the next shot becomes unblockable. Primarily used for unblockable setups combined with Berry Pine as okizeme, with some utility in anti-zoning, harassing low-mobility characters, or contesting long-range setups (such as I-No's note or May's beach balls). Not advisable as a pure zoning tool: most characters move faster than the reticle, the level 1 shot gives little reward on hit, entering the stance is slow, and leaving it has significant recovery.",
+      "notes": [
+        "Can be cancelled by pressing D, or by using 236K to enter Shotgun stance",
+        "All rifle shots are air unblockable (need FD to block them)",
+        "Elphelt remains in rifle stance when she YRCs while idle, which can make aiming easier as the opponent is affected by slowdown; RCing while firing or reloading makes her leave the stance",
+        "Level 2 shot has 70% initial proration"
+      ],
+      "subMoves": [
+        {
+          "name": "Miss Confille - Reload",
+          "input": "46S",
+          "description": "After shooting once, reload with 46S to be able to shoot again; otherwise Elphelt automatically leaves the rifle stance. Pressing 6 and S at the same time gives a 'Perfect Reload' (a 2-frame window between 6 and S, not doable immediately after firing), which reloads much faster, letting her fire again sooner.",
+          "notes": ["Normal reload has 23F recovery, a perfect reload has 11F", "The perfect reload lacks an animation smear, as a tell that it was performed correctly"]
+        }
+      ]
+    },
+    {
+      "name": "Miss Travailler (Shotgun stance)",
+      "input": "236H",
+      "description": "A close-range focused Shotgun stance used in both neutral and offense, notably allowing high-damage combos and scary pressure in the corner. The stance prevents jumping, throwing, or entering IK mode, but Elphelt can still block, crouch, dash, throw tech, and Blitz. All of her normals change in this stance; her specials remain the same except 236H, which leaves the stance.",
+      "notes": [
+        "Getting hit or teching a throw in Shotgun stance forces Elphelt to leave it",
+        "RCing during Shotgun stance keeps her in it, unless done after sg.H",
+        "Elphelt can't kara cancel normals into FD while in Shotgun stance — in neutral, FD must be cleanly input with both buttons on the same frame or a Shotgun normal comes out instead"
+      ],
+      "powerUpMode": {
+        "description": "When Elphelt is not moving or performing any action in Shotgun stance, she enters a power-up mode (visualized as a red aura) that enhances sg.H's damage, range and properties.",
+        "notes": [
+          "Moving or crouching after entering power-up mode immediately cancels it, requiring her to stay idle again to regain it",
+          "Every normal in Shotgun stance except sg.H maintains the power-up",
+          "Performing sg.H during power-up mode does the enhanced 'Powered sg.H' and cancels power-up mode",
+          "Pressing up then up-back is a powerful Option Select letting Elphelt stand in place while charging and block any mid or high attack that makes contact"
+        ]
+      },
+      "reload": {
+        "name": "Miss Travailler Reload",
+        "input": "46H",
+        "description": "Like rifle stance, Elphelt must reload between shots. Can only be used right after sg.H, and lets her remain in Shotgun stance to repeatedly shoot the opponent. Understanding the rhythm for Shotgun reloads is key to mastering Shotgun loops."
+      },
+      "subMoves": [
+        {
+          "name": "sg.H — Miss Travailler Fire",
+          "input": "H during Miss Travailler",
+          "frameData": {
+            "normal": { "startup": 3, "active": 1, "recovery": 31, "isProjectile": true },
+            "poweredUp": { "active": 1, "recovery": 29, "isProjectile": true }
+          },
+          "description": "A very large, close-range, highly disjointed attack out of Shotgun stance — the most important Shotgun normal, with normal and powered versions. Both versions have the same pushback on block/hit/whiff (unaffected by Faultless Defense), count as projectiles, and cancel any projectile they hit once (except Overdrives). Reload (46H) must be done right after to remain in stance, or Elphelt exits it. Normal sg.H: a 3F normal, extremely fast for its range. Gives a hard knockdown when hit close, but air hits near the edges of the hitbox let the opponent tech out. Generally a combo filler used at the end of sg.P strings for a knockdown, or looped on air hit for more damage; useful for combos involving grenade detonation. Can be looped [sg.H>46H]xN during corner pressure, but each shot is -5 on instant block, giving an opponent a chance to escape or challenge — though the hitbox is disjointed enough that mashing out is risky. Past a certain distance it won't knock down and needs an RC to combo afterward; the main reason to keep looping is chip damage, huge tension gain, and pushback unaffected by FD. If the opponent blocks and waits for Elphelt to get too far to loop, she can use sg.S or run up to reset pressure. Powered sg.H: ridiculous speed, damage, hitstun and hitbox — once charged, it comes out in one frame after pressing H. Midscreen it mostly just gets a knockdown, but in the corner done close enough it gets a 35F wallsplat on normal hit and a 71F one on counter hit, enabling a loop of powered sg.H into itself for huge damage; landing it on the hitbox's edges is used in some 'sourspot' unblockable setups. Strong in pressure and an easy, low-risk way to finish a low-health opponent.",
+          "notes": [
+            "On deep counter hit, blows the opponent away and causes them to tumble on landing (powered version)",
+            "Deals huge guts-ignoring chip damage (powered version)",
+            "Removes 20% tension if the opponent FDs it (powered version)",
+            "A strong OS: hold up then move to up-back to block mids and highs while charging"
+          ]
+        },
+        {
+          "name": "sg.P — Miss Travailler Thrust",
+          "input": "P during Miss Travailler",
+          "startup": 3,
+          "active": 3,
+          "recovery": 6,
+          "description": "Arguably the best 3F normal in the game. Great hitbox and damage for its range while still +1 on block with little pushback, making it excellent for stagger pressure. Cancels into itself gaplessly, great for hitconfirming. Special-cancelable, including into sg.K and sg.H. sg.D can follow sg.P if the opponent respects it too much, for corner carry midscreen or high damage in the corner. Despite its speed, sg.P doesn't prorate.",
+          "gatlingOptions": ["sg.P", "sg.K", "sg.H"]
+        },
+        {
+          "name": "sg.K — Miss Travailler Roll",
+          "input": "K during Miss Travailler",
+          "recovery": 24,
+          "description": "Elphelt rolls forward while maintaining Shotgun stance. A major reason opponents must be careful dealing with her stance in neutral, since she can roll through and whiff-punish many slower moves with a CH sg.H. Against projectile characters it can close distance safely on reaction; other matchups may require a hard read. During pressure, it can cross up the opponent and make many reversals whiff thanks to its invul frames; combined with grenade it can lead to powerful crossup-mixup combos, like the 236K version. Loses to 2P mashing, so opponents must respect her other pressure options first before this works as a mixup tool.",
+          "notes": ["Full invulnerability frames instead of low profile, despite being a roll", "Affected by dash momentum, so generally best used with a microdash for greater distance"]
+        },
+        {
+          "name": "sg.S — Miss Travailler Launch",
+          "input": "S during Miss Travailler",
+          "startup": 11,
+          "active": 7,
+          "recovery": 7,
+          "description": "A forward-moving upward strike useful for closing distance during Shotgun pressure while maintaining power-up charge, as a frame trap tool, and as a situational anti-air. Great combo filler thanks to its movement, hitbox, and juggle properties; special-cancelable like sg.P. An excellent frame trap option due to its slow startup, especially catching jump-out attempts against opponents expecting sg.D, with long untechable frames on air hit for high reward. Also notably strong for confirming grenade explosions into air combos or Shotgun loops, since it autocorrects its travel direction. Like many forward-lunging moves, it can be grabbed before becoming active if done too close on block; normally +0, but instant block leaves Elphelt at -3 — when expecting a grab punish, sg.K can be used as a risky way to avoid it.",
+          "notes": ["Staggers on hit", "If the opponent isn't mashing out of stagger, sg.S will grey combo into itself indefinitely on the ground", "Can be microdashed for more range"],
+          "gatlingOptions": ["sg.K"]
+        },
+        {
+          "name": "sg.D — Miss Travailler Demolish",
+          "input": "D during Miss Travailler",
+          "startup": 15,
+          "active": 3,
+          "recovery": 35,
+          "description": "A slow command grab, special cancelable. The first hit can only be canceled into High Toss/Low Toss if a grenade is already out. Unlike sg.P and sg.S, the second hit cannot be canceled into sg.K or sg.H. A frightening mixup tool in Shotgun stance complementing her powerful stagger pressure and okizeme; throw invulnerability on startup lets Elphelt beat reversal throw attempts while close during pressure. Generally her only meterless combo midscreen on success is sg.D>214K, leading to poor damage but great corner carry; with tension she can cancel into 236S and RC the startup to re-enter normal stance for an air combo. In the corner it leads straight into Shotgun loops and unblockable setups, and allows some of the highest damage output from a command grab starter in the game thanks to only 70% initial proration. Shotgun loops following sg.D also let Elphelt rack up enormous Tension, adding a lot of threat to her Shotgun pressure.",
+          "notes": ["Frame advantage listed is when the throw is successful; a bracketed value refers to when the opponent is cornered"]
+        }
+      ]
+    }
+  ],
+  "overdrives": [
+    {
+      "name": "Judge Better Half",
+      "input": "236236K / 236236D",
+      "description": "Elphelt's only invulnerable reversal. The first hit triggers a cinematic, knocks down, and deals high damage. If the first hit whiffs, Elphelt becomes airborne on the 10th frame, performing a rising attack at an angle similar to Volcanic Viper, and the move won't knock down in that case. Very little horizontal reach and highly disadvantageous on whiff or block. Used at the end of a long combo, whiffing the first hit but landing the rest can sometimes lead to Elphelt being punished on hit. Occasionally useful on defense, but she's usually better off spending meter on Faultless Defense or Dead Angle Attacks.",
+      "notes": ["The first hit ignores summons, meaning fish summons and Eddie won't protect Dizzy and Zato if both are in range", "Counterhit state during recovery"]
+    },
+    {
+      "name": "Genoverse",
+      "input": "632146H",
+      "frameData": { "startup": 12, "recovery": 39, "isProjectile": true },
+      "description": "A multihit projectile super that travels fullscreen at high speed. Deals good damage and is plus on block. Useful for confirming off 5H at maximum range in certain matchups, since the rocket's velocity is higher than Bridal Express. If a Berry Pine grenade is out, it continues moving during superflash, enabling setups where the grenade hits the opponent during the flash (if they aren't blocking) and automatically confirms the rocket. Also great for rebuys since it's plus on block and pops the opponent up for an air combo on hit."
+    }
+  ],
+  "instantKill": {
+    "name": "Magnum Wedding",
+    "input": "During IK Mode: 236236H",
+    "startup": 22,
+    "active": 4,
+    "recovery": 21,
+    "description": "If the opponent is in Hellfire state, it's only possible to combo into it in the corner. The most common Hellfire IK combos are generally throw>RC>IK mode>IK for 100 tension (unburstable), and anything into Powered sg.H>RC>IK mode>IK, which is particularly easy to do. In situations where Elphelt can combo into 2H after an air sequence ending with j.D, she can usually use the grenade to confirm into Gold IK as long as she builds 50 meter by the end.",
+    "notes": ["Uses the animation of her f.S"]
+  }
+}
